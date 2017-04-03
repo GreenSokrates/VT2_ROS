@@ -1,0 +1,4 @@
+cell_support
+/home/luis/VT2/catkin_ws/devel/.private/cell_support/share/cell_support/cmake/cell_supportConfig-version.cmake /home/luis/VT2/catkin_ws/devel/share/cell_support/cmake/cell_supportConfig-version.cmake
+/home/luis/VT2/catkin_ws/devel/.private/cell_support/share/cell_support/cmake/cell_supportConfig.cmake /home/luis/VT2/catkin_ws/devel/share/cell_support/cmake/cell_supportConfig.cmake
+/home/luis/VT2/catkin_ws/devel/.private/cell_support/lib/pkgconfig/cell_support.pc /home/luis/VT2/catkin_ws/devel/lib/pkgconfig/cell_support.pc

@@ -5,4 +5,4 @@ Description: Description of cell_core
 Version: 0.0.0
 Cflags: 
 Libs: -L/home/luis/VT2/catkin_ws/devel/.private/cell_core/lib 
-Requires: 
+Requires: roscpp geometry_msgs

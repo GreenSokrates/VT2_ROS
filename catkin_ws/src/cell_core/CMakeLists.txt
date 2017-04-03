@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(cell_core)
+add_definitions(-std=c++11)
 
 ## Add support for C++11, supported in ROS Kinetic and newer
 # add_definitions(-std=c++11)
@@ -9,6 +10,7 @@ project(cell_core)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  geometry_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -103,7 +105,9 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES cell_core
-#  CATKIN_DEPENDS roscpp
+CATKIN_DEPENDS
+  roscpp
+  geometry_msgs
 #  DEPENDS system_lib
 )
 

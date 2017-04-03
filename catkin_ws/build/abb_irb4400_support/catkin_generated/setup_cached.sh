@@ -8,6 +8,8 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/luis/VT2/catkin_ws/devel/.private/abb_irb4400_support:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/luis/VT2/catkin_ws/devel/.private/abb_irb4400_support/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/luis/VT2/catkin_ws/devel/.private/abb_irb4400_support/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD="/home/luis/VT2/catkin_ws/build/abb_irb4400_support"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/luis/VT2/catkin_ws/devel/.private/abb_irb4400_support/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/luis/VT2/catkin_ws/src/abb_experimental/abb_irb4400_support:$ROS_PACKAGE_PATH"

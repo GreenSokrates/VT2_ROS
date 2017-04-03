@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<robot name="cell" xmlns:xacro="https://ros.org/wiki/xarco">
+ <xacro:include filename="$(find ur_description)/urdf/ur3.urdf.xacro"/>
+ <xacro:include filename="$(find abb_experimental)/abb_irb120_support/urdf/irb120.xacro"/>
+
+  <link name="world"/>
+
+  <!-- instantiating arm  -->
+  <xacro:ur3_robot prefix="" joint_limited="true"/>
+  <xacro:abb_irb120 prefix="" />
+
+  <joint name="world_to_ur3" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="world_to_irb120" type="fixed">
+    <parent link="world" />
+    <child link="base_link"/>
+    <origin xyz="0.1 0.1 0" rpy="0 0 0"/>
+  </joint>
+</robot>
