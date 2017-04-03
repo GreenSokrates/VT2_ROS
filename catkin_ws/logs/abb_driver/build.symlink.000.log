@@ -1,0 +1,5 @@
+Symlinking /home/luis/VT2/catkin_ws/devel/share/abb_driver/cmake/abb_driverConfig-version.cmake
+Symlinking /home/luis/VT2/catkin_ws/devel/share/abb_driver/cmake/abb_driverConfig.cmake
+Symlinking /home/luis/VT2/catkin_ws/devel/lib/abb_driver/motion_download_interface
+Symlinking /home/luis/VT2/catkin_ws/devel/lib/abb_driver/robot_state
+Symlinking /home/luis/VT2/catkin_ws/devel/lib/pkgconfig/abb_driver.pc

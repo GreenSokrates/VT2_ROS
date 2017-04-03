@@ -1,0 +1,8 @@
+prefix=/home/luis/VT2/catkin_ws/install
+
+Name: abb_resources
+Description: Description of abb_resources
+Version: 1.2.0
+Cflags: 
+Libs: -L/home/luis/VT2/catkin_ws/install/lib 
+Requires: 
