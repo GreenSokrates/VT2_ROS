@@ -1,9 +1,0 @@
-Symlinking /home/luis/VT2/catkin_ws/devel/share/ur_kinematics/cmake/ur_kinematicsConfig-version.cmake
-Symlinking /home/luis/VT2/catkin_ws/devel/share/ur_kinematics/cmake/ur_kinematicsConfig.cmake
-Symlinking /home/luis/VT2/catkin_ws/devel/lib/libur3_kin.so
-Symlinking /home/luis/VT2/catkin_ws/devel/lib/libur10_kin.so
-Symlinking /home/luis/VT2/catkin_ws/devel/lib/libur10_moveit_plugin.so
-Symlinking /home/luis/VT2/catkin_ws/devel/lib/libur5_moveit_plugin.so
-Symlinking /home/luis/VT2/catkin_ws/devel/lib/libur3_moveit_plugin.so
-Symlinking /home/luis/VT2/catkin_ws/devel/lib/libur5_kin.so
-Symlinking /home/luis/VT2/catkin_ws/devel/lib/pkgconfig/ur_kinematics.pc
