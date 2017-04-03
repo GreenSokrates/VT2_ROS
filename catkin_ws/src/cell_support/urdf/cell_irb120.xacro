@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<robot name="cell" xmlns:xacro="https://ros.org/wiki/xacro">
+ <xacro:include filename="$(find abb_irb120_support)/urdf/irb120_macro.xacro"/>
+
+  <link name="world"/>
+
+  <!-- init robots -->
+  <xacro:abb_irb120 prefix="irb120_" />
+
+  <!-- Joints -->
+  <joint name="world_to_irb120" type="fixed">
+    <parent link="world" />
+    <child link="irb120_base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+</robot>

@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<robot name="cell" xmlns:xacro="https://ros.org/wiki/xacro">
+ <xacro:include filename="$(find ur_description)/urdf/ur3.urdf.xacro"/>
+
+  <link name="world"/>
+
+  <!-- init robots -->
+  <xacro:ur3_robot prefix="ur3_" joint_limited="true"/>
+
+  <!-- Joints -->
+  <joint name="world_to_UR3" type="fixed">
+    <parent link="world"/>
+    <child link="ur3_base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+</robot>
