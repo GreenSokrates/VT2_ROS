@@ -1,0 +1,8 @@
+prefix=/home/luis/VT2/catkin_ws/devel/.private/ur_bringup
+
+Name: ur_bringup
+Description: Description of ur_bringup
+Version: 1.1.9
+Cflags: 
+Libs: -L/home/luis/VT2/catkin_ws/devel/.private/ur_bringup/lib 
+Requires: 
