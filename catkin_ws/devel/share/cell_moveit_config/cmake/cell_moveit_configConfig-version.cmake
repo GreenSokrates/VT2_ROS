@@ -1,0 +1,1 @@
+/home/luis/VT2/catkin_ws/devel/.private/cell_moveit_config/share/cell_moveit_config/cmake/cell_moveit_configConfig-version.cmake
