@@ -1,0 +1,1 @@
+/home/luis/VT2/catkin_ws/devel/.private/ur_modern_driver/lib/pkgconfig/ur_modern_driver.pc

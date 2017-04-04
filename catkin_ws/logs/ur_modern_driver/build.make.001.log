@@ -1,0 +1,190 @@
+[ 10%] [32mBuilding CXX object CMakeFiles/ur_hardware_interface.dir/src/ur_hardware_interface.cpp.o[0m
+[ 10%] Built target trajectory_msgs_generate_messages_cpp
+[ 10%] Built target tf2_msgs_generate_messages_nodejs
+[ 10%] Built target tf2_msgs_generate_messages_lisp
+[ 10%] Built target tf2_msgs_generate_messages_eus
+[ 10%] Built target tf_generate_messages_py
+[ 10%] Built target tf_generate_messages_eus
+[ 10%] Built target ur_msgs_generate_messages_py
+[ 10%] Built target ur_msgs_generate_messages_nodejs
+[ 10%] Built target ur_msgs_generate_messages_lisp
+[ 10%] Built target sensor_msgs_generate_messages_nodejs
+[ 10%] Built target sensor_msgs_generate_messages_cpp
+[ 10%] Built target trajectory_msgs_generate_messages_py
+[ 10%] Built target trajectory_msgs_generate_messages_nodejs
+[ 10%] Built target trajectory_msgs_generate_messages_eus
+[ 10%] Built target std_msgs_generate_messages_eus
+[ 10%] Built target roscpp_generate_messages_lisp
+[ 10%] Built target trajectory_msgs_generate_messages_lisp
+[ 10%] Built target control_msgs_generate_messages_lisp
+[ 10%] Built target controller_manager_msgs_generate_messages_eus
+[ 10%] Built target ur_msgs_generate_messages_eus
+[ 10%] Built target actionlib_generate_messages_py
+[ 10%] Built target std_msgs_generate_messages_py
+[ 10%] Built target tf_generate_messages_lisp
+[ 10%] Built target rosgraph_msgs_generate_messages_py
+[ 10%] Built target rosgraph_msgs_generate_messages_lisp
+[ 10%] Built target roscpp_generate_messages_nodejs
+[ 10%] Built target rosgraph_msgs_generate_messages_nodejs
+[ 10%] Built target rosgraph_msgs_generate_messages_cpp
+[ 10%] Built target tf_generate_messages_cpp
+[ 10%] Built target std_msgs_generate_messages_lisp
+[ 10%] Built target geometry_msgs_generate_messages_lisp
+[ 10%] Built target sensor_msgs_generate_messages_lisp
+[ 10%] Built target roscpp_generate_messages_eus
+[ 10%] Built target controller_manager_msgs_generate_messages_cpp
+[ 10%] Built target roscpp_generate_messages_cpp
+[ 10%] Built target actionlib_msgs_generate_messages_py
+[ 10%] Built target controller_manager_msgs_generate_messages_nodejs
+[ 10%] Built target geometry_msgs_generate_messages_eus
+[ 10%] Built target ur_msgs_generate_messages_cpp
+[ 10%] Built target control_msgs_generate_messages_eus
+[ 10%] Built target geometry_msgs_generate_messages_nodejs
+[ 10%] Built target rosgraph_msgs_generate_messages_eus
+[ 10%] Built target tf_generate_messages_nodejs
+[ 10%] Built target roscpp_generate_messages_py
+[ 10%] Built target actionlib_generate_messages_eus
+[ 10%] Built target controller_manager_msgs_generate_messages_lisp
+[ 10%] Built target tf2_msgs_generate_messages_cpp
+[ 10%] Built target controller_manager_msgs_generate_messages_py
+[ 10%] Built target control_msgs_generate_messages_nodejs
+[ 10%] Built target sensor_msgs_generate_messages_py
+[ 10%] Built target actionlib_generate_messages_cpp
+[ 10%] Built target tf2_msgs_generate_messages_py
+[ 10%] Built target actionlib_msgs_generate_messages_nodejs
+[ 10%] Built target actionlib_msgs_generate_messages_eus
+[ 10%] Built target sensor_msgs_generate_messages_eus
+[ 10%] Built target actionlib_generate_messages_lisp
+[ 10%] Built target actionlib_msgs_generate_messages_cpp
+[ 10%] Built target std_msgs_generate_messages_cpp
+[ 10%] Built target actionlib_generate_messages_nodejs
+[ 10%] Built target actionlib_msgs_generate_messages_lisp
+[ 10%] Built target std_msgs_generate_messages_nodejs
+[ 10%] Built target control_msgs_generate_messages_cpp
+[ 10%] Built target control_msgs_generate_messages_py
+[ 10%] Built target geometry_msgs_generate_messages_cpp
+[ 10%] Built target geometry_msgs_generate_messages_py
+[01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:[m[K In member function ‘[01m[Kbool ros_control_ur::UrHardwareInterface::canSwitch(const std::__cxx11::list<hardware_interface::ControllerInfo>&, const std::__cxx11::list<hardware_interface::ControllerInfo>&) const[m[K’:
+[01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:180:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst struct hardware_interface::ControllerInfo[m[K’ has no member named ‘[01m[Khardware_interface[m[K’
+   if (controller_it->hardware_interface
+[01;32m[K                      ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/hardware_interface/internal/resource_manager.h:40:0[m[K,
+                 from [01m[K/opt/ros/kinetic/include/hardware_interface/internal/hardware_resource_manager.h:36[m[K,
+                 from [01m[K/opt/ros/kinetic/include/hardware_interface/joint_state_interface.h:33[m[K,
+                 from [01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/include/ur_modern_driver/ur_hardware_interface.h:61[m[K,
+                 from [01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:58[m[K:
+[01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:186:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst struct hardware_interface::ControllerInfo[m[K’ has no member named ‘[01m[Khardware_interface[m[K’
+       controller_it->hardware_interface.c_str());
+[01;32m[K                      ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/console.h:346:165:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
+     ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, __VA_ARGS__)
+[01;32m[K                                                                                                                                                                     ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/console.h:379:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION[m[K’
+       ROSCONSOLE_PRINT_AT_LOCATION(__VA_ARGS__); \
+[01;32m[K       ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/console.h:561:35:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG_COND[m[K’
+ #define ROS_LOG(level, name, ...) ROS_LOG_COND(true, level, name, __VA_ARGS__)
+[01;32m[K                                   ^[m[K
+[01m[K/opt/ros/kinetic/include/rosconsole/macros_generated.h:214:24:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
+ #define ROS_ERROR(...) ROS_LOG(::ros::console::levels::Error, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
+[01;32m[K                        ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:183:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_ERROR[m[K’
+     ROS_ERROR(
+[01;32m[K     ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:195:30:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst struct hardware_interface::ControllerInfo[m[K’ has no member named ‘[01m[Khardware_interface[m[K’
+      if (stop_controller_it->hardware_interface
+[01;32m[K                              ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/hardware_interface/internal/resource_manager.h:40:0[m[K,
+                 from [01m[K/opt/ros/kinetic/include/hardware_interface/internal/hardware_resource_manager.h:36[m[K,
+                 from [01m[K/opt/ros/kinetic/include/hardware_interface/joint_state_interface.h:33[m[K,
+                 from [01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/include/ur_modern_driver/ur_hardware_interface.h:61[m[K,
+                 from [01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:58[m[K:
+[01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:205:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst struct hardware_interface::ControllerInfo[m[K’ has no member named ‘[01m[Khardware_interface[m[K’
+        controller_it->hardware_interface.c_str());
+[01;32m[K                       ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/console.h:346:165:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
+     ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, __VA_ARGS__)
+[01;32m[K                                                                                                                                                                     ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/console.h:379:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION[m[K’
+       ROSCONSOLE_PRINT_AT_LOCATION(__VA_ARGS__); \
+[01;32m[K       ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/console.h:561:35:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG_COND[m[K’
+ #define ROS_LOG(level, name, ...) ROS_LOG_COND(true, level, name, __VA_ARGS__)
+[01;32m[K                                   ^[m[K
+[01m[K/opt/ros/kinetic/include/rosconsole/macros_generated.h:214:24:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
+ #define ROS_ERROR(...) ROS_LOG(::ros::console::levels::Error, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
+[01;32m[K                        ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:202:6:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_ERROR[m[K’
+      ROS_ERROR(
+[01;32m[K      ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:209:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst struct hardware_interface::ControllerInfo[m[K’ has no member named ‘[01m[Khardware_interface[m[K’
+   } else if (controller_it->hardware_interface
+[01;32m[K                             ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/hardware_interface/internal/resource_manager.h:40:0[m[K,
+                 from [01m[K/opt/ros/kinetic/include/hardware_interface/internal/hardware_resource_manager.h:36[m[K,
+                 from [01m[K/opt/ros/kinetic/include/hardware_interface/joint_state_interface.h:33[m[K,
+                 from [01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/include/ur_modern_driver/ur_hardware_interface.h:61[m[K,
+                 from [01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:58[m[K:
+[01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:215:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst struct hardware_interface::ControllerInfo[m[K’ has no member named ‘[01m[Khardware_interface[m[K’
+       controller_it->hardware_interface.c_str());
+[01;32m[K                      ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/console.h:346:165:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
+     ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, __VA_ARGS__)
+[01;32m[K                                                                                                                                                                     ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/console.h:379:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION[m[K’
+       ROSCONSOLE_PRINT_AT_LOCATION(__VA_ARGS__); \
+[01;32m[K       ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/console.h:561:35:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG_COND[m[K’
+ #define ROS_LOG(level, name, ...) ROS_LOG_COND(true, level, name, __VA_ARGS__)
+[01;32m[K                                   ^[m[K
+[01m[K/opt/ros/kinetic/include/rosconsole/macros_generated.h:214:24:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
+ #define ROS_ERROR(...) ROS_LOG(::ros::console::levels::Error, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
+[01;32m[K                        ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:212:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_ERROR[m[K’
+     ROS_ERROR(
+[01;32m[K     ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:224:30:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst struct hardware_interface::ControllerInfo[m[K’ has no member named ‘[01m[Khardware_interface[m[K’
+      if (stop_controller_it->hardware_interface
+[01;32m[K                              ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/hardware_interface/internal/resource_manager.h:40:0[m[K,
+                 from [01m[K/opt/ros/kinetic/include/hardware_interface/internal/hardware_resource_manager.h:36[m[K,
+                 from [01m[K/opt/ros/kinetic/include/hardware_interface/joint_state_interface.h:33[m[K,
+                 from [01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/include/ur_modern_driver/ur_hardware_interface.h:61[m[K,
+                 from [01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:58[m[K:
+[01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:234:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst struct hardware_interface::ControllerInfo[m[K’ has no member named ‘[01m[Khardware_interface[m[K’
+        controller_it->hardware_interface.c_str());
+[01;32m[K                       ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/console.h:346:165:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
+     ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, __VA_ARGS__)
+[01;32m[K                                                                                                                                                                     ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/console.h:379:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION[m[K’
+       ROSCONSOLE_PRINT_AT_LOCATION(__VA_ARGS__); \
+[01;32m[K       ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/console.h:561:35:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG_COND[m[K’
+ #define ROS_LOG(level, name, ...) ROS_LOG_COND(true, level, name, __VA_ARGS__)
+[01;32m[K                                   ^[m[K
+[01m[K/opt/ros/kinetic/include/rosconsole/macros_generated.h:214:24:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
+ #define ROS_ERROR(...) ROS_LOG(::ros::console::levels::Error, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
+[01;32m[K                        ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:231:6:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_ERROR[m[K’
+      ROS_ERROR(
+[01;32m[K      ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:[m[K In member function ‘[01m[Kvirtual void ros_control_ur::UrHardwareInterface::doSwitch(const std::__cxx11::list<hardware_interface::ControllerInfo>&, const std::__cxx11::list<hardware_interface::ControllerInfo>&)[m[K’:
+[01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:251:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst struct hardware_interface::ControllerInfo[m[K’ has no member named ‘[01m[Khardware_interface[m[K’
+   if (controller_it->hardware_interface
+[01;32m[K                      ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:256:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst struct hardware_interface::ControllerInfo[m[K’ has no member named ‘[01m[Khardware_interface[m[K’
+   if (controller_it->hardware_interface
+[01;32m[K                      ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:267:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst struct hardware_interface::ControllerInfo[m[K’ has no member named ‘[01m[Khardware_interface[m[K’
+   if (controller_it->hardware_interface
+[01;32m[K                      ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_hardware_interface.cpp:272:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst struct hardware_interface::ControllerInfo[m[K’ has no member named ‘[01m[Khardware_interface[m[K’
+   if (controller_it->hardware_interface
+[01;32m[K                      ^[m[K
+CMakeFiles/ur_hardware_interface.dir/build.make:62: die Regel für Ziel „CMakeFiles/ur_hardware_interface.dir/src/ur_hardware_interface.cpp.o“ scheiterte
+CMakeFiles/Makefile2:67: die Regel für Ziel „CMakeFiles/ur_hardware_interface.dir/all“ scheiterte
+Makefile:138: die Regel für Ziel „all“ scheiterte
+make[2]: *** [CMakeFiles/ur_hardware_interface.dir/src/ur_hardware_interface.cpp.o] Fehler 1
+make[1]: *** [CMakeFiles/ur_hardware_interface.dir/all] Fehler 2
+make: *** [all] Fehler 2

@@ -141,7 +141,7 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/abb_driver/robot_state")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/abb_driver/robot_state"
-         OLD_RPATH "/home/luis/catkin_ws/devel/.private/simple_message/lib:/opt/ros/kinetic/lib:/home/luis/catkin_ws/devel/.private/industrial_robot_client/lib:/home/luis/catkin_ws/devel/.private/industrial_utils/lib:"
+         OLD_RPATH "/home/luis/catkin_ws/devel/.private/simple_message/lib:/home/luis/catkin_ws/devel/.private/industrial_robot_client/lib:/home/luis/catkin_ws/devel/.private/industrial_utils/lib:/opt/ros/kinetic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/abb_driver/robot_state")
@@ -161,7 +161,7 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/abb_driver/motion_download_interface")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/abb_driver/motion_download_interface"
-         OLD_RPATH "/home/luis/catkin_ws/devel/.private/simple_message/lib:/opt/ros/kinetic/lib:/home/luis/catkin_ws/devel/.private/industrial_robot_client/lib:/home/luis/catkin_ws/devel/.private/industrial_utils/lib:"
+         OLD_RPATH "/home/luis/catkin_ws/devel/.private/simple_message/lib:/home/luis/catkin_ws/devel/.private/industrial_robot_client/lib:/home/luis/catkin_ws/devel/.private/industrial_utils/lib:/opt/ros/kinetic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/abb_driver/motion_download_interface")

@@ -1,8 +1,0 @@
-prefix=/home/luis/VT2/catkin_ws/install
-
-Name: ur_driver
-Description: Description of ur_driver
-Version: 1.1.9
-Cflags: -I/home/luis/VT2/catkin_ws/install/include
-Libs: -L/home/luis/VT2/catkin_ws/install/lib 
-Requires: dynamic_reconfigure

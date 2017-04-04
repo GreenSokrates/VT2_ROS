@@ -1,0 +1,8 @@
+prefix=/home/luis/VT2/catkin_ws/devel/.private/cell_moveit_config
+
+Name: cell_moveit_config
+Description: Description of cell_moveit_config
+Version: 0.3.0
+Cflags: 
+Libs: -L/home/luis/VT2/catkin_ws/devel/.private/cell_moveit_config/lib 
+Requires: 

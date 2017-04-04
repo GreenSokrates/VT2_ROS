@@ -1,2 +1,0 @@
-- setup-file:
-    local-name: /home/luis/VT2/catkin_ws/devel/.private/abb_irb2400_moveit_plugins/setup.sh
