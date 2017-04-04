@@ -1,22 +1,22 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/luis/VT2/catkin_ws/build/abb_driver/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_32030/fast"
-/usr/bin/make -f CMakeFiles/cmTC_32030.dir/build.make CMakeFiles/cmTC_32030.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_8054d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8054d.dir/build.make CMakeFiles/cmTC_8054d.dir/build
 make[1]: Verzeichnis „/home/luis/VT2/catkin_ws/build/abb_driver/CMakeFiles/CMakeTmp“ wird betreten
-Building C object CMakeFiles/cmTC_32030.dir/CheckSymbolExists.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_32030.dir/CheckSymbolExists.c.o   -c /home/luis/VT2/catkin_ws/build/abb_driver/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_32030
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_32030.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_32030.dir/CheckSymbolExists.c.o  -o cmTC_32030 -rdynamic 
-CMakeFiles/cmTC_32030.dir/CheckSymbolExists.c.o: In Funktion `main':
+Building C object CMakeFiles/cmTC_8054d.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_8054d.dir/CheckSymbolExists.c.o   -c /home/luis/VT2/catkin_ws/build/abb_driver/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_8054d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8054d.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_8054d.dir/CheckSymbolExists.c.o  -o cmTC_8054d -rdynamic 
+CMakeFiles/cmTC_8054d.dir/CheckSymbolExists.c.o: In Funktion `main':
 CheckSymbolExists.c:(.text+0x16): Nicht definierter Verweis auf `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_32030.dir/build.make:97: die Regel für Ziel „cmTC_32030“ scheiterte
-make[1]: *** [cmTC_32030] Fehler 1
+CMakeFiles/cmTC_8054d.dir/build.make:97: die Regel für Ziel „cmTC_8054d“ scheiterte
+make[1]: *** [cmTC_8054d] Fehler 1
 make[1]: Verzeichnis „/home/luis/VT2/catkin_ws/build/abb_driver/CMakeFiles/CMakeTmp“ wird verlassen
-Makefile:126: die Regel für Ziel „cmTC_32030/fast“ scheiterte
-make: *** [cmTC_32030/fast] Fehler 2
+Makefile:126: die Regel für Ziel „cmTC_8054d/fast“ scheiterte
+make: *** [cmTC_8054d/fast] Fehler 2
 
 File /home/luis/VT2/catkin_ws/build/abb_driver/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -36,20 +36,20 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/luis/VT2/catkin_ws/build/abb_driver/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_61fb6/fast"
-/usr/bin/make -f CMakeFiles/cmTC_61fb6.dir/build.make CMakeFiles/cmTC_61fb6.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_cc884/fast"
+/usr/bin/make -f CMakeFiles/cmTC_cc884.dir/build.make CMakeFiles/cmTC_cc884.dir/build
 make[1]: Verzeichnis „/home/luis/VT2/catkin_ws/build/abb_driver/CMakeFiles/CMakeTmp“ wird betreten
-Building C object CMakeFiles/cmTC_61fb6.dir/CheckFunctionExists.c.o
-/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_61fb6.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
-Linking C executable cmTC_61fb6
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_61fb6.dir/link.txt --verbose=1
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_61fb6.dir/CheckFunctionExists.c.o  -o cmTC_61fb6 -rdynamic -lpthreads 
+Building C object CMakeFiles/cmTC_cc884.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_cc884.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_cc884
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cc884.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_cc884.dir/CheckFunctionExists.c.o  -o cmTC_cc884 -rdynamic -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_61fb6.dir/build.make:97: die Regel für Ziel „cmTC_61fb6“ scheiterte
-make[1]: *** [cmTC_61fb6] Fehler 1
+CMakeFiles/cmTC_cc884.dir/build.make:97: die Regel für Ziel „cmTC_cc884“ scheiterte
+make[1]: *** [cmTC_cc884] Fehler 1
 make[1]: Verzeichnis „/home/luis/VT2/catkin_ws/build/abb_driver/CMakeFiles/CMakeTmp“ wird verlassen
-Makefile:126: die Regel für Ziel „cmTC_61fb6/fast“ scheiterte
-make: *** [cmTC_61fb6/fast] Fehler 2
+Makefile:126: die Regel für Ziel „cmTC_cc884/fast“ scheiterte
+make: *** [cmTC_cc884/fast] Fehler 2
 
 

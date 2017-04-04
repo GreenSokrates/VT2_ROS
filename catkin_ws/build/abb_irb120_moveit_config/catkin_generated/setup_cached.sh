@@ -9,6 +9,5 @@
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/luis/VT2/catkin_ws/devel/.private/abb_irb120_moveit_config:$CMAKE_PREFIX_PATH"
 export PWD="/home/luis/VT2/catkin_ws/build/abb_irb120_moveit_config"
-export PYTHONPATH="/home/luis/VT2/catkin_ws/devel/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/luis/VT2/catkin_ws/devel/.private/abb_irb120_moveit_config/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/luis/VT2/catkin_ws/src/abb_experimental/abb_irb120_moveit_config:$ROS_PACKAGE_PATH"

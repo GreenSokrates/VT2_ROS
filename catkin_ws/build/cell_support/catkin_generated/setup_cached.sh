@@ -9,6 +9,5 @@
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/luis/VT2/catkin_ws/devel/.private/cell_support:$CMAKE_PREFIX_PATH"
 export PWD="/home/luis/VT2/catkin_ws/build/cell_support"
-export PYTHONPATH="/home/luis/VT2/catkin_ws/devel/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/luis/VT2/catkin_ws/devel/.private/cell_support/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/luis/VT2/catkin_ws/src/cell_support:$ROS_PACKAGE_PATH"

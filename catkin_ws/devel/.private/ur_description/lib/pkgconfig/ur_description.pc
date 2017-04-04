@@ -1,8 +1,0 @@
-prefix=/home/luis/VT2/catkin_ws/devel/.private/ur_description
-
-Name: ur_description
-Description: Description of ur_description
-Version: 1.1.9
-Cflags: 
-Libs: -L/home/luis/VT2/catkin_ws/devel/.private/ur_description/lib 
-Requires: 
