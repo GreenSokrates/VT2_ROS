@@ -8,9 +8,6 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/luis/VT2/catkin_ws/devel/.private/ur_msgs:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/luis/VT2/catkin_ws/devel/.private/ur_msgs/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/luis/VT2/catkin_ws/devel/.private/ur_msgs/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD="/home/luis/VT2/catkin_ws/build/ur_msgs"
-export PYTHONPATH="/home/luis/VT2/catkin_ws/devel/.private/ur_msgs/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/luis/VT2/catkin_ws/devel/.private/ur_msgs/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/luis/VT2/catkin_ws/src/universal_robot/ur_msgs:$ROS_PACKAGE_PATH"
