@@ -305,16 +305,16 @@ gtest_force_shared_crt:BOOL=OFF
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
 //The directory containing a CMake configuration file for industrial_msgs.
-industrial_msgs_DIR:PATH=/home/luis/catkin_ws/devel/share/industrial_msgs/cmake
+industrial_msgs_DIR:PATH=/opt/ros/kinetic/share/industrial_msgs/cmake
 
 //The directory containing a CMake configuration file for industrial_robot_client.
-industrial_robot_client_DIR:PATH=/home/luis/catkin_ws/devel/share/industrial_robot_client/cmake
+industrial_robot_client_DIR:PATH=/opt/ros/kinetic/share/industrial_robot_client/cmake
 
 //The directory containing a CMake configuration file for industrial_utils.
-industrial_utils_DIR:PATH=/home/luis/catkin_ws/devel/share/industrial_utils/cmake
+industrial_utils_DIR:PATH=/opt/ros/kinetic/share/industrial_utils/cmake
 
 //Path to a library.
-lib:FILEPATH=/home/luis/catkin_ws/devel/.private/industrial_utils/lib/libindustrial_utils.so
+lib:FILEPATH=/opt/ros/kinetic/lib/libindustrial_utils.so
 
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/kinetic/share/message_runtime/cmake
@@ -344,7 +344,7 @@ rostime_DIR:PATH=/opt/ros/kinetic/share/rostime/cmake
 sensor_msgs_DIR:PATH=/opt/ros/kinetic/share/sensor_msgs/cmake
 
 //The directory containing a CMake configuration file for simple_message.
-simple_message_DIR:PATH=/home/luis/catkin_ws/devel/share/simple_message/cmake
+simple_message_DIR:PATH=/opt/ros/kinetic/share/simple_message/cmake
 
 //The directory containing a CMake configuration file for std_msgs.
 std_msgs_DIR:PATH=/opt/ros/kinetic/share/std_msgs/cmake

@@ -248,6 +248,15 @@ CMakeFiles/ur_driver.dir/src/ur_realtime_communication.cpp.o: /opt/ros/kinetic/i
 CMakeFiles/ur_driver.dir/src/ur_realtime_communication.cpp.o: /opt/ros/kinetic/include/xmlrpcpp/XmlRpcDecl.h
 CMakeFiles/ur_driver.dir/src/ur_realtime_communication.cpp.o: /opt/ros/kinetic/include/xmlrpcpp/XmlRpcValue.h
 
+CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/Analog.h
+CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/Digital.h
+CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/IOStates.h
+CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetIO.h
+CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetIORequest.h
+CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetIOResponse.h
+CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetPayload.h
+CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetPayloadRequest.h
+CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetPayloadResponse.h
 CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/VT2/catkin_ws/src/ur_modern_driver/include/ur_modern_driver/do_output.h
 CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/VT2/catkin_ws/src/ur_modern_driver/include/ur_modern_driver/robot_state.h
 CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/VT2/catkin_ws/src/ur_modern_driver/include/ur_modern_driver/robot_state_RT.h
@@ -256,15 +265,6 @@ CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/VT2/catkin_ws/src/
 CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/VT2/catkin_ws/src/ur_modern_driver/include/ur_modern_driver/ur_hardware_interface.h
 CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/VT2/catkin_ws/src/ur_modern_driver/include/ur_modern_driver/ur_realtime_communication.h
 CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_ros_wrapper.cpp
-CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/Analog.h
-CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/Digital.h
-CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/IOStates.h
-CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetIO.h
-CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetIORequest.h
-CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetIOResponse.h
-CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetPayload.h
-CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetPayloadRequest.h
-CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /home/luis/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetPayloadResponse.h
 CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /opt/ros/kinetic/include/actionlib/action_definition.h
 CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /opt/ros/kinetic/include/actionlib/decl.h
 CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o: /opt/ros/kinetic/include/actionlib/destruction_guard.h

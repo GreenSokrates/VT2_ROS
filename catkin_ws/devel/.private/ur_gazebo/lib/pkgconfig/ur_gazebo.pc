@@ -1,0 +1,8 @@
+prefix=/home/luis/VT2/catkin_ws/devel/.private/ur_gazebo
+
+Name: ur_gazebo
+Description: Description of ur_gazebo
+Version: 1.1.9
+Cflags: 
+Libs: -L/home/luis/VT2/catkin_ws/devel/.private/ur_gazebo/lib 
+Requires: 

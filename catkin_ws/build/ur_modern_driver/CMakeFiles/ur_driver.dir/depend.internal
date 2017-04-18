@@ -249,6 +249,15 @@ CMakeFiles/ur_driver.dir/src/ur_realtime_communication.cpp.o
  /opt/ros/kinetic/include/xmlrpcpp/XmlRpcDecl.h
  /opt/ros/kinetic/include/xmlrpcpp/XmlRpcValue.h
 CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o
+ /home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/Analog.h
+ /home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/Digital.h
+ /home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/IOStates.h
+ /home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetIO.h
+ /home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetIORequest.h
+ /home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetIOResponse.h
+ /home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetPayload.h
+ /home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetPayloadRequest.h
+ /home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetPayloadResponse.h
  /home/luis/VT2/catkin_ws/src/ur_modern_driver/include/ur_modern_driver/do_output.h
  /home/luis/VT2/catkin_ws/src/ur_modern_driver/include/ur_modern_driver/robot_state.h
  /home/luis/VT2/catkin_ws/src/ur_modern_driver/include/ur_modern_driver/robot_state_RT.h
@@ -257,15 +266,6 @@ CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o
  /home/luis/VT2/catkin_ws/src/ur_modern_driver/include/ur_modern_driver/ur_hardware_interface.h
  /home/luis/VT2/catkin_ws/src/ur_modern_driver/include/ur_modern_driver/ur_realtime_communication.h
  /home/luis/VT2/catkin_ws/src/ur_modern_driver/src/ur_ros_wrapper.cpp
- /home/luis/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/Analog.h
- /home/luis/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/Digital.h
- /home/luis/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/IOStates.h
- /home/luis/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetIO.h
- /home/luis/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetIORequest.h
- /home/luis/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetIOResponse.h
- /home/luis/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetPayload.h
- /home/luis/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetPayloadRequest.h
- /home/luis/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/SetPayloadResponse.h
  /opt/ros/kinetic/include/actionlib/action_definition.h
  /opt/ros/kinetic/include/actionlib/decl.h
  /opt/ros/kinetic/include/actionlib/destruction_guard.h

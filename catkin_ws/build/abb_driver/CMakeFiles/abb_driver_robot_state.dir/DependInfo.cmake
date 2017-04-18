@@ -19,10 +19,6 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/luis/VT2/catkin_ws/src/abb/abb_driver/include"
-  "/home/luis/catkin_ws/devel/.private/industrial_msgs/include"
-  "/home/luis/catkin_ws/src/industrial_core/industrial_utils/include"
-  "/home/luis/catkin_ws/src/industrial_core/simple_message/include"
-  "/home/luis/catkin_ws/src/industrial_core/industrial_robot_client/include"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )

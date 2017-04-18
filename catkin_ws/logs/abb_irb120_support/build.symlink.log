@@ -1,3 +1,3 @@
-Linked: (/home/luis/VT2/catkin_ws/devel/.private/abb_irb120_support/share/abb_irb120_support/cmake/abb_irb120_supportConfig.cmake, /home/luis/VT2/catkin_ws/devel/share/abb_irb120_support/cmake/abb_irb120_supportConfig.cmake)
-Linked: (/home/luis/VT2/catkin_ws/devel/.private/abb_irb120_support/share/abb_irb120_support/cmake/abb_irb120_supportConfig-version.cmake, /home/luis/VT2/catkin_ws/devel/share/abb_irb120_support/cmake/abb_irb120_supportConfig-version.cmake)
-Linked: (/home/luis/VT2/catkin_ws/devel/.private/abb_irb120_support/lib/pkgconfig/abb_irb120_support.pc, /home/luis/VT2/catkin_ws/devel/lib/pkgconfig/abb_irb120_support.pc)
+Symlinking /home/luis/VT2/catkin_ws/devel/share/abb_irb120_support/cmake/abb_irb120_supportConfig.cmake
+Symlinking /home/luis/VT2/catkin_ws/devel/share/abb_irb120_support/cmake/abb_irb120_supportConfig-version.cmake
+Symlinking /home/luis/VT2/catkin_ws/devel/lib/pkgconfig/abb_irb120_support.pc

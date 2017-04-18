@@ -1,8 +1,0 @@
-prefix=/home/luis/VT2/catkin_ws/install
-
-Name: abb_irb4400_support
-Description: Description of abb_irb4400_support
-Version: 0.1.0
-Cflags: 
-Libs: -L/home/luis/VT2/catkin_ws/install/lib 
-Requires: 

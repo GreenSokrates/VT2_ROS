@@ -6,5 +6,5 @@ CXX_FLAGS = -std=c++11 -fPIC
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD -DROS_PACKAGE_NAME=\"ur_modern_driver\" -Dur_hardware_interface_EXPORTS
 
-CXX_INCLUDES = -I/home/luis/VT2/catkin_ws/src/ur_modern_driver/include -I/home/luis/catkin_ws/devel/.private/ur_msgs/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
+CXX_INCLUDES = -I/home/luis/VT2/catkin_ws/src/ur_modern_driver/include -I/home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
 
