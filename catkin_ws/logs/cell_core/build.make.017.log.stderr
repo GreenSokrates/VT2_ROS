@@ -1,0 +1,16 @@
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:39:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kvisual_tools[m[K’ was not declared in this scope
+   visual_tools.publishAxisLabeled(target_pose1, "pose1");
+[01;32m[K   ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:40:28:[m[K [01;31m[Kerror: [m[K‘[01m[Ktext_pose[m[K’ was not declared in this scope
+   visual_tools.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                            ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:40:52:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                    ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:40:64:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                                ^[m[K
+make[2]: *** [CMakeFiles/cell_core_node.dir/src/planning.cpp.o] Fehler 1
+make[1]: *** [CMakeFiles/cell_core_node.dir/all] Fehler 2
+make: *** [all] Fehler 2

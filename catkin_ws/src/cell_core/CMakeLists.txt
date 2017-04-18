@@ -33,9 +33,10 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-target_link_libraries(cell_core_node
- #moveit_move_group_interface
- ${catkin_LIBRARIES}
+target_link_libraries(${PROJECT_NAME}_node
+${catkin_LIBRARIES}
+${Boost_LIBRARIES}
+ 
 )
 
 #############

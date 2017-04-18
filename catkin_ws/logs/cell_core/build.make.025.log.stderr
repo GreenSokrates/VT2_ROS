@@ -1,0 +1,5 @@
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:11:31:[m[K [01;31m[Kfatal error: [m[Krviz_visual_tools.h: Datei oder Verzeichnis nicht gefunden
+compilation terminated.
+make[2]: *** [CMakeFiles/cell_core_node.dir/src/planning.cpp.o] Fehler 1
+make[1]: *** [CMakeFiles/cell_core_node.dir/all] Fehler 2
+make: *** [all] Fehler 2

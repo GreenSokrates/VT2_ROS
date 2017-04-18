@@ -1,0 +1,17 @@
+CMake Warning (dev) at CMakeLists.txt:15 (add_executable):
+  Policy CMP0037 is not set: Target names should not be reserved and should
+  match a validity pattern.  Run "cmake --help-policy CMP0037" for policy
+  details.  Use the cmake_policy command to set the policy and suppress this
+  warning.
+
+  The target name "$planning" is reserved or not valid for certain CMake
+  features, such as generator expressions, and may result in undefined
+  behavior.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+[31m[1mCMake Error[0m at /home/luis/VT2/catkin_ws/src/cell_core/CMakeLists.txt:36 (target_link_libraries):
+  Cannot specify link libraries for target "planning" which is not built by
+  this project.
+
+
+make: *** [cmake_check_build_system] Fehler 1
