@@ -1,0 +1,12 @@
+[35m[1mScanning dependencies of target cell_core_node[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/cell_core_node.dir/src/planning.cpp.o[0m
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:17:1:[m[K [01;31m[Kerror: [m[K‘[01m[KMoveGroup[m[K’ is not a member of ‘[01m[Kmoveit::planning_interface[m[K’
+ moveit::planning_interface::MoveGroup group("irb120_tcp");
+[01;32m[K ^[m[K
+CMakeFiles/cell_core_node.dir/build.make:62: die Regel für Ziel „CMakeFiles/cell_core_node.dir/src/planning.cpp.o“ scheiterte
+make[2]: *** [CMakeFiles/cell_core_node.dir/src/planning.cpp.o] Fehler 1
+CMakeFiles/Makefile2:227: die Regel für Ziel „CMakeFiles/cell_core_node.dir/all“ scheiterte
+make[1]: *** [CMakeFiles/cell_core_node.dir/all] Fehler 2
+Makefile:138: die Regel für Ziel „all“ scheiterte
+make: *** [all] Fehler 2

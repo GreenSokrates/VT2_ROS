@@ -1,0 +1,95 @@
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:28:17:[m[K [01;31m[Kerror: [m[K‘[01m[Krviz_visual_tools[m[K’ is not a namespace-name
+ namespace rvt = rviz_visual_tools;
+[01;32m[K                 ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:28:34:[m[K [01;31m[Kerror: [m[Kexpected namespace-name before ‘[01m[K;[m[K’ token
+ namespace rvt = rviz_visual_tools;
+[01;32m[K                                  ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:29:1:[m[K [01;31m[Kerror: [m[K‘[01m[Kmoveit_visual_tools[m[K’ has not been declared
+ moveit_visual_tools::MoveItVisualTools visual_tools("odom_combined");
+[01;32m[K ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:30:1:[m[K [01;31m[Kerror: [m[K‘[01m[Kvisual_tools[m[K’ was not declared in this scope
+ visual_tools.deleteAllMarkers();
+[01;32m[K ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:37:64:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+ visual_tools.publishText(text_pose, "MoveGroupInterface Demo", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                                ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:37:76:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+ visual_tools.publishText(text_pose, "MoveGroupInterface Demo", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                                            ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:70:52:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                    ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:70:64:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                                ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:92:59:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Joint Space Goal", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                           ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:92:71:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Joint Space Goal", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                                       ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:145:59:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Constrained Goal", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                           ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:145:71:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Constrained Goal", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                                       ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:193:59:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Joint Space Goal", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                           ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:193:71:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Joint Space Goal", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                                       ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:194:39:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishPath(waypoints, rvt::LIME_GREEN, rvt::SMALL);
+[01;32m[K                                       ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:194:56:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishPath(waypoints, rvt::LIME_GREEN, rvt::SMALL);
+[01;32m[K                                                        ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:196:77:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+     visual_tools.publishAxisLabeled(waypoints[i], "pt" + std::to_string(i), rvt::SMALL);
+[01;32m[K                                                                             ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:237:53:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Add object", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                     ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:237:65:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Add object", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                                 ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:252:56:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Obstacle Goal", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                        ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:252:68:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Obstacle Goal", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                                    ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:262:67:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Object attached to robot", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                                   ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:262:79:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Object attached to robot", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                                               ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:273:70:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Object dettached from robot", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                                      ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:273:82:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Object dettached from robot", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                                                  ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:286:57:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Object removed", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                         ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:286:69:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Object removed", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                                     ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:320:55:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Two Arm Goal", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                       ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:320:67:[m[K [01;31m[Kerror: [m[K‘[01m[Krvt[m[K’ has not been declared
+   visual_tools.publishText(text_pose, "Two Arm Goal", rvt::WHITE, rvt::XLARGE);
+[01;32m[K                                                                   ^[m[K
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:[m[K At global scope:
+[01m[K/home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp:331:1:[m[K [01;31m[Kerror: [m[Kexpected declaration before ‘[01m[K}[m[K’ token
+ }
+[01;32m[K ^[m[K
+make[2]: *** [CMakeFiles/cell_core_node.dir/src/planning.cpp.o] Fehler 1
+make[1]: *** [CMakeFiles/cell_core_node.dir/all] Fehler 2
+make: *** [all] Fehler 2

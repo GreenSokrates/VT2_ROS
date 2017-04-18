@@ -1,0 +1,7 @@
+
+<launch>
+
+  <node name="planning" pkg="cell_core" type="planning" respawn="false" output="screen">
+  </node>
+
+</launch>
