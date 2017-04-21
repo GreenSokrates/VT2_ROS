@@ -7,8 +7,6 @@
 #include <moveit_msgs/AttachedCollisionObject.h>
 #include <moveit_msgs/CollisionObject.h>
 
-#include <moveit_visual_tools/moveit_visual_tools.h>
-#include <rviz_visual_tools/rviz_visual_tools.h>
 
 using namespace ros;
 using namespace moveit;
@@ -30,22 +28,6 @@ int main(int argc, char **argv)
   // Raw pointer refering to planning group for better performance
   const robot_state::JointModelGroup *joint_model_group =
     move_group.getCurrentState()->getJointModelGroup(PLANNING_GROUP);
-
-  namespace rvt = rviz_visual_tools;
-  moveit_visual_tools::MoveItVisualTools visual_tools("odom_combined");
-  visual_tools.deleteAllMarkers();
-
-  // Remote control is an introspection tool that allows users to step through a high level script
-  // via buttons and keyboard shortcuts in Rviz
-  visual_tools.loadRemoteControl();
-
-  // Rviz provides many types of markers, in this demo we will use text, cylinders, and spheres
-  Eigen::Affine3d text_pose = Eigen::Affine3d::Identity();
-  text_pose.translation().z() = 1.75; // above head of PR2
-  visual_tools.publishText(text_pose, "MoveGroupInterface Demo", rvt::WHITE, rvt::XLARGE);
-
-  // Batch publishing is used to reduce the number of messages being sent to Rviz for large visualizations
-  visual_tools.trigger();
 
 
   // Getting Basic Information
@@ -177,14 +159,6 @@ int main(int argc, char **argv)
   double fraction = move_group.computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
   ROS_INFO_NAMED("tutorial", "Visualizing plan 4 (cartesian path) (%.2f%% acheived)", fraction * 100.0);
 
-  // Visualize the plan in Rviz
-  visual_tools.deleteAllMarkers();
-  visual_tools.publishText(text_pose, "Joint Space Goal", rvt::WHITE, rvt::XLARGE);
-  visual_tools.publishPath(waypoints, rvt::LIME_GREEN, rvt::SMALL);
-  for (std::size_t i = 0; i < waypoints.size(); ++i)
-    visual_tools.publishAxisLabeled(waypoints[i], "pt" + std::to_string(i), rvt::SMALL);
-  visual_tools.trigger();
-  visual_tools.prompt("next step");
 
   // Adding/Removing Objects and Attaching/Detaching Objects
   // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -222,10 +196,6 @@ int main(int argc, char **argv)
   ROS_INFO_NAMED("tutorial", "Add an object into the world");
   planning_scene_interface.addCollisionObjects(collision_objects);
 
-  // Show text in Rviz of status
-  visual_tools.publishText(text_pose, "Add object", rvt::WHITE, rvt::XLARGE);
-  visual_tools.trigger();
-
   // Sleep to allow MoveGroup to recieve and process the collision object message
   ros::Duration(1.0).sleep();
 
@@ -236,20 +206,11 @@ int main(int argc, char **argv)
   success = move_group.plan(my_plan);
   ROS_INFO_NAMED("tutorial", "Visualizing plan 5 (pose goal move around cuboid) %s", success ? "" : "FAILED");
 
-  // Visualize the plan in Rviz
-  visual_tools.deleteAllMarkers();
-  visual_tools.publishText(text_pose, "Obstacle Goal", rvt::WHITE, rvt::XLARGE);
-  visual_tools.publishTrajectoryLine(my_plan.trajectory_, joint_model_group);
-  visual_tools.trigger();
-  visual_tools.prompt("next step");
 
   // Now, let's attach the collision object to the robot.
   ROS_INFO_NAMED("tutorial", "Attach the object to the robot");
   move_group.attachObject(collision_object.id);
 
-  // Show text in Rviz of status
-  visual_tools.publishText(text_pose, "Object attached to robot", rvt::WHITE, rvt::XLARGE);
-  visual_tools.trigger();
 
   /* Sleep to allow MoveGroup to recieve and process the attached collision object message */
   ros::Duration(1.0).sleep();
@@ -258,9 +219,6 @@ int main(int argc, char **argv)
   ROS_INFO_NAMED("tutorial", "Detach the object from the robot");
   move_group.detachObject(collision_object.id);
 
-  // Show text in Rviz of status
-  visual_tools.publishText(text_pose, "Object dettached from robot", rvt::WHITE, rvt::XLARGE);
-  visual_tools.trigger();
 
   /* Sleep to allow MoveGroup to recieve and process the detach collision object message */
   ros::Duration(1.0).sleep();
@@ -270,10 +228,6 @@ int main(int argc, char **argv)
   std::vector<std::string> object_ids;
   object_ids.push_back(collision_object.id);
   planning_scene_interface.removeCollisionObjects(object_ids);
-
-  // Show text in Rviz of status
-  visual_tools.publishText(text_pose, "Object removed", rvt::WHITE, rvt::XLARGE);
-  visual_tools.trigger();
 
   /* Sleep to give Rviz time to show the object is no longer there.*/
   ros::Duration(1.0).sleep();
