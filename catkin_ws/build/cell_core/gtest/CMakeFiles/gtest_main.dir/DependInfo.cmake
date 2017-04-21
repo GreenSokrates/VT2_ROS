@@ -15,6 +15,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/home/luis/VT2/catkin_ws/src/cell_core/include"
   "/usr/src/gtest/include"
   "/usr/src/gtest"
   )

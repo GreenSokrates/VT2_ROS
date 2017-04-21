@@ -21,6 +21,8 @@ moveit_msgs/CollisionObject.h
 -
 moveit_visual_tools/moveit_visual_tools.h
 -
+rviz_visual_tools/rviz_visual_tools.h
+-
 
 /opt/ros/kinetic/include/class_loader/class_loader.h
 boost/shared_ptr.hpp

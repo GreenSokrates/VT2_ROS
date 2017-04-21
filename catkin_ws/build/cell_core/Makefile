@@ -179,6 +179,19 @@ moveit_ros_manipulation_gencfg/fast:
 .PHONY : moveit_ros_manipulation_gencfg/fast
 
 #=============================================================================
+# Target rules for targets named moveit_ros_planning_gencfg
+
+# Build rule for target.
+moveit_ros_planning_gencfg: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 moveit_ros_planning_gencfg
+.PHONY : moveit_ros_planning_gencfg
+
+# fast build rule for target.
+moveit_ros_planning_gencfg/fast:
+	$(MAKE) -f CMakeFiles/moveit_ros_planning_gencfg.dir/build.make CMakeFiles/moveit_ros_planning_gencfg.dir/build
+.PHONY : moveit_ros_planning_gencfg/fast
+
+#=============================================================================
 # Target rules for targets named octomap_msgs_generate_messages_py
 
 # Build rule for target.
@@ -346,19 +359,6 @@ sensor_msgs_generate_messages_nodejs: cmake_check_build_system
 sensor_msgs_generate_messages_nodejs/fast:
 	$(MAKE) -f CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
 .PHONY : sensor_msgs_generate_messages_nodejs/fast
-
-#=============================================================================
-# Target rules for targets named sensor_msgs_generate_messages_cpp
-
-# Build rule for target.
-sensor_msgs_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 sensor_msgs_generate_messages_cpp
-.PHONY : sensor_msgs_generate_messages_cpp
-
-# fast build rule for target.
-sensor_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
-.PHONY : sensor_msgs_generate_messages_cpp/fast
 
 #=============================================================================
 # Target rules for targets named std_msgs_generate_messages_eus
@@ -855,19 +855,6 @@ geometry_msgs_generate_messages_py/fast:
 .PHONY : geometry_msgs_generate_messages_py/fast
 
 #=============================================================================
-# Target rules for targets named moveit_ros_planning_gencfg
-
-# Build rule for target.
-moveit_ros_planning_gencfg: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 moveit_ros_planning_gencfg
-.PHONY : moveit_ros_planning_gencfg
-
-# fast build rule for target.
-moveit_ros_planning_gencfg/fast:
-	$(MAKE) -f CMakeFiles/moveit_ros_planning_gencfg.dir/build.make CMakeFiles/moveit_ros_planning_gencfg.dir/build
-.PHONY : moveit_ros_planning_gencfg/fast
-
-#=============================================================================
 # Target rules for targets named octomap_msgs_generate_messages_nodejs
 
 # Build rule for target.
@@ -1050,6 +1037,19 @@ actionlib_msgs_generate_messages_nodejs/fast:
 .PHONY : actionlib_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
+# Target rules for targets named sensor_msgs_generate_messages_cpp
+
+# Build rule for target.
+sensor_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sensor_msgs_generate_messages_cpp
+.PHONY : sensor_msgs_generate_messages_cpp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+.PHONY : sensor_msgs_generate_messages_cpp/fast
+
+#=============================================================================
 # Target rules for targets named gtest
 
 # Build rule for target.
@@ -1112,6 +1112,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... install/strip"
 	@echo "... moveit_ros_manipulation_gencfg"
+	@echo "... moveit_ros_planning_gencfg"
 	@echo "... octomap_msgs_generate_messages_py"
 	@echo "... octomap_msgs_generate_messages_lisp"
 	@echo "... object_recognition_msgs_generate_messages_nodejs"
@@ -1126,7 +1127,6 @@ help:
 	@echo "... trajectory_msgs_generate_messages_eus"
 	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... sensor_msgs_generate_messages_nodejs"
-	@echo "... sensor_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_eus"
@@ -1167,7 +1167,6 @@ help:
 	@echo "... roscpp_generate_messages_py"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... geometry_msgs_generate_messages_py"
-	@echo "... moveit_ros_planning_gencfg"
 	@echo "... test"
 	@echo "... octomap_msgs_generate_messages_nodejs"
 	@echo "... trajectory_msgs_generate_messages_cpp"
@@ -1183,6 +1182,7 @@ help:
 	@echo "... moveit_msgs_generate_messages_eus"
 	@echo "... moveit_msgs_generate_messages_py"
 	@echo "... actionlib_msgs_generate_messages_nodejs"
+	@echo "... sensor_msgs_generate_messages_cpp"
 	@echo "... gtest"
 	@echo "... gtest_main"
 	@echo "... src/planning.o"

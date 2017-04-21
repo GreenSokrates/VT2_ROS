@@ -3,6 +3,6 @@ prefix=/home/luis/VT2/catkin_ws/devel/.private/cell_core
 Name: cell_core
 Description: Description of cell_core
 Version: 0.0.0
-Cflags: 
+Cflags: -I/home/luis/VT2/catkin_ws/src/cell_core/include
 Libs: -L/home/luis/VT2/catkin_ws/devel/.private/cell_core/lib 
-Requires: roscpp geometry_msgs
+Requires: moveit_core moveit_ros_planning_interface interactive_markers roscpp

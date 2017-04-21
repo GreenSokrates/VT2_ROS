@@ -44,6 +44,11 @@
   <run_depend>roscpp</run_depend>
   <build_depend>geometry_msgs</build_depend>
   <run_depend>geometry_msgs</run_depend>
+  <build_depend>moveit_core</build_depend>
+  <run_depend>moveit_core</run_depend>
+  <build_depend>moveit_ros_planning_interface</build_depend>
+  <run_depend>moveit_ros_planning_interface</run_depend>
+  <run_depend>interactive_markers</run_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

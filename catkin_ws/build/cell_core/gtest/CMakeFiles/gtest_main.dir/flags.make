@@ -6,5 +6,5 @@ CXX_FLAGS = -fPIC   -std=c++11  -Wall -Wshadow -DGTEST_HAS_PTHREAD=1 -fexception
 
 CXX_DEFINES = -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgtest_main_EXPORTS
 
-CXX_INCLUDES = -I/usr/src/gtest/include -I/usr/src/gtest 
+CXX_INCLUDES = -I/home/luis/VT2/catkin_ws/src/cell_core/include -I/usr/src/gtest/include -I/usr/src/gtest 
 

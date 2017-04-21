@@ -1,22 +1,22 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/luis/VT2/catkin_ws/build/ur_modern_driver/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_92aaf/fast"
-/usr/bin/make -f CMakeFiles/cmTC_92aaf.dir/build.make CMakeFiles/cmTC_92aaf.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_e0c98/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e0c98.dir/build.make CMakeFiles/cmTC_e0c98.dir/build
 make[1]: Verzeichnis „/home/luis/VT2/catkin_ws/build/ur_modern_driver/CMakeFiles/CMakeTmp“ wird betreten
-Building C object CMakeFiles/cmTC_92aaf.dir/CheckSymbolExists.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_92aaf.dir/CheckSymbolExists.c.o   -c /home/luis/VT2/catkin_ws/build/ur_modern_driver/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_92aaf
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92aaf.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_92aaf.dir/CheckSymbolExists.c.o  -o cmTC_92aaf -rdynamic 
-CMakeFiles/cmTC_92aaf.dir/CheckSymbolExists.c.o: In Funktion `main':
+Building C object CMakeFiles/cmTC_e0c98.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_e0c98.dir/CheckSymbolExists.c.o   -c /home/luis/VT2/catkin_ws/build/ur_modern_driver/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_e0c98
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e0c98.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_e0c98.dir/CheckSymbolExists.c.o  -o cmTC_e0c98 -rdynamic 
+CMakeFiles/cmTC_e0c98.dir/CheckSymbolExists.c.o: In Funktion `main':
 CheckSymbolExists.c:(.text+0x16): Nicht definierter Verweis auf `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_92aaf.dir/build.make:97: die Regel für Ziel „cmTC_92aaf“ scheiterte
-make[1]: *** [cmTC_92aaf] Fehler 1
+CMakeFiles/cmTC_e0c98.dir/build.make:97: die Regel für Ziel „cmTC_e0c98“ scheiterte
+make[1]: *** [cmTC_e0c98] Fehler 1
 make[1]: Verzeichnis „/home/luis/VT2/catkin_ws/build/ur_modern_driver/CMakeFiles/CMakeTmp“ wird verlassen
-Makefile:126: die Regel für Ziel „cmTC_92aaf/fast“ scheiterte
-make: *** [cmTC_92aaf/fast] Fehler 2
+Makefile:126: die Regel für Ziel „cmTC_e0c98/fast“ scheiterte
+make: *** [cmTC_e0c98/fast] Fehler 2
 
 File /home/luis/VT2/catkin_ws/build/ur_modern_driver/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -36,20 +36,20 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/luis/VT2/catkin_ws/build/ur_modern_driver/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_0546e/fast"
-/usr/bin/make -f CMakeFiles/cmTC_0546e.dir/build.make CMakeFiles/cmTC_0546e.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_736a7/fast"
+/usr/bin/make -f CMakeFiles/cmTC_736a7.dir/build.make CMakeFiles/cmTC_736a7.dir/build
 make[1]: Verzeichnis „/home/luis/VT2/catkin_ws/build/ur_modern_driver/CMakeFiles/CMakeTmp“ wird betreten
-Building C object CMakeFiles/cmTC_0546e.dir/CheckFunctionExists.c.o
-/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_0546e.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
-Linking C executable cmTC_0546e
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0546e.dir/link.txt --verbose=1
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_0546e.dir/CheckFunctionExists.c.o  -o cmTC_0546e -rdynamic -lpthreads 
+Building C object CMakeFiles/cmTC_736a7.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_736a7.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_736a7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_736a7.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_736a7.dir/CheckFunctionExists.c.o  -o cmTC_736a7 -rdynamic -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_0546e.dir/build.make:97: die Regel für Ziel „cmTC_0546e“ scheiterte
-make[1]: *** [cmTC_0546e] Fehler 1
+CMakeFiles/cmTC_736a7.dir/build.make:97: die Regel für Ziel „cmTC_736a7“ scheiterte
+make[1]: *** [cmTC_736a7] Fehler 1
 make[1]: Verzeichnis „/home/luis/VT2/catkin_ws/build/ur_modern_driver/CMakeFiles/CMakeTmp“ wird verlassen
-Makefile:126: die Regel für Ziel „cmTC_0546e/fast“ scheiterte
-make: *** [cmTC_0546e/fast] Fehler 2
+Makefile:126: die Regel für Ziel „cmTC_736a7/fast“ scheiterte
+make: *** [cmTC_736a7/fast] Fehler 2
 
 

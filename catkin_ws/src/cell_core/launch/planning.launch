@@ -1,7 +1,7 @@
-
 <launch>
+  <include file="$(find abb_irb120_moveit_config)/launch/demo.launch"/>
 
-  <node name="planning" pkg="cell_core" type="planning" respawn="false" output="screen">
+  <node name="cell_core_node" pkg="cell_core" type="cell_core_node" respawn="false" output="screen" >
   </node>
 
 </launch>
