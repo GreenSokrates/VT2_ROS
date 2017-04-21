@@ -19,6 +19,8 @@ moveit_msgs/AttachedCollisionObject.h
 -
 moveit_msgs/CollisionObject.h
 -
+moveit_msgs/DisplayTrajectory.h
+-
 
 /opt/ros/kinetic/include/eigen_stl_containers/eigen_stl_containers.h
 eigen_stl_containers/eigen_stl_vector_container.h
