@@ -43,7 +43,6 @@ CMakeFiles/cell_core_node.dir/src/planning.cpp.o
  /opt/ros/kinetic/include/moveit_msgs/BoundingVolume.h
  /opt/ros/kinetic/include/moveit_msgs/CollisionObject.h
  /opt/ros/kinetic/include/moveit_msgs/Constraints.h
- /opt/ros/kinetic/include/moveit_msgs/DisplayRobotState.h
  /opt/ros/kinetic/include/moveit_msgs/DisplayTrajectory.h
  /opt/ros/kinetic/include/moveit_msgs/Grasp.h
  /opt/ros/kinetic/include/moveit_msgs/GripperTranslation.h

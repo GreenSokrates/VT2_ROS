@@ -7,17 +7,11 @@
 #IncludeRegexTransform: 
 
 /home/luis/VT2/catkin_ws/src/cell_core/src/planning.cpp
+ros/ros.h
+-
 moveit/move_group_interface/move_group_interface.h
 -
 moveit/planning_scene_interface/planning_scene_interface.h
--
-moveit_msgs/DisplayRobotState.h
--
-moveit_msgs/DisplayTrajectory.h
--
-moveit_msgs/AttachedCollisionObject.h
--
-moveit_msgs/CollisionObject.h
 -
 moveit_msgs/DisplayTrajectory.h
 -
@@ -620,26 +614,6 @@ moveit_msgs/PositionConstraint.h
 moveit_msgs/OrientationConstraint.h
 -
 moveit_msgs/VisibilityConstraint.h
--
-
-/opt/ros/kinetic/include/moveit_msgs/DisplayRobotState.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-moveit_msgs/RobotState.h
--
-moveit_msgs/ObjectColor.h
 -
 
 /opt/ros/kinetic/include/moveit_msgs/DisplayTrajectory.h

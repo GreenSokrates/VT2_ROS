@@ -829,6 +829,19 @@ roscpp_generate_messages_py/fast:
 .PHONY : roscpp_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named simple_planning
+
+# Build rule for target.
+simple_planning: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simple_planning
+.PHONY : simple_planning
+
+# fast build rule for target.
+simple_planning/fast:
+	$(MAKE) -f CMakeFiles/simple_planning.dir/build.make CMakeFiles/simple_planning.dir/build
+.PHONY : simple_planning/fast
+
+#=============================================================================
 # Target rules for targets named std_msgs_generate_messages_nodejs
 
 # Build rule for target.
@@ -1102,6 +1115,33 @@ src/planning.cpp.s:
 	$(MAKE) -f CMakeFiles/cell_core_node.dir/build.make CMakeFiles/cell_core_node.dir/src/planning.cpp.s
 .PHONY : src/planning.cpp.s
 
+src/simple_planning.o: src/simple_planning.cpp.o
+
+.PHONY : src/simple_planning.o
+
+# target to build an object file
+src/simple_planning.cpp.o:
+	$(MAKE) -f CMakeFiles/simple_planning.dir/build.make CMakeFiles/simple_planning.dir/src/simple_planning.cpp.o
+.PHONY : src/simple_planning.cpp.o
+
+src/simple_planning.i: src/simple_planning.cpp.i
+
+.PHONY : src/simple_planning.i
+
+# target to preprocess a source file
+src/simple_planning.cpp.i:
+	$(MAKE) -f CMakeFiles/simple_planning.dir/build.make CMakeFiles/simple_planning.dir/src/simple_planning.cpp.i
+.PHONY : src/simple_planning.cpp.i
+
+src/simple_planning.s: src/simple_planning.cpp.s
+
+.PHONY : src/simple_planning.s
+
+# target to generate assembly for a file
+src/simple_planning.cpp.s:
+	$(MAKE) -f CMakeFiles/simple_planning.dir/build.make CMakeFiles/simple_planning.dir/src/simple_planning.cpp.s
+.PHONY : src/simple_planning.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1165,6 +1205,7 @@ help:
 	@echo "... visualization_msgs_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... roscpp_generate_messages_py"
+	@echo "... simple_planning"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... test"
@@ -1188,6 +1229,9 @@ help:
 	@echo "... src/planning.o"
 	@echo "... src/planning.i"
 	@echo "... src/planning.s"
+	@echo "... src/simple_planning.o"
+	@echo "... src/simple_planning.i"
+	@echo "... src/simple_planning.s"
 .PHONY : help
 
 

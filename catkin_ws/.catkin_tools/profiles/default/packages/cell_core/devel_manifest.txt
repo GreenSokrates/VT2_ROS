@@ -2,4 +2,5 @@ cell_core
 /home/luis/VT2/catkin_ws/devel/.private/cell_core/share/cell_core/cmake/cell_coreConfig.cmake /home/luis/VT2/catkin_ws/devel/share/cell_core/cmake/cell_coreConfig.cmake
 /home/luis/VT2/catkin_ws/devel/.private/cell_core/share/cell_core/cmake/cell_coreConfig-version.cmake /home/luis/VT2/catkin_ws/devel/share/cell_core/cmake/cell_coreConfig-version.cmake
 /home/luis/VT2/catkin_ws/devel/.private/cell_core/lib/cell_core/cell_core_node /home/luis/VT2/catkin_ws/devel/lib/cell_core/cell_core_node
+/home/luis/VT2/catkin_ws/devel/.private/cell_core/lib/cell_core/simple_planning /home/luis/VT2/catkin_ws/devel/lib/cell_core/simple_planning
 /home/luis/VT2/catkin_ws/devel/.private/cell_core/lib/pkgconfig/cell_core.pc /home/luis/VT2/catkin_ws/devel/lib/pkgconfig/cell_core.pc
