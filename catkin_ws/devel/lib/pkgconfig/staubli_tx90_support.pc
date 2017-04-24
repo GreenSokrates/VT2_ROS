@@ -1,0 +1,1 @@
+/home/luis/VT2/catkin_ws/devel/.private/staubli_tx90_support/lib/pkgconfig/staubli_tx90_support.pc

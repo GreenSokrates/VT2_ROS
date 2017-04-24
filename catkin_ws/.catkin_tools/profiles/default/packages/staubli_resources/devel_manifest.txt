@@ -1,0 +1,4 @@
+staubli/staubli_resources
+/home/luis/VT2/catkin_ws/devel/.private/staubli_resources/share/staubli_resources/cmake/staubli_resourcesConfig-version.cmake /home/luis/VT2/catkin_ws/devel/share/staubli_resources/cmake/staubli_resourcesConfig-version.cmake
+/home/luis/VT2/catkin_ws/devel/.private/staubli_resources/share/staubli_resources/cmake/staubli_resourcesConfig.cmake /home/luis/VT2/catkin_ws/devel/share/staubli_resources/cmake/staubli_resourcesConfig.cmake
+/home/luis/VT2/catkin_ws/devel/.private/staubli_resources/lib/pkgconfig/staubli_resources.pc /home/luis/VT2/catkin_ws/devel/lib/pkgconfig/staubli_resources.pc

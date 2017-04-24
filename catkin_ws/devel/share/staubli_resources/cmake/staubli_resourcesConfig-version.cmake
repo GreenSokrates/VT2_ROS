@@ -1,0 +1,1 @@
+/home/luis/VT2/catkin_ws/devel/.private/staubli_resources/share/staubli_resources/cmake/staubli_resourcesConfig-version.cmake

@@ -1,0 +1,4 @@
+staubli_experimental/staubli_tx90_gazebo
+/home/luis/VT2/catkin_ws/devel/.private/staubli_tx90_gazebo/share/staubli_tx90_gazebo/cmake/staubli_tx90_gazeboConfig.cmake /home/luis/VT2/catkin_ws/devel/share/staubli_tx90_gazebo/cmake/staubli_tx90_gazeboConfig.cmake
+/home/luis/VT2/catkin_ws/devel/.private/staubli_tx90_gazebo/share/staubli_tx90_gazebo/cmake/staubli_tx90_gazeboConfig-version.cmake /home/luis/VT2/catkin_ws/devel/share/staubli_tx90_gazebo/cmake/staubli_tx90_gazeboConfig-version.cmake
+/home/luis/VT2/catkin_ws/devel/.private/staubli_tx90_gazebo/lib/pkgconfig/staubli_tx90_gazebo.pc /home/luis/VT2/catkin_ws/devel/lib/pkgconfig/staubli_tx90_gazebo.pc

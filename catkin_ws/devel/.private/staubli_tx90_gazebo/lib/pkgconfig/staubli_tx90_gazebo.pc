@@ -1,0 +1,8 @@
+prefix=/home/luis/VT2/catkin_ws/devel/.private/staubli_tx90_gazebo
+
+Name: staubli_tx90_gazebo
+Description: Description of staubli_tx90_gazebo
+Version: 0.0.1
+Cflags: 
+Libs: -L/home/luis/VT2/catkin_ws/devel/.private/staubli_tx90_gazebo/lib 
+Requires: 

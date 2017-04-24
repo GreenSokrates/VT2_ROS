@@ -1,0 +1,8 @@
+prefix=/home/luis/VT2/catkin_ws/devel/.private/staubli_rx160_moveit_plugins
+
+Name: staubli_rx160_moveit_plugins
+Description: Description of staubli_rx160_moveit_plugins
+Version: 0.1.0
+Cflags: 
+Libs: -L/home/luis/VT2/catkin_ws/devel/.private/staubli_rx160_moveit_plugins/lib 
+Requires: moveit_core pluginlib roscpp tf_conversions

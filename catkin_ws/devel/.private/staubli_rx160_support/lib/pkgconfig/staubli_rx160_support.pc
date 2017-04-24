@@ -1,0 +1,8 @@
+prefix=/home/luis/VT2/catkin_ws/devel/.private/staubli_rx160_support
+
+Name: staubli_rx160_support
+Description: Description of staubli_rx160_support
+Version: 0.1.0
+Cflags: 
+Libs: -L/home/luis/VT2/catkin_ws/devel/.private/staubli_rx160_support/lib 
+Requires: 

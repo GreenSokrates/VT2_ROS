@@ -1,0 +1,4 @@
+staubli_experimental/staubli_tx90_moveit_config
+/home/luis/VT2/catkin_ws/devel/.private/staubli_tx90_moveit_config/share/staubli_tx90_moveit_config/cmake/staubli_tx90_moveit_configConfig-version.cmake /home/luis/VT2/catkin_ws/devel/share/staubli_tx90_moveit_config/cmake/staubli_tx90_moveit_configConfig-version.cmake
+/home/luis/VT2/catkin_ws/devel/.private/staubli_tx90_moveit_config/share/staubli_tx90_moveit_config/cmake/staubli_tx90_moveit_configConfig.cmake /home/luis/VT2/catkin_ws/devel/share/staubli_tx90_moveit_config/cmake/staubli_tx90_moveit_configConfig.cmake
+/home/luis/VT2/catkin_ws/devel/.private/staubli_tx90_moveit_config/lib/pkgconfig/staubli_tx90_moveit_config.pc /home/luis/VT2/catkin_ws/devel/lib/pkgconfig/staubli_tx90_moveit_config.pc

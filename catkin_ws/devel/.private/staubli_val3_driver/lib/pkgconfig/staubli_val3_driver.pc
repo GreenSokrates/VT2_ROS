@@ -1,0 +1,8 @@
+prefix=/home/luis/VT2/catkin_ws/devel/.private/staubli_val3_driver
+
+Name: staubli_val3_driver
+Description: Description of staubli_val3_driver
+Version: 0.1.0
+Cflags: 
+Libs: -L/home/luis/VT2/catkin_ws/devel/.private/staubli_val3_driver/lib 
+Requires: 

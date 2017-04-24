@@ -1,0 +1,4 @@
+staubli/staubli_rx160_support
+/home/luis/VT2/catkin_ws/devel/.private/staubli_rx160_support/share/staubli_rx160_support/cmake/staubli_rx160_supportConfig.cmake /home/luis/VT2/catkin_ws/devel/share/staubli_rx160_support/cmake/staubli_rx160_supportConfig.cmake
+/home/luis/VT2/catkin_ws/devel/.private/staubli_rx160_support/share/staubli_rx160_support/cmake/staubli_rx160_supportConfig-version.cmake /home/luis/VT2/catkin_ws/devel/share/staubli_rx160_support/cmake/staubli_rx160_supportConfig-version.cmake
+/home/luis/VT2/catkin_ws/devel/.private/staubli_rx160_support/lib/pkgconfig/staubli_rx160_support.pc /home/luis/VT2/catkin_ws/devel/lib/pkgconfig/staubli_rx160_support.pc

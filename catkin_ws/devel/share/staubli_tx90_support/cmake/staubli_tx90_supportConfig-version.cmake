@@ -1,0 +1,1 @@
+/home/luis/VT2/catkin_ws/devel/.private/staubli_tx90_support/share/staubli_tx90_support/cmake/staubli_tx90_supportConfig-version.cmake

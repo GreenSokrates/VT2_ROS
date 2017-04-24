@@ -1,0 +1,1 @@
+/home/luis/VT2/catkin_ws/devel/.private/staubli_rx160_gazebo/share/staubli_rx160_gazebo/cmake/staubli_rx160_gazeboConfig-version.cmake

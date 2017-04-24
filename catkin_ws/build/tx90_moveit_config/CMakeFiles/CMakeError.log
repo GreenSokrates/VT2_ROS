@@ -1,0 +1,55 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/luis/VT2/catkin_ws/build/tx90_moveit_config/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1e199/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1e199.dir/build.make CMakeFiles/cmTC_1e199.dir/build
+make[1]: Verzeichnis „/home/luis/VT2/catkin_ws/build/tx90_moveit_config/CMakeFiles/CMakeTmp“ wird betreten
+Building C object CMakeFiles/cmTC_1e199.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_1e199.dir/CheckSymbolExists.c.o   -c /home/luis/VT2/catkin_ws/build/tx90_moveit_config/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_1e199
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1e199.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_1e199.dir/CheckSymbolExists.c.o  -o cmTC_1e199 -rdynamic 
+CMakeFiles/cmTC_1e199.dir/CheckSymbolExists.c.o: In Funktion `main':
+CheckSymbolExists.c:(.text+0x16): Nicht definierter Verweis auf `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_1e199.dir/build.make:97: die Regel für Ziel „cmTC_1e199“ scheiterte
+make[1]: *** [cmTC_1e199] Fehler 1
+make[1]: Verzeichnis „/home/luis/VT2/catkin_ws/build/tx90_moveit_config/CMakeFiles/CMakeTmp“ wird verlassen
+Makefile:126: die Regel für Ziel „cmTC_1e199/fast“ scheiterte
+make: *** [cmTC_1e199/fast] Fehler 2
+
+File /home/luis/VT2/catkin_ws/build/tx90_moveit_config/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/luis/VT2/catkin_ws/build/tx90_moveit_config/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_09abc/fast"
+/usr/bin/make -f CMakeFiles/cmTC_09abc.dir/build.make CMakeFiles/cmTC_09abc.dir/build
+make[1]: Verzeichnis „/home/luis/VT2/catkin_ws/build/tx90_moveit_config/CMakeFiles/CMakeTmp“ wird betreten
+Building C object CMakeFiles/cmTC_09abc.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_09abc.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_09abc
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_09abc.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_09abc.dir/CheckFunctionExists.c.o  -o cmTC_09abc -rdynamic -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_09abc.dir/build.make:97: die Regel für Ziel „cmTC_09abc“ scheiterte
+make[1]: *** [cmTC_09abc] Fehler 1
+make[1]: Verzeichnis „/home/luis/VT2/catkin_ws/build/tx90_moveit_config/CMakeFiles/CMakeTmp“ wird verlassen
+Makefile:126: die Regel für Ziel „cmTC_09abc/fast“ scheiterte
+make: *** [cmTC_09abc/fast] Fehler 2
+
+

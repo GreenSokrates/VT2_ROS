@@ -1,0 +1,4 @@
+staubli_experimental/staubli_rx160_gazebo
+/home/luis/VT2/catkin_ws/devel/.private/staubli_rx160_gazebo/share/staubli_rx160_gazebo/cmake/staubli_rx160_gazeboConfig-version.cmake /home/luis/VT2/catkin_ws/devel/share/staubli_rx160_gazebo/cmake/staubli_rx160_gazeboConfig-version.cmake
+/home/luis/VT2/catkin_ws/devel/.private/staubli_rx160_gazebo/share/staubli_rx160_gazebo/cmake/staubli_rx160_gazeboConfig.cmake /home/luis/VT2/catkin_ws/devel/share/staubli_rx160_gazebo/cmake/staubli_rx160_gazeboConfig.cmake
+/home/luis/VT2/catkin_ws/devel/.private/staubli_rx160_gazebo/lib/pkgconfig/staubli_rx160_gazebo.pc /home/luis/VT2/catkin_ws/devel/lib/pkgconfig/staubli_rx160_gazebo.pc
