@@ -1,2 +1,0 @@
-[submodule "catkin_ws/src/universal_robot"]
-	url = https://github.com/ros-industrial/universal_robot.git
