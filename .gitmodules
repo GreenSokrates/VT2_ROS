@@ -1,3 +1,18 @@
+[submodule "catkin_ws/src/ur_modern_driver"]
+	path = catkin_ws/src/ur_modern_driver
+	url = https://github.com/GreenSokrates/ur_modern_driver.git
 [submodule "catkin_ws/src/universal_robot"]
 	path = catkin_ws/src/universal_robot
-	url = https://github.com/ros-industrial/universal_robot.git
+	url = https://github.com/GreenSokrates/universal_robot.git
+[submodule "catkin_ws/src/abb"]
+	path = catkin_ws/src/abb
+	url = https://github.com/GreenSokrates/abb.git
+[submodule "catkin_ws/src/abb_experimental"]
+	path = catkin_ws/src/abb_experimental
+	url = https://github.com/GreenSokrates/abb_experimental.git
+[submodule "catkin_ws/src/staubli_experimental"]
+	path = catkin_ws/src/staubli_experimental
+	url = https://github.com/GreenSokrates/staubli_experimental.git
+[submodule "catkin_ws/src/staubli"]
+	path = catkin_ws/src/staubli
+	url = https://github.com/GreenSokrates/staubli.git
