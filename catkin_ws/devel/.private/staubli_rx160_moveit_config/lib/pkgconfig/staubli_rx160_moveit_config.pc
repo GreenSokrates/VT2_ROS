@@ -1,8 +1,0 @@
-prefix=/home/luis/VT2/catkin_ws/devel/.private/staubli_rx160_moveit_config
-
-Name: staubli_rx160_moveit_config
-Description: Description of staubli_rx160_moveit_config
-Version: 0.1.0
-Cflags: 
-Libs: -L/home/luis/VT2/catkin_ws/devel/.private/staubli_rx160_moveit_config/lib 
-Requires: 

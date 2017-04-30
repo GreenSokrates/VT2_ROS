@@ -1,1 +1,0 @@
-/home/luis/VT2/catkin_ws/devel/.private/ur_gazebo/lib/pkgconfig/ur_gazebo.pc

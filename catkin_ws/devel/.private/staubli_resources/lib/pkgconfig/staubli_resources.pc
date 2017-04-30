@@ -1,8 +1,0 @@
-prefix=/home/luis/VT2/catkin_ws/devel/.private/staubli_resources
-
-Name: staubli_resources
-Description: Description of staubli_resources
-Version: 0.1.0
-Cflags: 
-Libs: -L/home/luis/VT2/catkin_ws/devel/.private/staubli_resources/lib 
-Requires: 

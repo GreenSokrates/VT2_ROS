@@ -1,4 +1,0 @@
-universal_robot/ur_description
-/home/luis/VT2/catkin_ws/devel/.private/ur_description/share/ur_description/cmake/ur_descriptionConfig.cmake /home/luis/VT2/catkin_ws/devel/share/ur_description/cmake/ur_descriptionConfig.cmake
-/home/luis/VT2/catkin_ws/devel/.private/ur_description/share/ur_description/cmake/ur_descriptionConfig-version.cmake /home/luis/VT2/catkin_ws/devel/share/ur_description/cmake/ur_descriptionConfig-version.cmake
-/home/luis/VT2/catkin_ws/devel/.private/ur_description/lib/pkgconfig/ur_description.pc /home/luis/VT2/catkin_ws/devel/lib/pkgconfig/ur_description.pc

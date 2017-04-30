@@ -1,8 +1,0 @@
-prefix=/home/luis/VT2/catkin_ws/devel/.private/abb_irb120_support
-
-Name: abb_irb120_support
-Description: Description of abb_irb120_support
-Version: 0.1.0
-Cflags: 
-Libs: -L/home/luis/VT2/catkin_ws/devel/.private/abb_irb120_support/lib 
-Requires: 

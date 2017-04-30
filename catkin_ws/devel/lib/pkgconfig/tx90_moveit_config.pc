@@ -1,1 +1,0 @@
-/home/luis/VT2/catkin_ws/devel/.private/tx90_moveit_config/lib/pkgconfig/tx90_moveit_config.pc

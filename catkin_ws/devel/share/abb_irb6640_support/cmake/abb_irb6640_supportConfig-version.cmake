@@ -1,1 +1,0 @@
-/home/luis/VT2/catkin_ws/devel/.private/abb_irb6640_support/share/abb_irb6640_support/cmake/abb_irb6640_supportConfig-version.cmake

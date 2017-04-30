@@ -1,8 +1,0 @@
-prefix=/home/luis/VT2/catkin_ws/devel/.private/staubli_rx160_gazebo
-
-Name: staubli_rx160_gazebo
-Description: Description of staubli_rx160_gazebo
-Version: 0.0.1
-Cflags: 
-Libs: -L/home/luis/VT2/catkin_ws/devel/.private/staubli_rx160_gazebo/lib 
-Requires: 

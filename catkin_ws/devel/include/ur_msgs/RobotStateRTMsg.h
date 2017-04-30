@@ -1,1 +1,0 @@
-/home/luis/VT2/catkin_ws/devel/.private/ur_msgs/include/ur_msgs/RobotStateRTMsg.h

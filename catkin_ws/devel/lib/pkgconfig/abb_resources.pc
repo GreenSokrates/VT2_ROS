@@ -1,1 +1,0 @@
-/home/luis/VT2/catkin_ws/devel/.private/abb_resources/lib/pkgconfig/abb_resources.pc

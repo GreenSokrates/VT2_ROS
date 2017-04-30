@@ -1,1 +1,0 @@
-/home/luis/VT2/catkin_ws/devel/.private/cell_core/lib/pkgconfig/cell_core.pc

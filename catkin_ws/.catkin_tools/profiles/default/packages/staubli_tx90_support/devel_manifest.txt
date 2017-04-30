@@ -1,4 +1,0 @@
-staubli_experimental/staubli_tx90_support
-/home/luis/VT2/catkin_ws/devel/.private/staubli_tx90_support/share/staubli_tx90_support/cmake/staubli_tx90_supportConfig-version.cmake /home/luis/VT2/catkin_ws/devel/share/staubli_tx90_support/cmake/staubli_tx90_supportConfig-version.cmake
-/home/luis/VT2/catkin_ws/devel/.private/staubli_tx90_support/share/staubli_tx90_support/cmake/staubli_tx90_supportConfig.cmake /home/luis/VT2/catkin_ws/devel/share/staubli_tx90_support/cmake/staubli_tx90_supportConfig.cmake
-/home/luis/VT2/catkin_ws/devel/.private/staubli_tx90_support/lib/pkgconfig/staubli_tx90_support.pc /home/luis/VT2/catkin_ws/devel/lib/pkgconfig/staubli_tx90_support.pc

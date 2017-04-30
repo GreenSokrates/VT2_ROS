@@ -1,8 +1,0 @@
-prefix=/home/luis/VT2/catkin_ws/devel/.private/cell_support
-
-Name: cell_support
-Description: Description of cell_support
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/luis/VT2/catkin_ws/devel/.private/cell_support/lib 
-Requires: 

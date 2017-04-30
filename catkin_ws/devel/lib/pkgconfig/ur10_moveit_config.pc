@@ -1,1 +1,0 @@
-/home/luis/VT2/catkin_ws/devel/.private/ur10_moveit_config/lib/pkgconfig/ur10_moveit_config.pc

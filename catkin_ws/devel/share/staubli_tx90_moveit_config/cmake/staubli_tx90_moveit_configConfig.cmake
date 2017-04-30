@@ -1,1 +1,0 @@
-/home/luis/VT2/catkin_ws/devel/.private/staubli_tx90_moveit_config/share/staubli_tx90_moveit_config/cmake/staubli_tx90_moveit_configConfig.cmake
