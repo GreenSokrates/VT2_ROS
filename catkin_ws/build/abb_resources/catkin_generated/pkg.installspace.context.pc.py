@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "abb_resources"
 PROJECT_SPACE_DIR = "/home/luis/VT2/catkin_ws/install"
-PROJECT_VERSION = "1.2.0"
+PROJECT_VERSION = "1.2.1"

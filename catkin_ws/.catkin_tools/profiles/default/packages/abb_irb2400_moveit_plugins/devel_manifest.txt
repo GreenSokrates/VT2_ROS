@@ -1,0 +1,5 @@
+abb/abb_irb2400_moveit_plugins
+/home/luis/VT2/catkin_ws/devel/.private/abb_irb2400_moveit_plugins/share/abb_irb2400_moveit_plugins/cmake/abb_irb2400_moveit_pluginsConfig.cmake /home/luis/VT2/catkin_ws/devel/share/abb_irb2400_moveit_plugins/cmake/abb_irb2400_moveit_pluginsConfig.cmake
+/home/luis/VT2/catkin_ws/devel/.private/abb_irb2400_moveit_plugins/share/abb_irb2400_moveit_plugins/cmake/abb_irb2400_moveit_pluginsConfig-version.cmake /home/luis/VT2/catkin_ws/devel/share/abb_irb2400_moveit_plugins/cmake/abb_irb2400_moveit_pluginsConfig-version.cmake
+/home/luis/VT2/catkin_ws/devel/.private/abb_irb2400_moveit_plugins/lib/libabb_irb2400_manipulator_moveit_ikfast_plugin.so /home/luis/VT2/catkin_ws/devel/lib/libabb_irb2400_manipulator_moveit_ikfast_plugin.so
+/home/luis/VT2/catkin_ws/devel/.private/abb_irb2400_moveit_plugins/lib/pkgconfig/abb_irb2400_moveit_plugins.pc /home/luis/VT2/catkin_ws/devel/lib/pkgconfig/abb_irb2400_moveit_plugins.pc

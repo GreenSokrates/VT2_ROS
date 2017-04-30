@@ -8,6 +8,8 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/luis/VT2/catkin_ws/devel/.private/staubli_resources:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/luis/VT2/catkin_ws/devel/.private/staubli_resources/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/luis/VT2/catkin_ws/devel/.private/staubli_resources/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD="/home/luis/VT2/catkin_ws/build/staubli_resources"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/luis/VT2/catkin_ws/devel/.private/staubli_resources/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/luis/VT2/catkin_ws/src/staubli/staubli_resources:$ROS_PACKAGE_PATH"

@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "industrial_robot_client".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "abb_driver"
 PROJECT_SPACE_DIR = "/home/luis/VT2/catkin_ws/install"
-PROJECT_VERSION = "1.2.0"
+PROJECT_VERSION = "1.2.1"
