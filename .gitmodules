@@ -1,9 +1,6 @@
 [submodule "catkin_ws/src/abb"]
 	path = catkin_ws/src/abb
 	url = https://github.com/GreenSokrates/abb.git
-[submodule "catkin_ws/src/staubli_experimental"]
-	path = catkin_ws/src/staubli_experimental
-	url = https://github.com/GreenSokrates/staubli_experimental.git
 [submodule "catkin_ws/src/staubli"]
 	path = catkin_ws/src/staubli
 	url = https://github.com/GreenSokrates/staubli.git
