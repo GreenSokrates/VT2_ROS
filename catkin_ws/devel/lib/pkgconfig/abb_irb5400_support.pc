@@ -1,0 +1,1 @@
+/home/luis/VT2/catkin_ws/devel/.private/abb_irb5400_support/lib/pkgconfig/abb_irb5400_support.pc

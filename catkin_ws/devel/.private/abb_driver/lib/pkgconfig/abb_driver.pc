@@ -2,7 +2,7 @@ prefix=/home/luis/VT2/catkin_ws/devel/.private/abb_driver
 
 Name: abb_driver
 Description: Description of abb_driver
-Version: 1.2.0
+Version: 1.2.1
 Cflags: 
 Libs: -L/home/luis/VT2/catkin_ws/devel/.private/abb_driver/lib 
 Requires: industrial_robot_client

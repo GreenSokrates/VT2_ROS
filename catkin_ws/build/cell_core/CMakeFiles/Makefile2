@@ -1700,6 +1700,9 @@ clean: CMakeFiles/roscpp_generate_messages_py.dir/clean
 # Target rules for target CMakeFiles/simple_planning.dir
 
 # All Build rule for target.
+CMakeFiles/simple_planning.dir/all: CMakeFiles/moveit_ros_manipulation_gencfg.dir/all
+CMakeFiles/simple_planning.dir/all: CMakeFiles/moveit_ros_planning_gencfg.dir/all
+CMakeFiles/simple_planning.dir/all: CMakeFiles/octomap_msgs_generate_messages_py.dir/all
 CMakeFiles/simple_planning.dir/all: CMakeFiles/octomap_msgs_generate_messages_lisp.dir/all
 CMakeFiles/simple_planning.dir/all: CMakeFiles/object_recognition_msgs_generate_messages_nodejs.dir/all
 CMakeFiles/simple_planning.dir/all: CMakeFiles/object_recognition_msgs_generate_messages_eus.dir/all
@@ -1714,9 +1717,6 @@ CMakeFiles/simple_planning.dir/all: CMakeFiles/sensor_msgs_generate_messages_nod
 CMakeFiles/simple_planning.dir/all: CMakeFiles/std_msgs_generate_messages_eus.dir/all
 CMakeFiles/simple_planning.dir/all: CMakeFiles/roscpp_generate_messages_lisp.dir/all
 CMakeFiles/simple_planning.dir/all: CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
-CMakeFiles/simple_planning.dir/all: CMakeFiles/moveit_ros_manipulation_gencfg.dir/all
-CMakeFiles/simple_planning.dir/all: CMakeFiles/moveit_ros_planning_gencfg.dir/all
-CMakeFiles/simple_planning.dir/all: CMakeFiles/octomap_msgs_generate_messages_py.dir/all
 CMakeFiles/simple_planning.dir/all: CMakeFiles/roscpp_generate_messages_cpp.dir/all
 CMakeFiles/simple_planning.dir/all: CMakeFiles/moveit_msgs_generate_messages_nodejs.dir/all
 CMakeFiles/simple_planning.dir/all: CMakeFiles/actionlib_msgs_generate_messages_py.dir/all
