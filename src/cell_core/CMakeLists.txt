@@ -80,3 +80,11 @@ add_dependencies(simple_planning ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EX
 target_link_libraries(simple_planning
   ${catkin_LIBRARIES}
 )
+
+add_executable(planning_all
+  src/planning_all.cpp
+)
+add_dependencies(planning_all ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(planning_all
+  ${catkin_LIBRARIES}
+)

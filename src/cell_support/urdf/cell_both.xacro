@@ -2,12 +2,14 @@
 <robot name="cell" xmlns:xacro="https://ros.org/wiki/xacro">
  <xacro:include filename="$(find ur_description)/urdf/ur3.urdf.xacro"/>
  <xacro:include filename="$(find abb_irb120_support)/urdf/irb120_macro.xacro"/>
+ <xacro:include filename="$(find staubli_tx90_support)/urdf/tx90_macro.xacro"/>
 
   <link name="world"/>
 
   <!-- init robots -->
   <xacro:ur3_robot prefix="ur3_" joint_limited="true"/>
   <xacro:abb_irb120 prefix="irb120_" />
+  <xacro:staubli_tx90 prefix="tx90_" />
 
   <!-- Joints -->
   <joint name="world_to_UR3" type="fixed">
@@ -21,5 +23,12 @@
     <child link="irb120_base_link"/>
     <origin xyz="0 1 0" rpy="0 0 0"/>
   </joint>
+
+  <joint name="world_to_tx90" type="fixed">
+    <parent link="world" />
+    <child link="tx90_base_link"/>
+    <origin xyz="0 -1 0" rpy="0 0 0"/>
+  </joint>
+
   
 </robot>

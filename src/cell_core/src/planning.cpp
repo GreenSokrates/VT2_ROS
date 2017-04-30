@@ -14,7 +14,7 @@ int main(int argc, char **argv){
    spinner.start();
 
    // Setup of MoveGroupInterface and PlanningSceneInterface
-   planning_interface::MoveGroupInterface group("manipulator");
+   planning_interface::MoveGroupInterface group("all");
    planning_interface::PlanningSceneInterface planning_scene_interface;
    Publisher display_publisher = n.advertise<moveit_msgs::DisplayTrajectory>("/move_group/display_planned_path", 1, true);
    moveit_msgs::DisplayTrajectory display_trajectory;
