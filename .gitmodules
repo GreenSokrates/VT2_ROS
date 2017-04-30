@@ -1,3 +1,0 @@
-[submodule "catkin_ws/src/abb"]
-	path = catkin_ws/src/abb
-	url = https://github.com/GreenSokrates/abb.git
