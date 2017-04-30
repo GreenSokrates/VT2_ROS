@@ -1,2 +1,4 @@
 logs/
-ZipsPDFs/
+build/
+devel/
+.catkin_tools/
