@@ -1,0 +1,6 @@
+[submodule "abb_experimental"]
+	path = abb_experimental
+	url = https://github.com/GreenSokrates/abb_experimental.git
+[submodule "src/abb_experimental"]
+	path = src/abb_experimental
+	url = https://github.com/GreenSokrates/abb_experimental.git
