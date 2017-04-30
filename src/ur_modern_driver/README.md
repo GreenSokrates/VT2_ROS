@@ -16,21 +16,21 @@ A new driver for the UR3/UR5/UR10 robot arms from Universal Robots. It is design
 
   * Publishes IO state on */ur\_driver/io\_states* (Note that the string */ur\_driver* has been prepended compared to the old driver)
 
-  * Service call to set outputs and payload - Again, the string */ur\_driver* has been prepended compared to the old driver (Note: I am not sure if setting the payload actually works, as the robot GUI does not update. This is also true for the old ur\_driver  )
+  * Service call to set outputs and payload - Again,  the string */ur\_driver* has been prepended compared to the old driver (Note: I am not sure if setting the payload actually works, as the robot GUI does not update. This is also true for the old ur\_driver  )
 
 
 * Besides this, the driver subscribes to two new topics:
 
   * */ur\_driver/URScript* : Takes messages of type _std\_msgs/String_ and directly forwards it to the robot. Note that no control is done on the input, so use at your own risk! Inteded for sending movel/movej commands directly to the robot, conveyor tracking and the like.
 
-  * */joint\_speed* : Takes messages of type _trajectory\_msgs/JointTrajectory_. Parses the first JointTracetoryPoint and sends the specified joint speeds and accelerations to the robot. This interface is intended for doing visual servoing and other kind of control that requires speed control rather than position control of the robot. Remember to set values for all 6 joints. Ignores the field joint\_names, so set the values in the correct order.
+  * */joint\_speed* : Takes messages of type trajectory\_msgs/JointTrajectory. Parses the first JointTracetoryPoint and sends the specified joint speeds and accelerations to the robot. This interface is intended for doing visual servoing and other kind of control that requires speed control rather than position control of the robot. Remember to set values for all 6 joints. Ignores the field joint\_names, so set the values in the correct order.
 
 * Added support for ros_control. 
-  * As ros_control wants to have control over the robot at all times, ros_control compatibility is set via a parameter at launch-time. 
+  * As ros_control wants to have control over the robot at all times, ros_control compatability is set via a parameter at launch-time. 
   * With ros_control active, the driver doesn't open the action_lib interface nor publish joint_states or wrench msgs. This is handled by ros_control instead.
   * Currently two controllers are available, both controlling the joint position of the robot, useable for trajectroy execution
-    * The velocity based controller sends joint speed commands to the robot, using the speedj command
-    * The position based controller sends joint position commands to the robot, using the servoj command
+    * The velocity based controller sends joint speed commands to the robot, using the speej command
+    * The position based controller send joint position commands to the robot, using the servoj command
     * I have so far only used the velocity based controller, but which one is optimal depends on the application.
   * As ros_control continuesly controls the robot, using the teach pendant while a controller is running will cause the controller **on the robot** to crash, as it obviously can't handle conflicting control input from two sources. Thus be sure to stop the running controller **before** moving the robot via the teach pendant:
     * A list of the loaded and running controllers can be found by a call to the controller_manager ```rosservice call /controller_manager/list_controllers {} ```
@@ -52,16 +52,13 @@ If you want to test it in your current setup, just use the modified launch files
 ---
 If you would like to use the ros\_control-based approach, use the launch files urXX\_ros\_control.launch, where XX is '5' or '10' depending on your robot.
 
-**Note:** If you are using the ros\_control-based approach you will need 2 packages that can be found in the ur\_driver package. If you do not have the ur\_driver package in your workspace simply copy these packages into your workspace /src folder:
- * urXX_moveit_config
- * ur_description
-
-The driver currently supports two position trajectory controllers; a position based and a velocity based. They are both loaded via the launch file, but only one of them can be running at the same time. By default the velocity based controller is started. You can switch controller by calling the appropriate service:
+The driver currently supports two position trajectory controllers; a position based and a velocity based. They are both loaded via the launch file, but only one of them can be running at the same time.
+You can switch controller by calling the appropriate service:
 ```
 rosservice call /universal_robot/controller_manager/switch_controller "start_controllers:
-- 'vel_based_pos_traj_controller'
+- 'velocity_based_position_trajectory_controller'
 stop_controllers:
-- 'pos_based_pos_traj_controller'
+- 'position_based_position_trajectory_controller'
 strictness: 1"
 ```
 Be sure to stop the currently running controller **either before or in the same call** as you start a new one, otherwise it will fail.
@@ -73,7 +70,7 @@ The position based controller *should* stay closer to the commanded path, while 
 To use ros_control together with MoveIt, be sure to add the desired controller to the ```controllers.yaml``` in the urXX_moveit_config/config folder. Add the following 
 ```
 controller_list:
- - name: /vel_based_pos_traj_controller #or /pos_based_pos_traj_controller
+ - name: vel_based_pos_traj_controller #or pos_based_pos_traj_controller
    action_ns: follow_joint_trajectory
    type: FollowJointTrajectory
    default: true
@@ -109,7 +106,7 @@ Now, the actual transform between *base* and *tool0_controller* will not be publ
 
 NOTE: You need an up-to-date version of *robot_state_publisher* that is able to deal with floating joints, see: https://github.com/ros/robot_state_publisher/pull/32
 
-## Compatibility
+## Compatability
 Should be compatible with all robots and control boxes with the newest firmware.
 
 ###Tested with:
