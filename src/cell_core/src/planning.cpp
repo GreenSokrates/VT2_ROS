@@ -14,7 +14,7 @@ int main(int argc, char **argv){
    spinner.start();
 
    // Setup of MoveGroupInterface and PlanningSceneInterface
-   planning_interface::MoveGroupInterface group("all");
+   planning_interface::MoveGroupInterface group("manipulator");
    planning_interface::PlanningSceneInterface planning_scene_interface;
    Publisher display_publisher = n.advertise<moveit_msgs::DisplayTrajectory>("/move_group/display_planned_path", 1, true);
    moveit_msgs::DisplayTrajectory display_trajectory;
@@ -27,7 +27,7 @@ int main(int argc, char **argv){
    geometry_msgs::Pose pose1;
    pose1.position.x = 0.15;
    pose1.position.y = 0.15;
-   pose1.position.z = 0.4;
+   pose1.position.z = 0.05;
    pose1.orientation.w = 0.707;
    pose1.orientation.x = 0.0;
    pose1.orientation.y = 0.0;
@@ -46,9 +46,9 @@ int main(int argc, char **argv){
    sleep(5.0);
 
    geometry_msgs::Pose pose2;
-   pose2.position.x = -0.15;
-   pose2.position.y = -0.15;
-   pose2.position.z =  0.4;
+   pose2.position.x = -0.2;
+   pose2.position.y = -0.2;
+   pose2.position.z =  0.5;
    pose2.orientation.w = 0.707;
    pose2.orientation.x = 0;
    pose2.orientation.y = 0.707;
