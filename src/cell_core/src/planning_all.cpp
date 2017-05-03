@@ -26,6 +26,7 @@ int main(int argc, char **argv){
    // Getting basic Infos from Robot
    ROS_INFO("Reference frame: %s", all.getPlanningFrame().c_str());
    ROS_INFO("Reference frame: %s", all.getEndEffectorLink().c_str());
+   // all.setPlannerId("RRTConnectkConfigDefault");
 
    // Defining pose1_ur3
    geometry_msgs::Pose pose1_ur3;
@@ -66,7 +67,6 @@ int main(int argc, char **argv){
 
    bool success = all.plan(my_plan);
    ROS_INFO("Planning of Plan 1: %s", success?"Succeded":"FAILED");
-   sleep(2.0);
    // Execute movement if Planning succeded
    if(success) all.move();
    sleep(5.0);   
@@ -78,7 +78,7 @@ int main(int argc, char **argv){
    pose2_ur3.position.z = 0.5;
    pose2_ur3.orientation.w = 0.707;
    pose2_ur3.orientation.x = 0.0;
-   pose2_ur3.orientation.y = 0.707;
+   pose2_ur3.orientation.y = -0.707;
    pose2_ur3.orientation.z = 0.0;
    all.setPoseTarget(pose2_ur3, ur3.getEndEffectorLink());     
    
@@ -87,10 +87,10 @@ int main(int argc, char **argv){
    pose2_irb120.position.x = -0.2;
    pose2_irb120.position.y = 1.0-0.2;
    pose2_irb120.position.z = 0.5;
-   pose2_irb120.orientation.w = 0.707;
+   pose2_irb120.orientation.w = 0.0;
    pose2_irb120.orientation.x = 0.0;
-   pose2_irb120.orientation.y = 0.0;
-   pose2_irb120.orientation.z = 0.-707;
+   pose2_irb120.orientation.y = 1.0;
+   pose2_irb120.orientation.z = 0.0;
    all.setPoseTarget(pose2_irb120, irb120.getEndEffectorLink());
    
    // Defining pose2_tx90
@@ -100,16 +100,15 @@ int main(int argc, char **argv){
    pose2_tx90.position.z = 0.5;
    pose2_tx90.orientation.w = 0.707;
    pose2_tx90.orientation.x = 0.0;
-   pose2_tx90.orientation.y = 0.707;
+   pose2_tx90.orientation.y = -0.707;
    pose2_tx90.orientation.z = 0.0;
    all.setPoseTarget(pose2_tx90, tx90.getEndEffectorLink());
    
    success = all.plan(my_plan);
    ROS_INFO("Planning of Plan 2: %s", success?"Succeded":"FAILED");
-   sleep(2.0);
    // Execute movement if Planning succeded
    if(success) all.move();
-   sleep(5.0);  
+   sleep(6.0);  
    
    // Defining pose3_ur3
    geometry_msgs::Pose pose3_ur3;
@@ -146,7 +145,6 @@ int main(int argc, char **argv){
    
    success = all.plan(my_plan);
    ROS_INFO("Planning of Plan 3: %s", success?"Succeded":"FAILED");
-   sleep(2.0);
    // Execute movement if Planning succeded
    if(success) all.move();
    sleep(5.0);
@@ -214,16 +212,16 @@ int main(int argc, char **argv){
    geometry_msgs::PoseStamped temp_tx90 = all.getCurrentPose(tx90.getEndEffectorLink());
    geometry_msgs::Pose pose4_tx90 = temp_tx90.pose;
 
-   pose4_tx90.position.y += 0.2;
-   pose4_tx90.position.z += 0.3;
+   pose4_tx90.position.y -= 0.2;
+   pose4_tx90.position.z -= 0.3;
    waypoints_tx90.push_back(pose4_tx90);
 
    pose4_tx90.position.x -= 0.3;
    waypoints_tx90.push_back(pose4_tx90);
 
    pose4_tx90.position.x += 0.2;
-   pose4_tx90.position.y -= 0.3;
-   pose4_tx90.position.z -= 0.3;
+   pose4_tx90.position.y += 0.3;
+   pose4_tx90.position.z += 0.3;
    waypoints_tx90.push_back(pose4_tx90);   
    
    tx90.setPlanningTime(30.0); 
