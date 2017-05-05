@@ -3,10 +3,10 @@ project(cell_core)
 # Add support for C++11, supported in ROS Kinetic and newer
 add_definitions(-std=c++11)
 
-include_directories(
-  include
-  ${catkin_INCLUDE_DIRS}
-)
+#include_directories(
+  #include
+ # ${catkin_INCLUDE_DIRS}
+#)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -30,7 +30,7 @@ find_package(
   Eigen3 REQUIRED
 )
 catkin_package(
-  INCLUDE_DIRS include
+  INCLUDE_DIRS #include
   CATKIN_DEPENDS 
     moveit_core
     moveit_ros_planning_interface
