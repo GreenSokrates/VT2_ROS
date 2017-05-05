@@ -1,0 +1,4 @@
+# pack-refs with: peeled fully-peeled 
+fbf97a2ecc9aabc1ce3646aa65e63e6e29f8d4d0 refs/heads/groovy-devel
+8f179c3a6cd3bcf1b041dca47cfbee7b7e533bc1 refs/heads/indigo-devel
+c52bcad5b2d907c73861b3147ba460754d7f6200 refs/heads/kinetic-devel
