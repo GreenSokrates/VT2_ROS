@@ -88,3 +88,11 @@ add_dependencies(planning_all ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPOR
 target_link_libraries(planning_all
   ${catkin_LIBRARIES}
 )
+
+add_executable(pen_montage
+  src/pen_montage.cpp
+)
+add_dependencies(pen_montage ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(pen_montage
+  ${catkin_LIBRARIES}
+)
