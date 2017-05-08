@@ -6,9 +6,6 @@
 using namespace ros;
 using namespace moveit;
 
-
-
-
 int main(int argc, char **argv){
    init(argc, argv, "movement");
    NodeHandle n;
@@ -26,21 +23,21 @@ int main(int argc, char **argv){
    ROS_INFO("Reference frame: %s", group.getPlanningFrame().c_str());
    ROS_INFO("Reference frame: %s", group.getEndEffectorLink().c_str());
    geometry_msgs::Pose montage;
-   montage.position.x = 0.260;
-   montage.position.y = 0.0045;
+   montage.position.x = 0.0045;
+   montage.position.y = 0.420;
    montage.position.z = 0.130;
-   montage.orientation.w = 1.0;
-   montage.orientation.x = 0.0;
-   montage.orientation.y = 0.0;
-   montage.orientation.z = 0.0;
+   montage.orientation.w = 0.653;
+   montage.orientation.x = 0.271;
+   montage.orientation.y = 0.653;
+   montage.orientation.z = 0.271;
    
    geometry_msgs::Pose pickBase;
-   pickBase.position.x = 0.260;
-   pickBase.position.y = 0.148;
+   pickBase.position.x = 0.148;
+   pickBase.position.y = 0.260;
    pickBase.position.z = 0.050;
-   pickBase.orientation.w = 1.0;
+   pickBase.orientation.w = 0.707;
    pickBase.orientation.x = 0.0;
-   pickBase.orientation.y = 0.0;
+   pickBase.orientation.y = 0.707;
    pickBase.orientation.z = 0.0;
 
    
