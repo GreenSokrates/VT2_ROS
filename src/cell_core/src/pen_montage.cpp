@@ -2,6 +2,7 @@
 #include <moveit/move_group_interface/move_group_interface.h>
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
 #include <moveit_msgs/DisplayTrajectory.h>
+#include <geometric_shapes/shape_operations.h>
 
 using namespace ros;
 using namespace moveit;
@@ -40,7 +41,40 @@ int main(int argc, char **argv){
    pickBase.orientation.y = 0.707;
    pickBase.orientation.z = 0.0;
 
+   // Generating Collision object from Mesh
+   moveit_msgs::CollisionObject co;
+   co.id = "cell";
+   shapes::Mesh* m = shapes::createMeshFromResource("package://cell_support/mesh/model_v3_meter.stl");
+   ROS_INFO("Mesh Loaded");
+
+   shape_msgs::Mesh mesh;
+   shapes::ShapeMsg mesh_msg;
+   shapes::constructMsgFromShape(m, mesh_msg);
+   mesh = boost::get<shape_msgs::Mesh>(mesh_msg);
+
+   co.meshes.resize(1);
+   co.mesh_poses.resize(1);
+   co.meshes[0] = mesh;
+   co.header.frame_id = "wall";
+   co.mesh_poses[0].position.x = -1.175;
+   co.mesh_poses[0].position.y = 0.222;
+   co.mesh_poses[0].position.z = -0.010;
+   co.mesh_poses[0].orientation.w = 0.707;
+   co.mesh_poses[0].orientation.x = 0.0;
+   co.mesh_poses[0].orientation.y = 0.0;
+   co.mesh_poses[0].orientation.z = 0.707;
+
+   co.meshes.push_back(mesh);
+   co.mesh_poses.push_back(co.mesh_poses[0]);
+   co.operation = co.ADD;
+   std::vector<moveit_msgs::CollisionObject> vec;
+   vec.push_back(co);
+   ROS_INFO("Wall added into the world");
+   planning_scene_interface.addCollisionObjects(vec);
+   sleep(10.0);
+   ROS_INFO("End of co");
    
+      
    
    group.setPoseTarget(montage);
 
