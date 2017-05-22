@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: cell_support
+    relative_path: urdf/cell_irb120.xacro
+  SRDF:
+    relative_path: config/cell.srdf
+  CONFIG:
+    author_name: Luis Meier
+    author_email: meierlui@students.zhaw.ch
+    generated_timestamp: 1495450785

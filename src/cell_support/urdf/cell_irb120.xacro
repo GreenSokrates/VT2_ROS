@@ -19,7 +19,7 @@
   <joint name="tool0_to_gripper" type="fixed">
     <parent link="irb120_tool0" />
     <child link="gripper_frame" />
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="0 0 0" rpy="0 1.57 0" />
   </joint>
 
 </robot>
