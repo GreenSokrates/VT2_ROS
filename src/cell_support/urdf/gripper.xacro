@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="gripper_definition" params="prefix">
+
+    <link name="${prefix}gripper_body">
+      <visual>
+        <origin xyz="0.1 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cell_support/meshes/gripper.dae"/>
+        </geometry>
+        <material name="">
+          <color rgba="0.7372549 0.3490196 0.1607843 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0.0575 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.115 0.052 0.052" />
+        </geometry>
+        <material name="yellow">
+         <color rgba="1 1 0 0.3" />
+        </material>
+      </collision>
+    </link>
+
+    <link name="gripper_frame">
+      <visual>
+        <geometry>
+          <sphere radius="0.005" />
+        </geometry>
+        <material name="white">
+          <color rgba="1 1 1 0.5" />
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <sphere radius="0.005" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="body_to_frame" type="fixed">
+      <parent link="gripper_frame" />
+      <child link="gripper_body" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+
+  </xacro:macro>
+</robot>
