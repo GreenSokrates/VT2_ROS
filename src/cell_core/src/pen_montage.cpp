@@ -28,21 +28,30 @@ int main(int argc, char **argv)
 
     // Defining Positions and Offsets
     geometry_msgs::Pose montage;
-    montage.position.x = 0.000;
-    montage.position.y = 0.410;
-    montage.position.z = 0.130;
+    montage.position.x = -0.040;
+    montage.position.y = 0.603;
+    montage.position.z = 0.114;
     montage.orientation.w = 0.653;
-    montage.orientation.x = 0.271;
-    montage.orientation.y = 0.653;
+    montage.orientation.x = -0.653;
+    montage.orientation.y = 0.271;
     montage.orientation.z = 0.271;
+
+    geometry_msgs::Pose pickTool;
+    pickTool.position.x = -0.187;
+    pickTool.position.y = 0.507;
+    pickTool.position.z = 0.083;
+    pickTool.orientation.w = 0.000;
+    pickTool.orientation.x = 0.924;
+    pickTool.orientation.y = -0.000;
+    pickTool.orientation.z = -0.383;
 
     geometry_msgs::Pose pickBase;
     pickBase.position.x = 0.148;
     pickBase.position.y = 0.200;
     pickBase.position.z = 0.100;
-    pickBase.orientation.w = 0.707;
-    pickBase.orientation.x = 0.0;
-    pickBase.orientation.y = 0.707;
+    pickBase.orientation.w = 0.0;
+    pickBase.orientation.x = 1.0;
+    pickBase.orientation.y = 0.0;
     pickBase.orientation.z = 0.0;
 
     geometry_msgs::Pose pickFHull = pickBase;
@@ -54,10 +63,10 @@ int main(int argc, char **argv)
     pickRHull.position.x += 0.047;
     pickRHull.position.y += 0.129;
     pickRHull.position.z += 0.000;
-    pickRHull.orientation.w = 0.5;
-    pickRHull.orientation.x = 0.5;
-    pickRHull.orientation.y = 0.5;
-    pickRHull.orientation.z = -0.5;
+    pickRHull.orientation.w = 0.707;
+    pickRHull.orientation.x = 0.0;
+    pickRHull.orientation.y = 0.0;
+    pickRHull.orientation.z = 0.707;
 
     geometry_msgs::Pose pickInk = pickBase;
     pickInk.position.x += 0.0690;
@@ -75,9 +84,10 @@ int main(int argc, char **argv)
     pickArr.position.z += 0.000;
 
     // Generating Collision object from Mesh
+    Eigen::Vector3d scaling_vector(0.001, 0.001, 0.001); // Scaling Vector
     moveit_msgs::CollisionObject co;
     co.id = "cell";
-    shapes::Mesh *m = shapes::createMeshFromResource("package://cell_support/meshes/model_v3_meter.stl");
+    shapes::Mesh *m = shapes::createMeshFromResource("package://cell_support/meshes/Mittelteil_final.stl", scaling_vector);
     ROS_INFO("Mesh Loaded");
 
     shape_msgs::Mesh mesh;
@@ -122,6 +132,24 @@ int main(int argc, char **argv)
     if (success)
         group.move();
     //sleep(5.0);
+
+    /*  group.setPoseTarget(pickTool);
+    success = group.plan(my_plan);
+    ROS_INFO("Planning to pick: Tool: %s", success ? "Succeded" : "FAILED");
+    if (success)
+        group.move();
+
+    group.setPoseTarget(montage);
+    success = group.plan(my_plan);
+    ROS_INFO("Planning to mount Front Hull: %s", success ? "Succeded" : "FAILED");
+    if (success)
+        group.move();
+
+    group.setPoseTarget(pickTool);
+    success = group.plan(my_plan);
+    ROS_INFO("Planning to pick: Tool: %s", success ? "Succeded" : "FAILED");
+    if (success)
+        group.move();
 
     group.setPoseTarget(pickSpring);
     success = group.plan(my_plan);
@@ -187,8 +215,8 @@ int main(int argc, char **argv)
     success = group.plan(my_plan);
     ROS_INFO("Planning to mount Rear Hull: %s", success ? "Succeded" : "FAILED");
     if (success)
-        group.move();
+        group.move(); */ 1
 
-    spinner.stop();
+        spinner.stop();
     return (0);
 }
