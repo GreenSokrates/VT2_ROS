@@ -20,7 +20,7 @@ int main(int argc, char **argv)
     planning_interface::PlanningSceneInterface planning_scene_interface;
     Publisher display_publisher = n.advertise<moveit_msgs::DisplayTrajectory>("/move_group/display_planned_path", 1, true);
     moveit_msgs::DisplayTrajectory display_trajectory;
-    group.setPlannerId("SBLkConfigDefault");
+    group.setPlannerId("RRT");
 
     // Getting basic Infos from Robot
     ROS_INFO("Reference frame: %s", group.getPlanningFrame().c_str());
@@ -28,9 +28,9 @@ int main(int argc, char **argv)
 
     // Defining Positions and Offsets
     geometry_msgs::Pose montage;
-    montage.position.x = -0.040;
+    montage.position.x = -0.040 + 0.05;
     montage.position.y = 0.603;
-    montage.position.z = 0.114;
+    montage.position.z = 0.114 + 0.05;
     montage.orientation.w = 0.653;
     montage.orientation.x = -0.653;
     montage.orientation.y = 0.271;
@@ -47,7 +47,7 @@ int main(int argc, char **argv)
 
     geometry_msgs::Pose pickBase;
     pickBase.position.x = 0.148;
-    pickBase.position.y = 0.200;
+    pickBase.position.y = 0.260;
     pickBase.position.z = 0.100;
     pickBase.orientation.w = 0.0;
     pickBase.orientation.x = 1.0;
@@ -125,12 +125,55 @@ int main(int argc, char **argv)
     if (success)
         group.move();
 
+    std::vector<geometry_msgs::Pose> waypoints_tool;
+    geometry_msgs::PoseStamped temp_montage = group.getCurrentPose(group.getEndEffectorLink());
+    geometry_msgs::Pose test_pose = temp_montage.pose;
+
+    test_pose.position.z -= 0.07;
+    waypoints_tool.push_back(test_pose);
+
+    test_pose.position.z += 0.07;
+    waypoints_tool.push_back(test_pose);
+
+    moveit_msgs::RobotTrajectory trajectory_msg;
+    group.setPlanningTime(30.0);
+    double fraction = group.computeCartesianPath(waypoints_tool,
+                                                 0.01, //eef_step
+                                                 0.0,  // jump_threshold
+                                                 trajectory_msg, false);
+    my_plan.trajectory_ = trajectory_msg;
+    ROS_INFO("Visualizing Cartesian Path IRB120 (%2f%% acheived)", fraction * 100.0);
+    sleep(5.0);
+    group.execute(my_plan);
+
+    sleep(5.0);
     group.setPoseTarget(montage);
     success = group.plan(my_plan);
     ROS_INFO("Planning to mount Front Hull: %s", success ? "Succeded" : "FAILED");
-    //sleep(2.0);
     if (success)
         group.move();
+
+    waypoints_tool.clear();
+    temp_montage = group.getCurrentPose(group.getEndEffectorLink());
+    test_pose = temp_montage.pose;
+
+    test_pose.position.x -= 0.05;
+    test_pose.position.z -= 0.05;
+    waypoints_tool.push_back(test_pose);
+    test_pose.position.x += 0.05;
+    test_pose.position.z += 0.05;
+    waypoints_tool.push_back(test_pose);
+
+    group.setPlanningTime(30.0);
+    fraction = group.computeCartesianPath(waypoints_tool,
+                                          0.01, //eef_step
+                                          0.0,  // jump_threshold
+                                          trajectory_msg, false);
+    my_plan.trajectory_ = trajectory_msg;
+    ROS_INFO("Visualizing Cartesian Path IRB120 (%2f%% acheived)", fraction * 100.0);
+    sleep(5.0);
+    group.execute(my_plan);
+
     //sleep(5.0);
 
     /*  group.setPoseTarget(pickTool);
@@ -215,8 +258,8 @@ int main(int argc, char **argv)
     success = group.plan(my_plan);
     ROS_INFO("Planning to mount Rear Hull: %s", success ? "Succeded" : "FAILED");
     if (success)
-        group.move(); */ 1
+        group.move(); */
 
-        spinner.stop();
+    spinner.stop();
     return (0);
 }
