@@ -3,47 +3,57 @@
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
 #include <moveit_msgs/DisplayTrajectory.h>
 #include <geometric_shapes/shape_operations.h>
+#include <collision.h>
 
 using namespace ros;
 using namespace moveit;
 
+void moveToPoint(geometry_msgs::Pose &position, planning_interface::MoveGroupInterface::Plan &planer, planning_interface::MoveGroupInterface &grouper)
+{
+    grouper.setPoseTarget(position);
+    bool success = grouper.plan(planer);
+    if (success)
+        grouper.move();
+    return;
+}
+
 int main(int argc, char **argv)
 {
-    init(argc, argv, "movement");
+    init(argc, argv, "pen_montage");
     NodeHandle n;
 
     AsyncSpinner spinner(1);
     spinner.start();
 
-    // Setup of MoveGroupInterface and PlanningSceneInterface
-    planning_interface::MoveGroupInterface group("manipulator");
-    planning_interface::PlanningSceneInterface planning_scene_interface;
-    Publisher display_publisher = n.advertise<moveit_msgs::DisplayTrajectory>("/move_group/display_planned_path", 1, true);
-    moveit_msgs::DisplayTrajectory display_trajectory;
-    group.setPlannerId("RRT");
-
-    // Getting basic Infos from Robot
-    ROS_INFO("Reference frame: %s", group.getPlanningFrame().c_str());
-    ROS_INFO("Reference frame: %s", group.getEndEffectorLink().c_str());
+    collision;
 
     // Defining Positions and Offsets
     geometry_msgs::Pose montage;
     montage.position.x = -0.040 + 0.05;
     montage.position.y = 0.603;
     montage.position.z = 0.114 + 0.05;
-    montage.orientation.w = 0.653;
-    montage.orientation.x = -0.653;
-    montage.orientation.y = 0.271;
-    montage.orientation.z = 0.271;
+    montage.orientation.w = -0.271;
+    montage.orientation.x = -0.271;
+    montage.orientation.y = -0.653;
+    montage.orientation.z = -0.653;
+
+    geometry_msgs::Pose montageRHull;
+    montageRHull.position.x = -0.166;
+    montageRHull.position.y = 0.594;
+    montageRHull.position.z = 0.188;
+    montageRHull.orientation.w = 0.665;
+    montageRHull.orientation.x = -0.665;
+    montageRHull.orientation.y = -0.238;
+    montageRHull.orientation.z = 0.238;
 
     geometry_msgs::Pose pickTool;
-    pickTool.position.x = -0.187;
+    pickTool.position.x = -0.22;
     pickTool.position.y = 0.507;
     pickTool.position.z = 0.083;
-    pickTool.orientation.w = 0.000;
-    pickTool.orientation.x = 0.924;
-    pickTool.orientation.y = -0.000;
-    pickTool.orientation.z = -0.383;
+    pickTool.orientation.w = -0.271;
+    pickTool.orientation.x = 0.653;
+    pickTool.orientation.y = 0.653;
+    pickTool.orientation.z = -0.271;
 
     geometry_msgs::Pose pickBase;
     pickBase.position.x = 0.148;
@@ -77,53 +87,31 @@ int main(int argc, char **argv)
     pickSpring.position.x += 0.0203;
     pickSpring.position.y += 0.167;
     pickSpring.position.z += 0.000;
+    pickSpring.orientation.w = 0.707;
+    pickSpring.orientation.x = 0.0;
+    pickSpring.orientation.y = 0.0;
+    pickSpring.orientation.z = 0.707;
 
     geometry_msgs::Pose pickArr = pickBase;
     pickArr.position.x += 0.0705;
     pickArr.position.y += 0.172;
     pickArr.position.z += 0.000;
+    pickArr.orientation.w = 0.707;
+    pickArr.orientation.x = 0.0;
+    pickArr.orientation.y = 0.0;
+    pickArr.orientation.z = 0.707;
 
-    // Generating Collision object from Mesh
-    Eigen::Vector3d scaling_vector(0.001, 0.001, 0.001); // Scaling Vector
-    moveit_msgs::CollisionObject co;
-    co.id = "cell";
-    shapes::Mesh *m = shapes::createMeshFromResource("package://cell_support/meshes/Mittelteil_final.stl", scaling_vector);
-    ROS_INFO("Mesh Loaded");
-
-    shape_msgs::Mesh mesh;
-    shapes::ShapeMsg mesh_msg;
-    shapes::constructMsgFromShape(m, mesh_msg);
-    mesh = boost::get<shape_msgs::Mesh>(mesh_msg);
-
-    co.meshes.resize(1);
-    co.mesh_poses.resize(1);
-    co.meshes[0] = mesh;
-    co.header.frame_id = "Cell";
-    co.mesh_poses[0].position.x = -1.075;
-    co.mesh_poses[0].position.y = 0.023;
-    co.mesh_poses[0].position.z = -0.021;
-    co.mesh_poses[0].orientation.w = 0.707;
-    co.mesh_poses[0].orientation.x = 0.0;
-    co.mesh_poses[0].orientation.y = 0.0;
-    co.mesh_poses[0].orientation.z = 0.707;
-
-    co.meshes.push_back(mesh);
-    co.mesh_poses.push_back(co.mesh_poses[0]);
-    co.operation = co.ADD;
-    std::vector<moveit_msgs::CollisionObject> vec;
-    vec.push_back(co);
-    ROS_INFO("Cell added into the world");
-    planning_scene_interface.addCollisionObjects(vec);
-    sleep(10.0);
+    // Setup of MoveGroupInterface and PlanningSceneInterface
+    planning_interface::MoveGroupInterface group("gripper_tool");
+    planning_interface::PlanningSceneInterface planning_scene_interface;
+    Publisher display_publisher = n.advertise<moveit_msgs::DisplayTrajectory>("/move_group/display_planned_path", 1, true);
+    moveit_msgs::DisplayTrajectory display_trajectory;
+    group.setPlannerId("RRT");
 
     // Construction of planner
-    moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+    planning_interface::MoveGroupInterface::Plan my_plan;
 
-    group.setPoseTarget(pickFHull);
-    bool success = group.plan(my_plan);
-    ROS_INFO("Planning to pick Front Hull: %s", success ? "Succeded" : "FAILED");
-    if (success)
-        group.move();
+    moveToPoint(pickFHull, my_plan, group);
 
     std::vector<geometry_msgs::Pose> waypoints_tool;
     geometry_msgs::PoseStamped temp_montage = group.getCurrentPose(group.getEndEffectorLink());
@@ -148,7 +136,7 @@ int main(int argc, char **argv)
 
     sleep(5.0);
     group.setPoseTarget(montage);
-    success = group.plan(my_plan);
+    bool success = group.plan(my_plan);
     ROS_INFO("Planning to mount Front Hull: %s", success ? "Succeded" : "FAILED");
     if (success)
         group.move();
@@ -174,91 +162,17 @@ int main(int argc, char **argv)
     sleep(5.0);
     group.execute(my_plan);
 
-    //sleep(5.0);
-
-    /*  group.setPoseTarget(pickTool);
-    success = group.plan(my_plan);
-    ROS_INFO("Planning to pick: Tool: %s", success ? "Succeded" : "FAILED");
-    if (success)
-        group.move();
-
-    group.setPoseTarget(montage);
-    success = group.plan(my_plan);
-    ROS_INFO("Planning to mount Front Hull: %s", success ? "Succeded" : "FAILED");
-    if (success)
-        group.move();
-
-    group.setPoseTarget(pickTool);
-    success = group.plan(my_plan);
-    ROS_INFO("Planning to pick: Tool: %s", success ? "Succeded" : "FAILED");
-    if (success)
-        group.move();
-
-    group.setPoseTarget(pickSpring);
-    success = group.plan(my_plan);
-    ROS_INFO("Planning to pick: Spring: %s", success ? "Succeded" : "FAILED");
-    //sleep(2.0);
-    // Execute movement if Planning succeded
-    if (success)
-        group.move();
-    //sleep(5.0);
-
-    group.setPoseTarget(montage);
-    success = group.plan(my_plan);
-    ROS_INFO("Planning to mount: Spring: %s", success ? "Succeded" : "FAILED");
-    //sleep(2.0);
-    // Execute movement if Planning succeded
-    if (success)
-        group.move();
-    //sleep(5.0);
-
-    group.setPoseTarget(pickInk);
-    success = group.plan(my_plan);
-    ROS_INFO("Planning to pick Ink: %s", success ? "Succeded" : "FAILED");
-    //sleep(2.0);
-    // Execute movement if Planning succeded
-    if (success)
-        group.move();
-    sleep(5.0);
-
-    group.setPoseTarget(montage);
-    success = group.plan(my_plan);
-    ROS_INFO("Planning to mount Ink: %s", success ? "Succeded" : "FAILED");
-    //sleep(2.0);
-    // Execute movement if Planning succeded
-    if (success)
-        group.move();
-    //sleep(5.0);
-
-    group.setPoseTarget(pickArr);
-    success = group.plan(my_plan);
-    ROS_INFO("Planning to pick Arr: %s", success ? "Succeded" : "FAILED");
-    //sleep(2.0);
-    // Execute movement if Planning succeded
-    if (success)
-        group.move();
-    //sleep(5.0);
-
-    group.setPoseTarget(montage);
-    success = group.plan(my_plan);
-    ROS_INFO("Planning to mount Arr: %s", success ? "Succeded" : "FAILED");
-    //sleep(2.0);
-    // Execute movement if Planning succeded
-    if (success)
-        group.move();
-    //sleep(5.0);
-
-    group.setPoseTarget(pickRHull);
-    success = group.plan(my_plan);
-    ROS_INFO("Planning to pick Rear Hull: %s", success ? "Succeded" : "FAILED");
-    if (success)
-        group.move();
-
-    group.setPoseTarget(montage);
-    success = group.plan(my_plan);
-    ROS_INFO("Planning to mount Rear Hull: %s", success ? "Succeded" : "FAILED");
-    if (success)
-        group.move(); */
+    moveToPoint(pickTool, my_plan, group);
+    moveToPoint(montage, my_plan, group);
+    moveToPoint(pickSpring, my_plan, group);
+    moveToPoint(montage, my_plan, group);
+    moveToPoint(pickInk, my_plan, group);
+    moveToPoint(montage, my_plan, group);
+    moveToPoint(pickArr, my_plan, group);
+    moveToPoint(montage, my_plan, group);
+    // circMove
+    moveToPoint(pickRHull, my_plan, group);
+    moveToPoint(montageRHull, my_plan, group);
 
     spinner.stop();
     return (0);

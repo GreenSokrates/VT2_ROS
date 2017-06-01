@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro">
+<robot xmlns:xacro="http://ros.org/wiki/xacro1">
   <xacro:macro name="gripper_definition" params="prefix">
-    <link name="${prefix}gripper_tool" />
+
+    <link name="${prefix}gripper_tool">
+          <visual>
+        <geometry>
+          <sphere radius="0.005" />
+        </geometry>
+        <material name="white">
+          <color rgba="1 1 1 0.5" />
+        </material>
+      </visual>
+      </link>
     
     <link name="${prefix}gripper_body">
       <visual>
@@ -14,9 +24,9 @@
         </material>
       </visual>
       <collision>
-        <origin xyz="0 0 0.0575" rpy="0 0 0" />
+        <origin xyz="0 0 -0.005" rpy="0 0 0" />
         <geometry>
-          <box size="0.052 0.052 0.115" />
+          <mesh filename="package://cell_support/meshes/4003_Greifer_Roboter.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="yellow">
          <color rgba="1 1 0 0.3" />

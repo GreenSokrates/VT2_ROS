@@ -5,10 +5,12 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /MotionPlanning1
-        - /MotionPlanning1/Planning Metrics1
+        - /MotionPlanning1/Planning Request1
         - /MotionPlanning1/Planned Path1
+        - /MotionPlanning1/Planned Path1/Links1
+        - /MotionPlanning1/Planned Path1/Links1/gripper_tool1
       Splitter Ratio: 0.742560029
-    Tree Height: 323
+    Tree Height: 137
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -16,6 +18,8 @@ Panels:
       - /Current View1
     Name: Views
     Splitter Ratio: 0.5
+  - Class: rviz/Selection
+    Name: Selection
 Visualization Manager:
   Class: ""
   Displays:
@@ -77,8 +81,9 @@ Visualization Manager:
             Value: true
           gripper_tool:
             Alpha: 1
-            Show Axes: false
+            Show Axes: true
             Show Trail: false
+            Value: true
           irb120_base:
             Alpha: 1
             Show Axes: false
@@ -147,8 +152,8 @@ Visualization Manager:
         Goal State Color: 250; 128; 0
         Interactive Marker Size: 0
         Joint Violation Color: 255; 0; 255
-        Planning Group: manipulator
-        Query Goal State: false
+        Planning Group: gripper_tool
+        Query Goal State: true
         Query Start State: false
         Show Workspace: false
         Start State Alpha: 1
@@ -184,6 +189,7 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
+            Value: true
           irb120_base:
             Alpha: 1
             Show Axes: false
@@ -250,38 +256,40 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 1.79698706
+      Distance: 0.560353696
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.113567002
-        Y: 0.105920002
-        Z: 2.23518001e-07
+        X: 0.122322351
+        Y: 0.21036011
+        Z: 1.71363922e-07
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: -0.0952023938
+      Pitch: 0.429798931
       Target Frame: world
       Value: XYOrbit (rviz)
-      Yaw: 1.57174718
+      Yaw: 0.971732855
     Saved: ~
 Window Geometry:
   Displays:
-    collapsed: false
-  Height: 1027
+    collapsed: true
+  Height: 1056
   Help:
     collapsed: false
-  Hide Left Dock: false
+  Hide Left Dock: true
   Hide Right Dock: false
   MotionPlanning:
-    collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000002ba000003bbfc0200000006fb000000100044006900730070006c0061007900730100000028000001dc000000db00fffffffb0000000800480065006c00700000000342000000bb0000007500fffffffb0000000a0056006900650077007300000003b0000000b0000000b300fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000020a000001d9000001ce00ffffff00000464000003bb00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+    collapsed: true
+  QMainWindow State: 000000ff00000000fd0000000100000000000002ba000003d8fc0200000007fb000000100044006900730070006c006100790073000000002800000122000000db00fffffffb0000000800480065006c00700000000342000000bb0000007500fffffffb0000000a0056006900650077007300000003b0000000b0000000b300fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067000000015000000211000001ce00fffffffb0000001200530065006c0065006300740069006f006e0000000367000000990000006300ffffff00000780000003d800000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Selection:
+    collapsed: true
   Views:
     collapsed: false
-  Width: 1828
-  X: 90
-  Y: 53
+  Width: 1920
+  X: 0
+  Y: 24

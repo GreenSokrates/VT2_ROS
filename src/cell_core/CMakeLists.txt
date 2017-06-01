@@ -96,3 +96,11 @@ add_dependencies(pen_montage ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORT
 target_link_libraries(pen_montage
   ${catkin_LIBRARIES}
 )
+
+add_executable(collision
+  src/collision.cpp
+)
+add_dependencies(collision ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(collision
+  ${catkin_LIBRARIES}
+)
