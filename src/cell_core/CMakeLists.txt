@@ -38,6 +38,11 @@ catkin_package(
     roscpp
 )
 
+## Enable compiler warnings 
+set( CMAKE_CXX_FLAGS "-Wall -Wextra" )
+set( CMAKE_CXX_FLAGS_DEBUG "-g -O0" )
+set( CMAKE_CXX_FLAGS_RELEASE "-O3" )
+
 
 ###########
 ## Build ##

@@ -26,8 +26,7 @@
 					"severity": 4,
 					"message": 5
 				}
-			},
-			"isBuildCommand": true
+			}
 		},
 		{
 			"taskName": "Release",
@@ -67,7 +66,8 @@
 					"severity": 4,
 					"message": 5
 				}
-			}
+			},
+			"isBuildCommand": true
 		},
 		{
 			"taskName": "Release (isolated)",

@@ -13,7 +13,7 @@ collisionObjectAdder::collisionObjectAdder()
     add_collision_object_pub = nh.advertise<moveit_msgs::CollisionObject>("collision_object", 1000);
 }
 
-void collisionObjectAdder::addCollisionCell(moveit::planning_interface::PlanningSceneInterface &psi, moveit::planning_interface::MoveGroupInterface &grouper)
+void collisionObjectAdder::addCell(moveit::planning_interface::PlanningSceneInterface &psi, moveit::planning_interface::MoveGroupInterface &grouper)
 {
     // Generating Collision object from Mesh
     Eigen::Vector3d scaling_vector(0.001, 0.001, 0.001); // Scaling Vector

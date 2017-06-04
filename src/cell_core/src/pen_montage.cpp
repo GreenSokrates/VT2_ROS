@@ -11,6 +11,8 @@ void moveToPoint(geometry_msgs::Pose &position, planning_interface::MoveGroupInt
 {
     grouper.setPoseTarget(position);
     bool success = grouper.plan(planer);
+    // std::string name = position;
+    //ROS_INFO("Planning to %s: %s", name, success ? "Succeded" : "FAILED");
     if (success)
         grouper.move();
     return;
@@ -99,7 +101,7 @@ int main(int argc, char **argv)
     // Setup of MoveGroupInterface and PlanningSceneInterface
     planning_interface::MoveGroupInterface group("gripper_tool");
     planning_interface::PlanningSceneInterface planning_scene_interface;
-    group.setPlannerId("PRM");
+    //group.setPlannerId("PRM");
 
     collisionObjectAdder coAdder;
     coAdder.addCell(planning_scene_interface, group);
