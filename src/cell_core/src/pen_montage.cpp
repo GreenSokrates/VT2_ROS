@@ -2,8 +2,7 @@
 #include <moveit/move_group_interface/move_group_interface.h>
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
 #include <moveit_msgs/DisplayTrajectory.h>
-#include <geometric_shapes/shape_operations.h>
-#include <collision.h>
+#include <cell_core/collisionObject.h>
 
 using namespace ros;
 using namespace moveit;
@@ -19,13 +18,9 @@ void moveToPoint(geometry_msgs::Pose &position, planning_interface::MoveGroupInt
 
 int main(int argc, char **argv)
 {
+#include <moveit/planning_scene_interface/planning_scene_interface.h>
     init(argc, argv, "pen_montage");
     NodeHandle n;
-
-    AsyncSpinner spinner(1);
-    spinner.start();
-
-    collision;
 
     // Defining Positions and Offsets
     geometry_msgs::Pose montage;
@@ -33,9 +28,9 @@ int main(int argc, char **argv)
     montage.position.y = 0.603;
     montage.position.z = 0.114 + 0.05;
     montage.orientation.w = -0.271;
-    montage.orientation.x = -0.271;
-    montage.orientation.y = -0.653;
-    montage.orientation.z = -0.653;
+    montage.orientation.x = 0.271;
+    montage.orientation.y = 0.653;
+    montage.orientation.z = 0.653;
 
     geometry_msgs::Pose montageRHull;
     montageRHull.position.x = -0.166;
@@ -104,12 +99,22 @@ int main(int argc, char **argv)
     // Setup of MoveGroupInterface and PlanningSceneInterface
     planning_interface::MoveGroupInterface group("gripper_tool");
     planning_interface::PlanningSceneInterface planning_scene_interface;
-    Publisher display_publisher = n.advertise<moveit_msgs::DisplayTrajectory>("/move_group/display_planned_path", 1, true);
-    moveit_msgs::DisplayTrajectory display_trajectory;
-    group.setPlannerId("RRT");
+    group.setPlannerId("PRM");
+
+    collisionObjectAdder coAdder;
+    coAdder.addCell(planning_scene_interface, group);
+
+    // CALL COLLISION
+    sleep(10.0);
 
     // Construction of planner
     planning_interface::MoveGroupInterface::Plan my_plan;
+
+    /**********************
+    ***Start of Montage ***
+    ***********************/
+    AsyncSpinner spinner(1);
+    spinner.start();
 
     moveToPoint(pickFHull, my_plan, group);
 
@@ -134,12 +139,7 @@ int main(int argc, char **argv)
     sleep(5.0);
     group.execute(my_plan);
 
-    sleep(5.0);
-    group.setPoseTarget(montage);
-    bool success = group.plan(my_plan);
-    ROS_INFO("Planning to mount Front Hull: %s", success ? "Succeded" : "FAILED");
-    if (success)
-        group.move();
+    moveToPoint(montage, my_plan, group);
 
     waypoints_tool.clear();
     temp_montage = group.getCurrentPose(group.getEndEffectorLink());
@@ -170,10 +170,10 @@ int main(int argc, char **argv)
     moveToPoint(montage, my_plan, group);
     moveToPoint(pickArr, my_plan, group);
     moveToPoint(montage, my_plan, group);
-    // circMove
+    // TODO: circMove
     moveToPoint(pickRHull, my_plan, group);
     moveToPoint(montageRHull, my_plan, group);
 
-    spinner.stop();
+    // spinner.stop();
     return (0);
 }

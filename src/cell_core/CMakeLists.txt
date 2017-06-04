@@ -49,7 +49,7 @@ include_directories(
     ${EIGEN_INCLUDE_DIRS}
 )
 
-include_directories(
+include_directories(include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -57,20 +57,19 @@ link_directories(
   ${catkin_LIBRARY_DIRS}
 )
 
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  PATTERN ".svn" EXCLUDE
+)
+##################
+## Execuatables ##
+##################
 add_executable(${PROJECT_NAME}_node
   src/planning.cpp
 )
-
 target_link_libraries(${PROJECT_NAME}_node
   ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
-)
-
-install(
-  TARGETS 
-    ${PROJECT_NAME}_node
-  DESTINATION 
-    ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
 add_executable(simple_planning
@@ -83,6 +82,7 @@ target_link_libraries(simple_planning
 
 add_executable(planning_all
   src/planning_all.cpp
+  src/collisionObject.cpp
 )
 add_dependencies(planning_all ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(planning_all
@@ -95,12 +95,14 @@ add_executable(pen_montage
 add_dependencies(pen_montage ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(pen_montage
   ${catkin_LIBRARIES}
+  collisionObject
+
 )
 
-add_executable(collision
-  src/collision.cpp
+add_library(collisionObject
+  src/collisionObject.cpp
 )
-add_dependencies(collision ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(collision
+add_dependencies(collisionObject ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(collisionObject
   ${catkin_LIBRARIES}
 )
