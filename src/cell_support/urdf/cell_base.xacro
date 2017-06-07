@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="https://ros.org/wiki/xacro">
+   <xacro:macro name="cell_base" params="prefix">
+      <link name="base">
+         <visual>
+            <origin rpy="0 0 1.57" xyz="-1.075 0.023 -0.021" />
+            <geometry>
+               <mesh filename="package://cell_support/meshes/Mittelteil_final.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+         </visual>
+         <collision>
+            <origin rpy="0 0 1.57" xyz="-1.075 0.023 -0.021" />
+            <geometry>
+               <mesh filename="package://cell_support/meshes/Mittelteil_final.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+         </collision>
+      </link>
+   </xacro:macro>
+</robot>
