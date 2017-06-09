@@ -9,30 +9,37 @@
     <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
     <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
     <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
-    <group name="gripper_tool">
-        <chain base_link="irb120_base_link" tip_link="gripper_tool" />
-    </group>
     <group name="arm">
         <chain base_link="irb120_base_link" tip_link="irb120_tool0" />
     </group>
+    <group name="gripper_tool">
+        <chain base_link="irb120_base_link" tip_link="gripper_tool" />
+    </group>
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="waiting" group="gripper_tool">
+        <joint name="irb120_joint_1" value="1.57" />
+        <joint name="irb120_joint_2" value="-0.0106" />
+        <joint name="irb120_joint_3" value="0" />
+        <joint name="irb120_joint_4" value="0" />
+        <joint name="irb120_joint_5" value="1.57" />
+        <joint name="irb120_joint_6" value="0" />
+    </group_state>
     <group_state name="allZero" group="gripper_tool">
         <joint name="irb120_joint_1" value="0" />
-        <joint name="irb120_joint_2" value="0" />
+        <joint name="irb120_joint_2" value="-0.0106" />
         <joint name="irb120_joint_3" value="0" />
         <joint name="irb120_joint_4" value="0" />
         <joint name="irb120_joint_5" value="0" />
         <joint name="irb120_joint_6" value="0" />
     </group_state>
-    <group_state name="backPose" group="gripper_tool">
-        <joint name="irb120_joint_1" value="0" />
-        <joint name="irb120_joint_2" value="-1.57" />
-        <joint name="irb120_joint_3" value="0" />
-        <joint name="irb120_joint_4" value="0" />
-        <joint name="irb120_joint_5" value="0.78" />
-        <joint name="irb120_joint_6" value="0" />
-    </group_state>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="tool_eef" parent_link="irb120_tool0" group="gripper_tool" />
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <virtual_joint name="FrameBase" type="fixed" parent_frame="world" child_link="irb120_base_link" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="cell_base" link2="irb120_base_link" reason="Adjacent" />
+    <disable_collisions link1="cell_base" link2="irb120_link_1" reason="Never" />
+    <disable_collisions link1="cell_base" link2="irb120_link_2" reason="Never" />
     <disable_collisions link1="gripper_body" link2="gripper_frame" reason="Adjacent" />
     <disable_collisions link1="gripper_body" link2="gripper_tool" reason="Adjacent" />
     <disable_collisions link1="gripper_body" link2="irb120_link_3" reason="Never" />

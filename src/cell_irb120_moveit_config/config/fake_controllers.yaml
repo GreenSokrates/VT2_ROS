@@ -1,5 +1,5 @@
 controller_list:
-  - name: fake_gripper_tool_controller
+  - name: fake_arm_controller
     joints:
       - irb120_joint_1
       - irb120_joint_2
@@ -7,7 +7,7 @@ controller_list:
       - irb120_joint_4
       - irb120_joint_5
       - irb120_joint_6
-  - name: fake_arm_controller
+  - name: fake_gripper_tool_controller
     joints:
       - irb120_joint_1
       - irb120_joint_2

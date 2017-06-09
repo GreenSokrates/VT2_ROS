@@ -131,13 +131,13 @@ int main(int argc, char **argv)
     group.setPlannerId("LBKPIECE");
 
     // CALL COLLISION
-    if (!setup)
+    /*if (!setup)
     {
         collisionObjectAdder coAdder;
         coAdder.addCell(planning_scene_interface, group);
         sleep(10.0);
         setup = 1;
-    }
+    } */
 
     // Construction of planner
     planning_interface::MoveGroupInterface::Plan my_plan;
