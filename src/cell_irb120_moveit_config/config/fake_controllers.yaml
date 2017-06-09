@@ -7,7 +7,7 @@ controller_list:
       - irb120_joint_4
       - irb120_joint_5
       - irb120_joint_6
-  - name: fake_gripper_tool_controller
+  - name: fake_gripper_eef_controller
     joints:
       - irb120_joint_1
       - irb120_joint_2

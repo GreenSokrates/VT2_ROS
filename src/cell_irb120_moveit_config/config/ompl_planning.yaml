@@ -147,7 +147,7 @@ arm:
     - SPARStwokConfigDefault
   projection_evaluator: joints(irb120_joint_1,irb120_joint_2)
   longest_valid_segment_fraction: 0.005
-gripper_tool:
+gripper_eef:
   planner_configs:
     - SBLkConfigDefault
     - ESTkConfigDefault

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="https://ros.org/wiki/xacro">
-   <xacro:macro name="plant" params="prefix">
+   <xacro:macro name="unterbau" params="prefix">
 
-      <link name="plant_base" />
+      <link name="unterbau_base" />
 
-      <link name="plant_body">
+      <link name="unterbau_body">
          <visual>
             <origin rpy="0 0 1.57" xyz="-1.075 0.023 -0.021" />
             <geometry>
@@ -20,8 +20,8 @@
       </link>
 
       <joint name="base_to_body" type="fixed">
-        <parent link="plant_base" />
-        <child link="plant_body" />
+        <parent link="unterbau_base" />
+        <child link="unterbau_body" />
         <origin xyz="0 0 0" rpy="0 0 0" />
       </joint>
       

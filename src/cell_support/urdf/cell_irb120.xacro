@@ -1,26 +1,26 @@
 <?xml version="1.0" ?>
 <robot name="cell" xmlns:xacro="https://ros.org/wiki/xacro">
  <xacro:include filename="$(find abb_irb120_support)/urdf/irb120_macro.xacro"/>
- <xacro:include filename="$(find cell_support)/urdf/gripper.xacro" />
- <xacro:include filename="$(find cell_support)/urdf/cell_base.xacro" />
+ <xacro:include filename="$(find cell_support)/urdf/gripper_definition.xacro" />
+ <xacro:include filename="$(find cell_support)/urdf/unterbau.xacro" />
 
   <link name="root_link"/>
 
   <!-- init robots -->
   <xacro:abb_irb120 prefix="irb120_" />
   <xacro:gripper_definition prefix="" />
-  <xacro:cell_base prefix=""/>
+  <xacro:unterbau prefix=""/>
 
   <!-- Joints -->
   <joint name="cell_base_to_irb120" type="fixed">
-    <parent link="cell_base" />
+    <parent link="root_link" />
     <child link="irb120_base_link"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
 
     <joint name="world_to_cellBase" type="fixed">
     <parent link="root_link" />
-    <child link="cell_base"/>
+    <child link="unterbau_base"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
 
