@@ -126,7 +126,7 @@ int main(int argc, char **argv)
     pickArr.orientation.z = 0.0;
 
     // Setup of MoveGroupInterface and PlanningSceneInterface
-    planning_interface::MoveGroupInterface group("gripper_tool");
+    planning_interface::MoveGroupInterface group("gripper_eef");
     planning_interface::PlanningSceneInterface planning_scene_interface;
     group.setPlannerId("LBKPIECE");
 
@@ -137,7 +137,7 @@ int main(int argc, char **argv)
         coAdder.addCell(planning_scene_interface, group);
         sleep(10.0);
         setup = 1;
-    } */
+    }*/
 
     // Construction of planner
     planning_interface::MoveGroupInterface::Plan my_plan;

@@ -1,9 +1,9 @@
 <package>
 
-  <name>cell_irb120_moveit_config</name>
+  <name>cell_moveit_config</name>
   <version>0.3.0</version>
   <description>
-     An automatically generated package with all the configuration and launch files for using the cell with the MoveIt! Motion Planning Framework
+     An automatically generated package with all the configuration and launch files for using the cell_irb120 with the MoveIt! Motion Planning Framework
   </description>
   <author email="meierlui@students.zhaw.ch">Luis Meier</author>
   <maintainer email="meierlui@students.zhaw.ch">Luis Meier</maintainer>

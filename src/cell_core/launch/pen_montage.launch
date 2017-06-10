@@ -1,11 +1,5 @@
 <launch>
-
-  <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
-  <include file="$(find cell_irb120_moveit_config)/launch/planning_context.launch">
-    <arg name="load_robot_description" value="true"/>
-  </include>
-
-  <include file="$(find cell_irb120_moveit_config)/launch/demo.launch"/>  
+  <include file="$(find cell_moveit_config)/launch/demo.launch"/>  
 
   <node name="pen_montage" pkg="cell_core" type="pen_montage" respawn="false" output="screen" launch-prefix="xterm -e gdb --args" >
   </node>

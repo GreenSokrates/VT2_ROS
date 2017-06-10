@@ -4,7 +4,7 @@
 
       <link name="unterbau_base" />
 
-      <link name="unterbau_body">
+     <link name="unterbau_body">
          <visual>
             <origin rpy="0 0 1.57" xyz="-1.075 0.023 -0.021" />
             <geometry>
@@ -14,7 +14,7 @@
          <collision>
             <origin rpy="0 0 1.57" xyz="-1.075 0.023 -0.021" />
             <geometry>
-               <mesh filename="package://cell_support/meshes/Mittelteil_noRobot.stl" scale="0.001 0.001 0.001"/>
+               <mesh filename="package://cell_support/meshes/Mittelteil_final_collision.stl" scale="0.001 0.001 0.001"/>
             </geometry>
          </collision>
       </link>
