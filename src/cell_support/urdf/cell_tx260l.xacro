@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<robot name="cell_tx260l" xmlns:xacro="https://ros.org/wiki/xacro">
+ <xacro:include filename="$(find cell_support)/urdf/tx260l_gripper.xacro"/>
+ <xacro:include filename="$(find cell_support)/urdf/unterbau.xacro" />
+
+  <link name="root_link"/>
+
+  <!-- init robots -->
+  <xacro:tx260l_gripper />
+  <xacro:unterbau prefix=""/>
+
+  <!-- Joints -->
+  <joint name="root_to_tx260l" type="fixed">
+    <parent link="root_link" />
+    <child link="tx260l_base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  
+  <joint name="root_to_unterbau" type="fixed">
+    <parent link="root_link" />
+    <child link="unterbau_base"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint> 
+
+</robot>
