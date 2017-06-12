@@ -113,3 +113,19 @@ add_dependencies(collisionObject ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EX
 target_link_libraries(collisionObject
   ${catkin_LIBRARIES}
 )
+
+add_executable(cell_pub
+  src/cell_pub.cpp
+)
+add_dependencies(cell_pub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(cell_pub
+  ${catkin_LIBRARIES}
+)
+
+add_executable(cell_sub
+  src/cell_sup.cpp
+)
+add_dependencies(cell_sub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(cell_sub
+  ${catkin_LIBRARIES}
+)

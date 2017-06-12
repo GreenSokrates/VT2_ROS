@@ -1,5 +1,5 @@
 <launch>
-  <include file="$(find cell_moveit_config)/launch/demo.launch"/>  
+  <include file="$(find cell_irb120_moveit_config)/launch/demo.launch"/>  
 
   <node name="pen_montage" pkg="cell_core" type="pen_montage" respawn="false" output="screen" launch-prefix="xterm -e gdb --args" >
   </node>
