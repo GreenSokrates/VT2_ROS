@@ -3,10 +3,12 @@
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
 #include <moveit_msgs/DisplayTrajectory.h>
 #include <cell_core/collisionObject.h>
+#include <cell_core/pen_montage.h>
+
+#include "std_msgs/String.h"
 
 using namespace ros;
 using namespace moveit;
-static bool setup = 0;
 
 void moveToPoint(geometry_msgs::Pose &position, planning_interface::MoveGroupInterface::Plan &planer, planning_interface::MoveGroupInterface &grouper)
 {
@@ -45,108 +47,11 @@ void moveLinear(double x, double y, double z, planning_interface::MoveGroupInter
     group.setPlanningTime(10.0);
 }
 
-int main(int argc, char **argv)
+void penMontage()
 {
-#include <moveit/planning_scene_interface/planning_scene_interface.h>
-    init(argc, argv, "pen_montage");
-    NodeHandle n;
-
-    // Defining Positions and Offsets
-    geometry_msgs::Pose montage;
-    montage.position.x = -0.040 + 0.05;
-    montage.position.y = 0.603;
-    montage.position.z = 0.114 + 0.05;
-    montage.orientation.w = -0.271;
-    montage.orientation.x = 0.271;
-    montage.orientation.y = 0.653;
-    montage.orientation.z = 0.653;
-
-    geometry_msgs::Pose montageRHull;
-    montageRHull.position.x = -0.166;
-    montageRHull.position.y = 0.590;
-    montageRHull.position.z = 0.188;
-    montageRHull.orientation.w = 0.183;
-    montageRHull.orientation.x = 0.008;
-    montageRHull.orientation.y = -0.677;
-    montageRHull.orientation.z = -0.713;
-
-    geometry_msgs::Pose pickTool;
-    pickTool.position.x = -0.22;
-    pickTool.position.y = 0.507;
-    pickTool.position.z = 0.083;
-    pickTool.orientation.w = -0.271;
-    pickTool.orientation.x = 0.653;
-    pickTool.orientation.y = 0.653;
-    pickTool.orientation.z = -0.271;
-
-    geometry_msgs::Pose pickBase;
-    pickBase.position.x = 0.148;
-    pickBase.position.y = 0.260;
-    pickBase.position.z = 0.100;
-    pickBase.orientation.w = 0.0;
-    pickBase.orientation.x = 1.0;
-    pickBase.orientation.y = 0.0;
-    pickBase.orientation.z = 0.0;
-
-    geometry_msgs::Pose pickFHull = pickBase;
-    pickFHull.position.x += 0.0270;
-    pickFHull.position.y += 0.0275;
-    pickFHull.position.z += 0.0000;
-
-    geometry_msgs::Pose pickRHull = pickBase;
-    pickRHull.position.x += 0.047;
-    pickRHull.position.y += 0.129;
-    pickRHull.position.z += 0.000;
-    pickRHull.orientation.w = 0.0;
-    pickRHull.orientation.x = 0.707;
-    pickRHull.orientation.y = 0.707;
-    pickRHull.orientation.z = 0.0;
-
-    geometry_msgs::Pose pickInk = pickBase;
-    pickInk.position.x += 0.0690;
-    pickInk.position.y += 0.0725;
-    pickInk.position.z += 0.0000;
-
-    geometry_msgs::Pose pickSpring = pickBase;
-    pickSpring.position.x += 0.0203;
-    pickSpring.position.y += 0.167;
-    pickSpring.position.z += 0.000;
-    pickSpring.orientation.w = 0.0;
-    pickSpring.orientation.x = 0.707;
-    pickSpring.orientation.y = 0.707;
-    pickSpring.orientation.z = 0.0;
-
-    geometry_msgs::Pose pickArr = pickBase;
-    pickArr.position.x += 0.0705;
-    pickArr.position.y += 0.172;
-    pickArr.position.z += 0.000;
-    pickArr.orientation.w = 0.0;
-    pickArr.orientation.x = 0.707;
-    pickArr.orientation.y = 0.707;
-    pickArr.orientation.z = 0.0;
-
-    // Setup of MoveGroupInterface and PlanningSceneInterface
-    planning_interface::MoveGroupInterface group("gripper_eef");
-    planning_interface::PlanningSceneInterface planning_scene_interface;
-    group.setPlannerId("LBKPIECE");
-
-    // CALL COLLISION
-    /*if (!setup)
-    {
-        collisionObjectAdder coAdder;
-        coAdder.addCell(planning_scene_interface, group);
-        sleep(10.0);
-        setup = 1;
-    }*/
-
-    // Construction of planner
-    planning_interface::MoveGroupInterface::Plan my_plan;
-
-    /**********************
-    ***Start of Montage ***
-    ***********************/
-    AsyncSpinner spinner(1);
-    spinner.start();
+    moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+    moveit::planning_interface::MoveGroupInterface group("gripper_eef");
+    moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
 
     moveToPoint(pickFHull, my_plan, group);
     moveLinear(0.0, 0.0, -0.07, my_plan, group);
@@ -177,7 +82,108 @@ int main(int argc, char **argv)
     ROS_INFO("pickRHull");
     moveToPoint(montageRHull, my_plan, group);
     ROS_INFO("montageRHull");
+}
 
+void definePositions()
+{
+    montage.position.x = -0.040 + 0.05;
+    montage.position.y = 0.603;
+    montage.position.z = 0.114 + 0.05;
+    montage.orientation.w = -0.271;
+    montage.orientation.x = 0.271;
+    montage.orientation.y = 0.653;
+    montage.orientation.z = 0.653;
+
+    montageRHull.position.x = -0.166;
+    montageRHull.position.y = 0.590;
+    montageRHull.position.z = 0.188;
+    montageRHull.orientation.w = 0.183;
+    montageRHull.orientation.x = 0.008;
+    montageRHull.orientation.y = -0.677;
+    montageRHull.orientation.z = -0.713;
+
+    pickTool.position.x = -0.22;
+    pickTool.position.y = 0.507;
+    pickTool.position.z = 0.083;
+    pickTool.orientation.w = -0.271;
+    pickTool.orientation.x = 0.653;
+    pickTool.orientation.y = 0.653;
+    pickTool.orientation.z = -0.271;
+
+    pickBase.position.x = 0.148;
+    pickBase.position.y = 0.260;
+    pickBase.position.z = 0.100;
+    pickBase.orientation.w = 0.0;
+    pickBase.orientation.x = 1.0;
+    pickBase.orientation.y = 0.0;
+    pickBase.orientation.z = 0.0;
+
+    pickFHull = pickBase;
+    pickFHull.position.x += 0.0270;
+    pickFHull.position.y += 0.0275;
+    pickFHull.position.z += 0.0000;
+
+    pickRHull = pickBase;
+    pickRHull.position.x += 0.047;
+    pickRHull.position.y += 0.129;
+    pickRHull.position.z += 0.000;
+    pickRHull.orientation.w = 0.0;
+    pickRHull.orientation.x = 0.707;
+    pickRHull.orientation.y = 0.707;
+    pickRHull.orientation.z = 0.0;
+
+    pickInk = pickBase;
+    pickInk.position.x += 0.0690;
+    pickInk.position.y += 0.0725;
+    pickInk.position.z += 0.0000;
+
+    pickSpring = pickBase;
+    pickSpring.position.x += 0.0203;
+    pickSpring.position.y += 0.167;
+    pickSpring.position.z += 0.000;
+    pickSpring.orientation.w = 0.0;
+    pickSpring.orientation.x = 0.707;
+    pickSpring.orientation.y = 0.707;
+    pickSpring.orientation.z = 0.0;
+
+    pickArr = pickBase;
+    pickArr.position.x += 0.0705;
+    pickArr.position.y += 0.172;
+    pickArr.position.z += 0.000;
+    pickArr.orientation.w = 0.0;
+    pickArr.orientation.x = 0.707;
+    pickArr.orientation.y = 0.707;
+    pickArr.orientation.z = 0.0;
+}
+
+void subCallback(const std_msgs::String::ConstPtr &msg)
+{
+    ROS_INFO("I heard: [%s]", msg->data.c_str());
+    penMontage();
+}
+
+int main(int argc, char **argv)
+{
+    ros::init(argc, argv, "pen_montage");
+    ros::NodeHandle n;
+
+    definePositions();
+    //penMontage();
+
+    // Setup of Subscriper
+    ros::Subscriber sub = n.subscribe("start_montage", 1000, subCallback);
+    /*
+    // Setup of MoveGroupInterface and PlanningSceneInterface
+    planning_interface::MoveGroupInterface group("gripper_eef");
+    planning_interface::PlanningSceneInterface planning_scene_interface;
+    group.setPlannerId("LBKPIECE");
+
+    // Construction of planner
+    planning_interface::MoveGroupInterface::Plan my_plan; */
+
+    ros::AsyncSpinner spinner(2);
+    spinner.start();
+    ros::waitForShutdown();
     // spinner.stop();
     return (0);
 }

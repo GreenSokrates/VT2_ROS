@@ -196,20 +196,3 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-
-
-add_executable(asd_pub
-  src/asd_pub.cpp
-)
-add_dependencies(asd_pub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(asd_pub
-  ${catkin_LIBRARIES}
-)
-
-add_executable(asd_sub
-  src/asd_sub.cpp
-)
-add_dependencies(asd_sub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(asd_sub
-  ${catkin_LIBRARIES}
-)

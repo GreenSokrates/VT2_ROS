@@ -88,13 +88,3 @@ void collisionObjectAdder::addCollisionObject()
     ROS_INFO("Collision object published");
     return;
 }
-
-/*int collisionObjectAdder::main(int argc, char **argv)
-{
-    ros::init(argc, argv, "add_collision_object");
-    std::cout << "Initialized..." << std::endl;
-
-    ros::spin();
-
-    return 0;
-}*/

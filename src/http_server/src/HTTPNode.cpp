@@ -1,15 +1,29 @@
 #include <ros/ros.h>
 #include <http_server/HTTPServer.h>
-
-using namespace ros;
+#include "std_msgs/String.h"
 
 int main(int argc, char **argv)
 {
-    init(argc, argv, "HTTP_server");
-    NodeHandle nh;
+    ros::init(argc, argv, "HTTP_server");
+    ros::NodeHandle nh;
     HTTPServer *httpServer = new HTTPServer(8080);
     httpServer->start();
-    AsyncSpinner spinner(0);
 
-    spin(); //Keeps node alive
+    ros::Publisher http_pub = nh.advertise<std_msgs::String>("start_montage", 1000);
+    ros::Rate loop_rate(5);
+
+    int count = 0;
+    while (ros::ok())
+    {
+        std_msgs::String msg;
+        std::stringstream ss;
+        ss << "Do some Work" << count;
+        msg.data = ss.str();
+
+        http_pub.publish(msg);
+        ros::spinOnce();
+        loop_rate.sleep();
+        ++count;
+    }
+    return 0;
 }

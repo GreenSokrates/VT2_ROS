@@ -18,7 +18,6 @@ public:
   collisionObjectAdder();
   void addCell(moveit::planning_interface::PlanningSceneInterface &psi, moveit::planning_interface::MoveGroupInterface &grouper);
   void addCollisionObject();
-  //int collisionObjectAdder::main(int argc, char **argv);
 };
 
 #endif /*COLLISIONOBJECTADDER_H_ */

@@ -222,3 +222,11 @@ bool robotiq_ethercat::EtherCatManager::initSoem(const std::string &ifname)
     ROS_INFO("Finished configuration successfully");
     return true;
 }
+
+int main(int argc, char **argv)
+{
+    ros::init(argc, argv, "cell_ethercat");
+    ros::NodeHandle n;
+
+    ros::spin();
+}

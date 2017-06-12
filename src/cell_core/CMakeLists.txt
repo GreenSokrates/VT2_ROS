@@ -49,6 +49,7 @@ set( CMAKE_CXX_FLAGS_RELEASE "-O3" )
 ###########
 
 include_directories(
+  include
   SYSTEM 
     ${Boost_INCLUDE_DIR} 
     ${EIGEN_INCLUDE_DIRS}
@@ -71,30 +72,12 @@ install(DIRECTORY include/${PROJECT_NAME}/
 ##################
 ## Execuatables ##
 ##################
-add_executable(${PROJECT_NAME}_node
-  src/planning.cpp
-)
-target_link_libraries(${PROJECT_NAME}_node
-  ${catkin_LIBRARIES}
-  ${Boost_LIBRARIES}
-)
-
-add_executable(simple_planning
-  src/simple_planning.cpp
-)
-add_dependencies(simple_planning ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(simple_planning
-  ${catkin_LIBRARIES}
-)
-
-add_executable(planning_all
-  src/planning_all.cpp
-  src/collisionObject.cpp
-)
-add_dependencies(planning_all ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(planning_all
-  ${catkin_LIBRARIES}
-)
+# add_executable(${PROJECT_NAME}_node
+#   )
+# target_link_libraries(${PROJECT_NAME}_node
+#   ${catkin_LIBRARIES}
+#   ${Boost_LIBRARIES}
+# )
 
 add_executable(pen_montage
   src/pen_montage.cpp
