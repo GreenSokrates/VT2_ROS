@@ -6,6 +6,7 @@
 #include <cell_core/pen_montage.h>
 
 #include "std_msgs/String.h"
+#include <http_server/http_msg.h>
 
 using namespace ros;
 using namespace moveit;
@@ -47,12 +48,8 @@ void moveLinear(double x, double y, double z, planning_interface::MoveGroupInter
     group.setPlanningTime(10.0);
 }
 
-void penMontage()
+void penMontage(moveit::planning_interface::MoveGroupInterface::Plan &my_plan, moveit::planning_interface::MoveGroupInterface &group)
 {
-    moveit::planning_interface::MoveGroupInterface::Plan my_plan;
-    moveit::planning_interface::MoveGroupInterface group("gripper_eef");
-    moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
-
     moveToPoint(pickFHull, my_plan, group);
     moveLinear(0.0, 0.0, -0.07, my_plan, group);
     moveToPoint(montage, my_plan, group);
@@ -156,10 +153,13 @@ void definePositions()
     pickArr.orientation.z = 0.0;
 }
 
-void subCallback(const std_msgs::String::ConstPtr &msg)
+void subCallback(const http_server::http_msg &msg)
 {
-    ROS_INFO("I heard: [%s]", msg->data.c_str());
-    penMontage();
+
+    if (msg.task == 1)
+    {
+        penMontage(my_plan, group);
+    }
 }
 
 int main(int argc, char **argv)
@@ -171,15 +171,16 @@ int main(int argc, char **argv)
     //penMontage();
 
     // Setup of Subscriper
-    ros::Subscriber sub = n.subscribe("start_montage", 1000, subCallback);
-    /*
+    ros::Subscriber sub = n.subscribe("http_msg", 1000, subCallback);
+    //ros::Publisher pub = n.advertise<std_msgs::std>("plant_busy", 1000);
+
     // Setup of MoveGroupInterface and PlanningSceneInterface
-    planning_interface::MoveGroupInterface group("gripper_eef");
-    planning_interface::PlanningSceneInterface planning_scene_interface;
+    moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
+    moveit::planning_interface::MoveGroupInterface group("gripper_eef");
     group.setPlannerId("LBKPIECE");
 
     // Construction of planner
-    planning_interface::MoveGroupInterface::Plan my_plan; */
+    moveit::planning_interface::MoveGroupInterface::Plan my_plan;
 
     ros::AsyncSpinner spinner(2);
     spinner.start();
