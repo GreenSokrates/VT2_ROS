@@ -110,9 +110,9 @@ add_library(collisionObject
 )
 
 ## Declare a C++ executable
-add_executable(pen_montage
-  src/pen_montage.cpp
-)
+add_executable(penAssembly
+  src/penAssembly.cpp)
+
 
 add_executable(cell_pub
   src/cell_pub.cpp
@@ -127,12 +127,8 @@ add_executable(cell_sub
 add_dependencies(collisionObject ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(cell_pub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(cell_sub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(pen_montage ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(collisionObject
-  ${catkin_LIBRARIES}
-)
 
 target_link_libraries(cell_pub
   ${catkin_LIBRARIES}
@@ -140,10 +136,4 @@ target_link_libraries(cell_pub
 
 target_link_libraries(cell_sub
   ${catkin_LIBRARIES}
-)
-
-target_link_libraries(pen_montage
-  ${catkin_LIBRARIES}
-  collisionObject
-
 )
