@@ -119,7 +119,7 @@ add_executable(cell_pub
 )
 
 add_executable(cell_sub
-  src/cell_sup.cpp
+  src/cell_sub.cpp
 )
 
 ## Add cmake target dependencies of the executable

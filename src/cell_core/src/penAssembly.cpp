@@ -6,16 +6,12 @@
 #include <cell_core/penAssembly.h>
 
 using namespace ros;
-using namespace moveit;
 
-penAssembly::penAssembly(int argc, char **argv)
+penAssembly::penAssembly()
 {
-    ros::init(argc, argv, "penAssembly");
-    ros::NodeHandel n;
-
-    moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
+    /*moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
     moveit::planning_interface::MoveGroupInterface group("gripper_eef");
-    moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+    moveit::planning_interface::MoveGroupInterface::Plan my_plan;*/
     //group.setPlannerID("LBKPIECE");
 
     geometry_msgs::Pose montage;
@@ -135,7 +131,8 @@ void penAssembly::MoveLinear(double x, double y, double z, moveit::planning_inte
 
 void penAssembly::AssemblePen()
 {
-    penAssembly::MoveToPose(pickFHull, my_plan, group); /*
+    penAssembly::MoveToPose(pickFHull, my_plan, group);
+    /*
     MoveLinear(0.0, 0.0, -0.07, my_plan, group);
     MoveToPose(montage, my_plan, group);
     MoveLinear(-0.05, 0.0, -0.05, my_plan, group);

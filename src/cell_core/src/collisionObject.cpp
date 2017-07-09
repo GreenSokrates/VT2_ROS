@@ -1,9 +1,4 @@
-#include <ros/ros.h>
 #include <moveit_msgs/CollisionObject.h>
-#include <moveit_msgs/PlanningScene.h>
-#include <moveit/planning_scene_interface/planning_scene_interface.h>
-#include <moveit/move_group_interface/move_group_interface.h>
-#include <geometric_shapes/shape_operations.h>
 #include <cell_core/collisionObject.h>
 
 using namespace std;

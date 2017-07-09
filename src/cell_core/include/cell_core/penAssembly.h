@@ -8,19 +8,12 @@
 #include <cell_core/collisionObject.h>
 
 using namespace ros;
-class planning_scene_interface;
-class moveit::planning_interface::MoveGroupInterface;
-struct my_plan;
-
-//moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
-//moveit::planning_interface::MoveGroupInterface group("gripper_eef");
-//moveit::planning_interface::MoveGroupInterface::Plan my_plan;
 
 class penAssembly
 {
   public:
-	penAssembly(int argc, char **argv); // Constructor
-	virtual ~penAssembly();				// Destructor
+	penAssembly();			// Constructor
+	virtual ~penAssembly(); // Destructor
 
 	void MoveToPose(geometry_msgs::Pose &,
 					moveit::planning_interface::MoveGroupInterface::Plan &,
@@ -34,7 +27,6 @@ class penAssembly
 
 	void AssemblePen(); // Starts the Assembly of one Pen
 
-  private:
 	static geometry_msgs::Pose montage;
 	static geometry_msgs::Pose montageRHull;
 	static geometry_msgs::Pose pickTool;
@@ -44,6 +36,14 @@ class penAssembly
 	static geometry_msgs::Pose pickInk;
 	static geometry_msgs::Pose pickSpring;
 	static geometry_msgs::Pose pickArr;
+
+	moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
+	moveit::planning_interface::MoveGroupInterface group("gripper_eef");
+	moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+
+	/*class planning_scene_interface;
+	class moveit::planning_interface::MoveGroupInterface group("gripper_eef");
+	struct my_plan;*/
 };
 
 #endif
