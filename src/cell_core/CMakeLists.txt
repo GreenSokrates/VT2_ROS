@@ -127,6 +127,7 @@ add_executable(cell_sub
 add_dependencies(collisionObject ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(cell_pub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(cell_sub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(penAssembly ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 
@@ -135,5 +136,8 @@ target_link_libraries(cell_pub
 )
 
 target_link_libraries(cell_sub
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(penAssembly
   ${catkin_LIBRARIES}
 )

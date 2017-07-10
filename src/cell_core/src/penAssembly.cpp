@@ -1,18 +1,97 @@
-#include <ros/ros.h>
-#include <moveit/move_group_interface/move_group_interface.h>
-#include <moveit/planning_scene_interface/planning_scene_interface.h>
-#include <moveit_msgs/DisplayTrajectory.h>
-#include <cell_core/collisionObject.h>
 #include <cell_core/penAssembly.h>
 
 using namespace ros;
+using namespace moveit;
 
-penAssembly::penAssembly()
+void MoveToPose(geometry_msgs::Pose &position, moveit::planning_interface::MoveGroupInterface::Plan &planer, moveit::planning_interface::MoveGroupInterface &grouper)
 {
-    /*moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
+    grouper.setPoseTarget(position);
+    bool success = grouper.plan(planer);
+    if (success)
+        grouper.move();
+    return;
+}
+
+void MoveLinear(double x, double y, double z, moveit::planning_interface::MoveGroupInterface::Plan &planer, moveit::planning_interface::MoveGroupInterface &group)
+{
+    std::vector<geometry_msgs::Pose> waypoints_tool;
+    geometry_msgs::PoseStamped temp_montage = group.getCurrentPose(group.getEndEffectorLink());
+    geometry_msgs::Pose test_pose = temp_montage.pose;
+
+    test_pose.position.x += x;
+    test_pose.position.y += y;
+    test_pose.position.z += z;
+    waypoints_tool.push_back(test_pose);
+    test_pose.position.x -= x;
+    test_pose.position.y -= y;
+    test_pose.position.z -= z;
+    waypoints_tool.push_back(test_pose);
+
+    moveit_msgs::RobotTrajectory trajectory_msg;
+    group.setPlanningTime(30.0);
+    double fraction = group.computeCartesianPath(waypoints_tool,
+                                                 0.01, //eef_step
+                                                 0.0,  // jump_threshold
+                                                 trajectory_msg, false);
+    planer.trajectory_ = trajectory_msg;
+    ROS_INFO("Visualizing Cartesian Path (%2f%% acheived)", fraction * 100.0);
+    sleep(5.0);
+    group.execute(planer);
+    group.setPlanningTime(10.0);
+}
+
+void AssemblePen(moveit::planning_interface::MoveGroupInterface::Plan &my_plan, moveit::planning_interface::MoveGroupInterface &group)
+{
+    MoveToPose(pickFHull, my_plan, group);
+    MoveLinear(0.0, 0.0, -0.07, my_plan, group);
+    MoveToPose(montage, my_plan, group);
+    MoveLinear(-0.05, 0.0, -0.05, my_plan, group);
+    MoveToPose(pickTool, my_plan, group);
+    ROS_INFO("pickTool");
+    MoveToPose(montage, my_plan, group);
+    ROS_INFO("montage");
+    MoveToPose(pickSpring, my_plan, group);
+    MoveLinear(0.0, 0.0, -0.07, my_plan, group);
+    ROS_INFO("pickSpring");
+    MoveToPose(montage, my_plan, group);
+    ROS_INFO("montage");
+    MoveToPose(pickInk, my_plan, group);
+    MoveLinear(0.0, 0.0, -0.07, my_plan, group);
+    ROS_INFO("pickInk");
+    MoveToPose(montage, my_plan, group);
+    ROS_INFO("montage");
+    MoveToPose(pickArr, my_plan, group);
+    MoveLinear(0.0, 0.0, -0.07, my_plan, group);
+    ROS_INFO("pickArr");
+    MoveToPose(montage, my_plan, group);
+    ROS_INFO("montage");
+    // TODO: circMove
+    MoveToPose(pickRHull, my_plan, group);
+    MoveLinear(0.0, 0.0, -0.07, my_plan, group);
+    ROS_INFO("pickRHull");
+    MoveToPose(montageRHull, my_plan, group);
+    ROS_INFO("montageRHull");
+}
+
+void chatterCallback(const std_msgs::String::ConstPtr &msg)
+{
+    ROS_INFO("I heard: [%s]", msg->data.c_str());
+
+    /*
+    if message --> assemble pen function
+    set status to busy, then assemble one pen
+    AssemblePen(my_plan, group);
+    */
+}
+
+int main(int argc, char **argv)
+{
+    ros::init(argc, argv, "penAssembly");
+    ros::NodeHandle n;
+
+    moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
     moveit::planning_interface::MoveGroupInterface group("gripper_eef");
-    moveit::planning_interface::MoveGroupInterface::Plan my_plan;*/
-    //group.setPlannerID("LBKPIECE");
+    moveit::planning_interface::MoveGroupInterface::Plan my_plan;
 
     geometry_msgs::Pose montage;
     montage.position.x = -0.040 + 0.05;
@@ -86,106 +165,13 @@ penAssembly::penAssembly()
     pickArr.orientation.x = 0.0;
     pickArr.orientation.y = 0.0;
     pickArr.orientation.z = 0.707;
-}
 
-penAssembly::~penAssembly()
-{
-}
+    ros::Subscriber sub = n.subscribe("/http_msg/topics/push", 1000, chatterCallback);
+    ros::Publisher pub = n.advertise<std_msgs::String>("http_msg/topics/status", 1000);
 
-void penAssembly::MoveToPose(geometry_msgs::Pose &position, moveit::planning_interface::MoveGroupInterface::Plan &planer, moveit::planning_interface::MoveGroupInterface &grouper)
-{
-    grouper.setPoseTarget(position);
-    bool success = grouper.plan(planer);
-    if (success)
-        grouper.move();
-    return;
-}
-/*
-void penAssembly::MoveLinear(double x, double y, double z, moveit::planning_interface::MoveGroupInterface::Plan &planer, moveit::planning_interface::MoveGroupInterface &group)
-{
-    std::vector<geometry_msgs::Pose> waypoints_tool;
-    geometry_msgs::PoseStamped temp_montage = group.getCurrentPose(group.getEndEffectorLink());
-    geometry_msgs::Pose test_pose = temp_montage.pose;
-
-    test_pose.position.x += x;
-    test_pose.position.y += y;
-    test_pose.position.z += z;
-    waypoints_tool.push_back(test_pose);
-    test_pose.position.x -= x;
-    test_pose.position.y -= y;
-    test_pose.position.z -= z;
-    waypoints_tool.push_back(test_pose);
-
-    moveit_msgs::RobotTrajectory trajectory_msg;
-    group.setPlanningTime(30.0);
-    double fraction = group.computeCartesianPath(waypoints_tool,
-                                                 0.01, //eef_step
-                                                 0.0,  // jump_threshold
-                                                 trajectory_msg, false);
-    planer.trajectory_ = trajectory_msg;
-    ROS_INFO("Visualizing Cartesian Path (%2f%% acheived)", fraction * 100.0);
-    sleep(5.0);
-    group.execute(planer);
-    group.setPlanningTime(10.0);
-}*/
-
-void penAssembly::AssemblePen()
-{
-    penAssembly::MoveToPose(pickFHull, my_plan, group);
-    /*
-    MoveLinear(0.0, 0.0, -0.07, my_plan, group);
-    MoveToPose(montage, my_plan, group);
-    MoveLinear(-0.05, 0.0, -0.05, my_plan, group);
-    MoveToPose(pickTool, my_plan, group);
-    ROS_INFO("pickTool");
-    MoveToPose(montage, my_plan, group);
-    ROS_INFO("montage");
-    MoveToPose(pickSpring, my_plan, group);
-    MoveLinear(0.0, 0.0, -0.07, my_plan, group);
-    ROS_INFO("pickSpring");
-    MoveToPose(montage, my_plan, group);
-    ROS_INFO("montage");
-    MoveToPose(pickInk, my_plan, group);
-    MoveLinear(0.0, 0.0, -0.07, my_plan, group);
-    ROS_INFO("pickInk");
-    MoveToPose(montage, my_plan, group);
-    ROS_INFO("montage");
-    MoveToPose(pickArr, my_plan, group);
-    MoveLinear(0.0, 0.0, -0.07, my_plan, group);
-    ROS_INFO("pickArr");
-    MoveToPose(montage, my_plan, group);
-    ROS_INFO("montage");
-    // TODO: circMove
-    MoveToPose(pickRHull, my_plan, group);
-    MoveLinear(0.0, 0.0, -0.07, my_plan, group);
-    ROS_INFO("pickRHull");
-    MoveToPose(montageRHull, my_plan, group);
-    ROS_INFO("montageRHull"); */
-}
-/*
-int main(int argc, char **argv)
-{
-    ros::init(argc, argv, "pen_montage");
-    ros::NodeHandle n;
-
-    definePositions();
-    //penMontage();
-
-    // Setup of Subscriper
-    ros::Subscriber sub = n.subscribe("http_msg", 1000, subCallback);
-    //ros::Publisher pub = n.advertise<std_msgs::std>("plant_busy", 1000);
-
-    // Setup of MoveGroupInterface and PlanningSceneInterface
-    moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
-    moveit::planning_interface::MoveGroupInterface group("gripper_eef");
-    group.setPlannerId("LBKPIECE");
-
-    // Construction of planner
-    moveit::planning_interface::MoveGroupInterface::Plan my_plan;
-
-    ros::AsyncSpinner spinner(2);
+    ros::AsyncSpinner spinner(1);
     spinner.start();
     ros::waitForShutdown();
-    // spinner.stop();
+
     return (0);
-} */
+}

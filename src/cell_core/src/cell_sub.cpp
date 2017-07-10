@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
 	 * is the number of messages that will be buffered up before beginning to throw
 	 * away the oldest ones.
 	 */
-	ros::Subscriber sub = n.subscribe("/pen_montage/chatter", 1000, chatterCallback);
+	ros::Subscriber sub = n.subscribe("/cell_pub/chatter", 1000, chatterCallback);
 
 	/**
 	 * ros::spin() will enter a loop, pumping callbacks.  With this version, all

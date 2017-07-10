@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 	ros::init(argc, argv, "cell_pub");
 	ros::NodeHandle n;
 
-	ros::Publisher chatter_pub = n.advertise<std_msgs::String>("/pen_montage/chatter", 1000);
+	ros::Publisher chatter_pub = n.advertise<std_msgs::String>("/cell_pub/chatter", 1000);
 
 	ros::Rate loop_rate(10);
 
