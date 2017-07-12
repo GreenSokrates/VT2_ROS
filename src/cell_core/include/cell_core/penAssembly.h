@@ -7,6 +7,12 @@
 #include <moveit_msgs/DisplayTrajectory.h>
 #include <cell_core/collisionObject.h>
 #include "std_msgs/String.h"
+#include <ros/service.h>
+#include <cell_core/montage.h>
+
+class planning_scene_interface;
+class group;
+struct my_plan;
 
 geometry_msgs::Pose montage;
 geometry_msgs::Pose montageRHull;

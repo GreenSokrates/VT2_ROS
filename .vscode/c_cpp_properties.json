@@ -15,7 +15,8 @@
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
-            }
+            },
+            "intelliSenseMode": "clang-x64"
         },
         {
             "name": "Linux",
@@ -24,7 +25,8 @@
                 "/usr/include/c++/5",
                 "/usr/local/include",
                 "/usr/lib/clang/3.8.0/include",
-                "/usr/include"
+                "/usr/include",
+                "/opt/ros/kinetic/share"
             ],
             "defines": [],
             "browse": {
@@ -32,11 +34,13 @@
                     "/usr/include/c++/5",
                     "/usr/local/include",
                     "/usr/lib/clang/3.8.0/include",
-                    "/usr/include"
+                    "/usr/include",
+                    "/opt/ros/kinetic/share"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
-            }
+            },
+            "intelliSenseMode": "clang-x64"
         },
         {
             "name": "Win32",
@@ -54,7 +58,8 @@
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
-            }
+            },
+            "intelliSenseMode": "msvc-x64"
         }
     ]
 }

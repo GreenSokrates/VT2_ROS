@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(cell_core)
+
+## Add support for C++11
 add_definitions(-std=c++11)
 
 ## Find catkin macros and libraries
@@ -7,6 +9,8 @@ add_definitions(-std=c++11)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  std_msgs
+  message_generation
   geometry_msgs
   moveit_core
   moveit_ros_planning
@@ -14,6 +18,7 @@ find_package(catkin REQUIRED COMPONENTS
   pluginlib
   cmake_modules
   http_server
+  genmsg
 
 )
 
@@ -38,10 +43,10 @@ find_package(
 #)
 
 ## Generate services in the 'srv' folder
-#add_service_files(
-#  FILES
-#  examplefile.srv
-#)
+add_service_files(
+  FILES
+  montage.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -51,10 +56,10 @@ find_package(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-#generate_messages(
-#  DEPENDENCIES
-#  std_msgs
-#)
+generate_messages(
+  DEPENDENCIES
+   std_msgs
+)
 
 ###################################
 ## catkin specific configuration ##
@@ -72,6 +77,8 @@ catkin_package(
     moveit_core
     moveit_ros_planning_interface
     interactive_markers
+    message_runtime
+    geometry_msgs
     roscpp
 )
 
@@ -111,8 +118,8 @@ add_library(collisionObject
 
 ## Declare a C++ executable
 add_executable(penAssembly
-  src/penAssembly.cpp)
-
+  src/penAssembly.cpp
+)
 
 add_executable(cell_pub
   src/cell_pub.cpp

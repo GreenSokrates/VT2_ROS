@@ -3,16 +3,16 @@
 using namespace ros;
 using namespace moveit;
 
-void MoveToPose(geometry_msgs::Pose &position, moveit::planning_interface::MoveGroupInterface::Plan &planer, moveit::planning_interface::MoveGroupInterface &grouper)
+void MoveToPose(geometry_msgs::Pose &position)
 {
-    grouper.setPoseTarget(position);
-    bool success = grouper.plan(planer);
+    group.setPoseTarget(position);
+    bool success = group.plan(my_plan);
     if (success)
-        grouper.move();
+        group.move();
     return;
 }
 
-void MoveLinear(double x, double y, double z, moveit::planning_interface::MoveGroupInterface::Plan &planer, moveit::planning_interface::MoveGroupInterface &group)
+void MoveLinear(double x, double y, double z)
 {
     std::vector<geometry_msgs::Pose> waypoints_tool;
     geometry_msgs::PoseStamped temp_montage = group.getCurrentPose(group.getEndEffectorLink());
@@ -33,43 +33,43 @@ void MoveLinear(double x, double y, double z, moveit::planning_interface::MoveGr
                                                  0.01, //eef_step
                                                  0.0,  // jump_threshold
                                                  trajectory_msg, false);
-    planer.trajectory_ = trajectory_msg;
+    my_plan.trajectory_ = trajectory_msg;
     ROS_INFO("Visualizing Cartesian Path (%2f%% acheived)", fraction * 100.0);
     sleep(5.0);
-    group.execute(planer);
+    group.execute(my_plan);
     group.setPlanningTime(10.0);
 }
 
-void AssemblePen(moveit::planning_interface::MoveGroupInterface::Plan &my_plan, moveit::planning_interface::MoveGroupInterface &group)
+void AssemblePen()
 {
-    MoveToPose(pickFHull, my_plan, group);
-    MoveLinear(0.0, 0.0, -0.07, my_plan, group);
-    MoveToPose(montage, my_plan, group);
-    MoveLinear(-0.05, 0.0, -0.05, my_plan, group);
-    MoveToPose(pickTool, my_plan, group);
+    MoveToPose(pickFHull);
+    MoveLinear(0.0, 0.0, -0.07);
+    MoveToPose(montage);
+    MoveLinear(-0.05, 0.0, -0.05);
+    MoveToPose(pickTool);
     ROS_INFO("pickTool");
-    MoveToPose(montage, my_plan, group);
+    MoveToPose(montage);
     ROS_INFO("montage");
-    MoveToPose(pickSpring, my_plan, group);
-    MoveLinear(0.0, 0.0, -0.07, my_plan, group);
+    MoveToPose(pickSpring);
+    MoveLinear(0.0, 0.0, -0.07);
     ROS_INFO("pickSpring");
-    MoveToPose(montage, my_plan, group);
+    MoveToPose(montage);
     ROS_INFO("montage");
-    MoveToPose(pickInk, my_plan, group);
-    MoveLinear(0.0, 0.0, -0.07, my_plan, group);
+    MoveToPose(pickInk);
+    MoveLinear(0.0, 0.0, -0.07);
     ROS_INFO("pickInk");
-    MoveToPose(montage, my_plan, group);
+    MoveToPose(montage);
     ROS_INFO("montage");
-    MoveToPose(pickArr, my_plan, group);
-    MoveLinear(0.0, 0.0, -0.07, my_plan, group);
+    MoveToPose(pickArr);
+    MoveLinear(0.0, 0.0, -0.07);
     ROS_INFO("pickArr");
-    MoveToPose(montage, my_plan, group);
+    MoveToPose(montage);
     ROS_INFO("montage");
     // TODO: circMove
-    MoveToPose(pickRHull, my_plan, group);
-    MoveLinear(0.0, 0.0, -0.07, my_plan, group);
+    MoveToPose(pickRHull);
+    MoveLinear(0.0, 0.0, -0.07);
     ROS_INFO("pickRHull");
-    MoveToPose(montageRHull, my_plan, group);
+    MoveToPose(montageRHull);
     ROS_INFO("montageRHull");
 }
 
@@ -82,6 +82,20 @@ void chatterCallback(const std_msgs::String::ConstPtr &msg)
     set status to busy, then assemble one pen
     AssemblePen(my_plan, group);
     */
+}
+
+bool add(cell_core::montage::Request &req, cell_core::montage::Response &res)
+{
+    res.status = 1;
+    if (req.Ausgabestelle == 1)
+    {
+        AssemblePen();
+    }
+    else if (req.Ausgabestelle == 2)
+    {
+        AssemblePen();
+    }
+    return true;
 }
 
 int main(int argc, char **argv)
@@ -166,12 +180,14 @@ int main(int argc, char **argv)
     pickArr.orientation.y = 0.0;
     pickArr.orientation.z = 0.707;
 
+    ros::ServiceServer service = n.advertiseService("montage", &add);
+    /*
     ros::Subscriber sub = n.subscribe("/http_msg/topics/push", 1000, chatterCallback);
     ros::Publisher pub = n.advertise<std_msgs::String>("http_msg/topics/status", 1000);
-
+*/
     ros::AsyncSpinner spinner(1);
     spinner.start();
-    ros::waitForShutdown();
 
+    spinner.stop();
     return (0);
 }
