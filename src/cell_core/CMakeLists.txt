@@ -45,7 +45,7 @@ find_package(
 ## Generate services in the 'srv' folder
 add_service_files(
   FILES
-  montage.srv
+  montage_service.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -147,4 +147,5 @@ target_link_libraries(cell_sub
 )
 target_link_libraries(penAssembly
   ${catkin_LIBRARIES}
+  collisionObject
 )

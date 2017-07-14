@@ -8,12 +8,12 @@ collisionObjectAdder::collisionObjectAdder()
     add_collision_object_pub = nh.advertise<moveit_msgs::CollisionObject>("collision_object", 1000);
 }
 
-void collisionObjectAdder::addCell(moveit::planning_interface::PlanningSceneInterface &psi, moveit::planning_interface::MoveGroupInterface &grouper)
+void collisionObjectAdder::addCell()
 {
     // Generating Collision object from Mesh
     Eigen::Vector3d scaling_vector(0.001, 0.001, 0.001); // Scaling Vector
     moveit_msgs::CollisionObject co;
-    co.header.frame_id = grouper.getPlanningFrame();
+    co.header.frame_id = "base_link";
     co.id = "WorkCell";
     shapes::Mesh *m = shapes::createMeshFromResource("package://cell_support/meshes/Mittelteil_final.stl", scaling_vector);
     ROS_INFO("Mesh Loaded");

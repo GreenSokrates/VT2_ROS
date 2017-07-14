@@ -1,0 +1,14 @@
+{
+  "configurations": [
+
+    {
+      "command": "rosrun",
+      "debugSettings": "${command:debugSettings}",
+      "name": "",
+      "package": "cell_core",
+      "type": "ros",
+      "target": "penAssembly"
+    }
+  ],
+  "version": "0.1.0"
+}

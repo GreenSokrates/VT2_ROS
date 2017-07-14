@@ -10,18 +10,7 @@
 #include <ros/service.h>
 #include <cell_core/montage.h>
 
-class planning_scene_interface;
-class group;
-struct my_plan;
+boost::shared_ptr<moveit::planning_interface::MoveGroupInterface> group;
+//boost::shared_ptr<moveit::planning_interface::MoveGroupInterface::Plan> my_plan;
 
-geometry_msgs::Pose montage;
-geometry_msgs::Pose montageRHull;
-geometry_msgs::Pose pickTool;
-geometry_msgs::Pose pickBase;
-geometry_msgs::Pose pickFHull;
-geometry_msgs::Pose pickRHull;
-geometry_msgs::Pose pickInk;
-geometry_msgs::Pose pickSpring;
-geometry_msgs::Pose pickArr;
-
-#endif
+#endif /* PENASSEMBLY_H_ */
