@@ -122,11 +122,10 @@ void initPoses(double offset)
 
 bool montageCallback(cell_core::montage_service::Request &req, cell_core::montage_service::Response &res)
 {
-    if (req.Ausgabestelle == 1 && req.Ausgabestelle == 2)
-    {
         initPoses(req.xOffset);
+        ROS_INFO("Startet Service");
         moveit::planning_interface::MoveGroupInterface::Plan my_plan;
-        
+
         MoveToPose(pickFHull, my_plan);
         MoveLinear(0.0, 0.0, -0.07, my_plan);
         MoveToPose(montage, my_plan);
@@ -164,8 +163,9 @@ bool montageCallback(cell_core::montage_service::Request &req, cell_core::montag
         MoveToPose(Ausgabe2, my_plan);
     }
     MoveToPose(Home, my_plan);*/
+        res.status = 11;
         return true;
-    }
+
 }
 
 int main(int argc, char **argv)
@@ -194,6 +194,7 @@ int main(int argc, char **argv)
     my_plan = new (moveit::planning_interface::MoveGroupInterface::Plan);
 */
     ros::ServiceServer service = nh.advertiseService("montage_service", montageCallback);
+    ROS_INFO("Montage Service rdy!");
 
     ros::waitForShutdown();
 }
