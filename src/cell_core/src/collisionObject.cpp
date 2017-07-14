@@ -15,7 +15,7 @@ void collisionObjectAdder::addCell()
     moveit_msgs::CollisionObject co;
     co.header.frame_id = "base_link";
     co.id = "WorkCell";
-    shapes::Mesh *m = shapes::createMeshFromResource("package://cell_support/meshes/Mittelteil_final.stl", scaling_vector);
+    shapes::Mesh *m = shapes::createMeshFromResource("package://cell_support/meshes/Mittelteil_noRobot.stl", scaling_vector);
     ROS_INFO("Mesh Loaded");
 
     shape_msgs::Mesh mesh;

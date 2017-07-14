@@ -3,7 +3,7 @@
  <xacro:include filename="$(find cell_support)/urdf/irb120_gripper.xacro"/>
  <xacro:include filename="$(find cell_support)/urdf/unterbau.xacro" />
 
-  <link name="root_link"/>
+  <link name="world"/>
 
   <!-- init robots -->
   <xacro:irb120_gripper />
@@ -11,13 +11,13 @@
 
   <!-- Joints -->
   <joint name="root_to_irb120" type="fixed">
-    <parent link="root_link" />
+    <parent link="world" />
     <child link="irb120_base_link"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
   
   <joint name="root_to_unterbau" type="fixed">
-    <parent link="root_link" />
+    <parent link="world" />
     <child link="unterbau_base"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint> 

@@ -10,6 +10,7 @@ geometry_msgs::Pose pickRHull;
 geometry_msgs::Pose pickInk;
 geometry_msgs::Pose pickSpring;
 geometry_msgs::Pose pickArr;
+bool busy = false;
 
 void MoveLinear(double x, double y, double z, moveit::planning_interface::MoveGroupInterface::Plan &plan)
 {
@@ -122,6 +123,10 @@ void initPoses(double offset)
 
 bool montageCallback(cell_core::montage_service::Request &req, cell_core::montage_service::Response &res)
 {
+    if (!busy)
+    {
+        busy = true;
+
         initPoses(req.xOffset);
         ROS_INFO("Startet Service");
         moveit::planning_interface::MoveGroupInterface::Plan my_plan;
@@ -164,19 +169,25 @@ bool montageCallback(cell_core::montage_service::Request &req, cell_core::montag
     }
     MoveToPose(Home, my_plan);*/
         res.status = 11;
+        busy = false;
         return true;
-
+    }
+    else
+    {
+        ROS_INFO("Working atm");
+        return 1;
+    }
 }
 
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "penAssembly");
     ros::NodeHandle nh;
-    ros::AsyncSpinner spinner(2);
+    ros::AsyncSpinner spinner(0);
 
     spinner.start();
 
-    group.reset(new moveit::planning_interface::MoveGroupInterface("gripper_eef"));
+    group.reset(new moveit::planning_interface::MoveGroupInterface(argv[1]));
     group->setPoseReferenceFrame("/base_link");
     group->setPlannerId("RRTConnectkConfigDefault");
     group->setPlanningTime(2);
