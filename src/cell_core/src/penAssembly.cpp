@@ -120,7 +120,7 @@ void initPoses(double offset)
     pickArr.orientation.z = 0.707;
 }
 
-bool montageCallback(cell_core::montage::Request &req, cell_core::montage::Response &res)
+bool montageCallback(cell_core::montage_service::Request &req, cell_core::montage_service::Response &res)
 {
     if (req.Ausgabestelle == 1 && req.Ausgabestelle == 2)
     {
@@ -172,7 +172,7 @@ int main(int argc, char **argv)
 {
     ros::init(argc, argv, "penAssembly");
     ros::NodeHandle nh;
-    ros::AsyncSpinner spinner(0);
+    ros::AsyncSpinner spinner(2);
 
     spinner.start();
 
