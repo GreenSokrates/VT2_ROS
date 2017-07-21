@@ -1,38 +1,28 @@
-#include <ros/ros.h>
-#include <http_server/HTTPServer.h>
-#include "std_msgs/String.h"
-#include <http_server/http_msg.h>
+#include <http_server/HTTPNode.h>
 
-void chatterCallback(const std_msgs::String::ConstPtr &msg)
+
+void statusCallback(const cell_core::status_msg::ConstPtr &msg)
 {
-    ROS_INFO("I heard: [%s]", msg->data.c_str());
+    ROS_INFO("HALLO");
 }
 
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "HTTP_server");
     ros::NodeHandle nh;
+
     HTTPServer *httpServer = new HTTPServer(8080);
     httpServer->start();
+    httpServer->add("montage", new HTTPScript_montage());
+    httpServer->add("status", new HTTPScript_status());
 
-    ros::Publisher http_pub = nh.advertise<http_server::http_msg>("http_msg/topics/push", 1000);
-    ros::Rate loop_rate(5);
+    ros::Subscriber sub = nh.subscribe("status_chatter", 1000, statusCallback);
 
-    ros::Subscriber sub = nh.subscribe("/http_msg/topics/status", 1000, chatterCallback);
+    ros::ServiceClient client = nh.serviceClient<cell_core::montage_service>("montage_service");
+    clientPtr = &client;
+    ROS_INFO("Http-Server is running!");
 
-    int count = 0;
-    while (ros::ok())
-    {
-        http_server::http_msg msg;
-        msg.header.stamp = ros::Time::now();
-        msg.task = 1;
-        msg.x = 0.0;
-        msg.y = 0.0;
+    ros::spin();
 
-        http_pub.publish(msg);
-        ros::spinOnce();
-        loop_rate.sleep();
-        ++count;
-    }
     return 0;
 }

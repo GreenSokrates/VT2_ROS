@@ -9,6 +9,7 @@
 #include "std_msgs/String.h"
 #include <ros/service.h>
 #include <cell_core/montage_service.h>
+#include <cell_core/status_msg.h>
 
 boost::shared_ptr<moveit::planning_interface::MoveGroupInterface> group;
 //boost::shared_ptr<moveit::planning_interface::MoveGroupInterface::Plan> my_plan;

@@ -1,5 +1,5 @@
 #request
-float64 xOffset
+float64 Offset
 int64 Ausgabestelle
 ---
 #response

@@ -5,18 +5,20 @@
                 "databaseFilename": "",
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "/home/luis/VT2/catkin_ws/devel/include",
+                    "/home/controller/catkin_ws/devel/include",
                     "/opt/ros/kinetic/include",
-                    "/usr/include"
+                    "/usr/include",
+                    "${workspaceRoot}"
                 ]
             },
             "includePath": [
-                "/home/luis/VT2/catkin_ws/devel/include",
+                "/home/controller/catkin_ws/devel/include",
                 "/opt/ros/kinetic/include",
                 "/usr/include"
             ],
             "name": "Linux",
             "intelliSenseMode": "clang-x64"
         }
-    ]
+    ],
+    "version": 2
 }

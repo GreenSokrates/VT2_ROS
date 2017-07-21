@@ -37,8 +37,6 @@
   <build_depend>moveit_ros_planning_interface</build_depend>
   <run_depend>moveit_ros_planning_interface</run_depend>
   <run_depend>interactive_markers</run_depend>
-  <build_depend>http_server</build_depend>
-  <run_depend>http_server</run_depend>
   <build_depend>message_generation</build_depend>
   <run_depend>message_runtime</run_depend>
   <build_depend>geometry_msgs</build_depend>

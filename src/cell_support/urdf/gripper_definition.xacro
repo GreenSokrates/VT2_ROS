@@ -2,8 +2,8 @@
 <robot xmlns:xacro="https://ros.org/wiki/xacro">
   <xacro:macro name="gripper_definition" params="prefix">
 
-    <link name="${prefix}gripper_tool">
-          <visual>
+    <link name="${prefix}grasping_frame">
+      <visual>
         <geometry>
           <sphere radius="0.005" />
         </geometry>
@@ -11,7 +11,7 @@
           <color rgba="1 1 1 0.5" />
         </material>
       </visual>
-      </link>
+    </link>
     
     <link name="${prefix}gripper_body">
       <visual>
@@ -58,7 +58,7 @@
 
     <joint name="body_to_tool" type="fixed">
       <parent link="${prefix}gripper_body" />
-      <child link="${prefix}gripper_tool" />
+      <child link="${prefix}grasping_frame" />
       <origin xyz="0 0 0.155" rpy="0 0 0" />
     </joint>
 

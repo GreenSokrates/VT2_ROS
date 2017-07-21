@@ -17,7 +17,6 @@ find_package(catkin REQUIRED COMPONENTS
   moveit_ros_planning_interface
   pluginlib
   cmake_modules
-  http_server
   genmsg
 
 )
@@ -37,15 +36,16 @@ find_package(
 ## Declare ROS messages, services and actions ##
 ################################################
 
-## Generate messages in the 'msg' folder
-#add_message_files(FILES
-#  http_msg.msg
-#)
+# Generate messages in the 'msg' folder
+add_message_files(
+  FILES
+    status_msg.msg
+)
 
 ## Generate services in the 'srv' folder
 add_service_files(
   FILES
-  montage_service.srv
+    montage_service.srv
 )
 
 ## Generate actions in the 'action' folder

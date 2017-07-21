@@ -10,6 +10,7 @@ geometry_msgs::Pose pickRHull;
 geometry_msgs::Pose pickInk;
 geometry_msgs::Pose pickSpring;
 geometry_msgs::Pose pickArr;
+geometry_msgs::Pose home;
 bool busy = false;
 
 void MoveLinear(double x, double y, double z, moveit::planning_interface::MoveGroupInterface::Plan &plan)
@@ -30,9 +31,9 @@ void MoveLinear(double x, double y, double z, moveit::planning_interface::MoveGr
     moveit_msgs::RobotTrajectory trajectory_msg;
     group->setPlanningTime(30.0);
     double fraction = group->computeCartesianPath(waypoints_tool,
-                                                  0.01, //eef_step
-                                                  0.0,  // jump_threshold
-                                                  trajectory_msg, false);
+                                                  0.001, //eef_step
+                                                  0.0,   // jump_threshold
+                                                  trajectory_msg, true);
     plan.trajectory_ = trajectory_msg;
     ROS_INFO("Visualizing Cartesian Path (%2f%% acheived)", fraction * 100.0);
     sleep(5.0);
@@ -40,19 +41,26 @@ void MoveLinear(double x, double y, double z, moveit::planning_interface::MoveGr
     group->setPlanningTime(10.0);
 }
 
-void MoveToPose(geometry_msgs::Pose &position, moveit::planning_interface::MoveGroupInterface::Plan &plan)
+bool MoveToPose(geometry_msgs::Pose &position, moveit::planning_interface::MoveGroupInterface::Plan &plan)
 {
     group->setPoseTarget(position);
     bool success = group->plan(plan);
     if (success)
-        group->move();
-    return;
+    {
+        moveit_msgs::MoveItErrorCodes error_codes = group->move();
+        ROS_INFO("%d", error_codes.val);
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 void initPoses(double offset)
 {
-    pickBase.position.x = 0.148 + offset;
-    pickBase.position.y = 0.260;
+    pickBase.position.x = 0.148;
+    pickBase.position.y = 0.260 + offset;
     pickBase.position.z = 0.100;
     pickBase.orientation.w = 0.0;
     pickBase.orientation.x = 1.0;
@@ -119,6 +127,14 @@ void initPoses(double offset)
     pickArr.orientation.x = 0.0;
     pickArr.orientation.y = 0.0;
     pickArr.orientation.z = 0.707;
+
+    home.position.x = 0;
+    home.position.y = 0.31;
+    home.position.z = 0.39;
+    home.orientation.w = 0.0;
+    home.orientation.x = 0.0;
+    home.orientation.y = 1.0;
+    home.orientation.z = 0.0;
 }
 
 bool montageCallback(cell_core::montage_service::Request &req, cell_core::montage_service::Response &res)
@@ -127,39 +143,55 @@ bool montageCallback(cell_core::montage_service::Request &req, cell_core::montag
     {
         busy = true;
 
-        initPoses(req.xOffset);
+        initPoses(req.Offset);
         ROS_INFO("Startet Service");
         moveit::planning_interface::MoveGroupInterface::Plan my_plan;
-
+        ROS_INFO("pickFHull");
         MoveToPose(pickFHull, my_plan);
-        MoveLinear(0.0, 0.0, -0.07, my_plan);
+        MoveLinear(0.0, 0.0, -0.05, my_plan);
+
+        ROS_INFO("montage");
         MoveToPose(montage, my_plan);
         MoveLinear(-0.05, 0.0, -0.05, my_plan);
+
+        ROS_INFO("pickTool: ");
         MoveToPose(pickTool, my_plan);
-        ROS_INFO("pickTool");
-        MoveToPose(montage, my_plan);
+
         ROS_INFO("montage");
-        MoveToPose(pickSpring, my_plan);
-        MoveLinear(0.0, 0.0, -0.07, my_plan);
+        MoveToPose(montage, my_plan);
+
         ROS_INFO("pickSpring");
-        MoveToPose(montage, my_plan);
+        MoveToPose(pickSpring, my_plan);
+        MoveLinear(0.0, 0.0, -0.05, my_plan);
+
         ROS_INFO("montage");
-        MoveToPose(pickInk, my_plan);
-        MoveLinear(0.0, 0.0, -0.07, my_plan);
+        MoveToPose(montage, my_plan);
+
         ROS_INFO("pickInk");
-        MoveToPose(montage, my_plan);
+        MoveToPose(pickInk, my_plan);
+        MoveLinear(0.0, 0.0, -0.05, my_plan);
+
         ROS_INFO("montage");
-        MoveToPose(pickArr, my_plan);
-        MoveLinear(0.0, 0.0, -0.07, my_plan);
+        MoveToPose(montage, my_plan);
+
         ROS_INFO("pickArr");
-        MoveToPose(montage, my_plan);
+        MoveToPose(pickArr, my_plan);
+        MoveLinear(0.0, 0.0, -0.05, my_plan);
+
         ROS_INFO("montage");
+        MoveToPose(montage, my_plan);
+
         // TODO: circMove
-        MoveToPose(pickRHull, my_plan);
-        MoveLinear(0.0, 0.0, -0.07, my_plan);
+
         ROS_INFO("pickRHull");
-        MoveToPose(montageRHull, my_plan);
+        MoveToPose(pickRHull, my_plan);
+        MoveLinear(0.0, 0.0, -0.05, my_plan);
+
         ROS_INFO("montageRHull");
+        MoveToPose(montageRHull, my_plan);
+
+        ROS_INFO("MOVE Home: ");
+        MoveToPose(home, my_plan);
         /*if(req.Ausgabestelle == 1){
         MoveToPose(Ausgabe1, my_plan);
         // Greiffer öffnen
@@ -170,7 +202,7 @@ bool montageCallback(cell_core::montage_service::Request &req, cell_core::montag
     MoveToPose(Home, my_plan);*/
         res.status = 11;
         busy = false;
-        return true;
+        return 1;
     }
     else
     {
@@ -183,29 +215,34 @@ int main(int argc, char **argv)
 {
     ros::init(argc, argv, "penAssembly");
     ros::NodeHandle nh;
-    ros::AsyncSpinner spinner(0);
-
+    ros::AsyncSpinner spinner(0); // Define Multithreadedspinner
     spinner.start();
 
-    group.reset(new moveit::planning_interface::MoveGroupInterface(argv[1]));
-    group->setPoseReferenceFrame("/base_link");
-    group->setPlannerId("RRTConnectkConfigDefault");
+    group.reset(new moveit::planning_interface::MoveGroupInterface("gripper"));
+    group->setPlannerId("KPIECEkConfigDefault");
     group->setPlanningTime(2);
-
-    //my_plan.reset(new moveit::planning_interface::MoveGroupInterface::Plan);
 
     moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
     collisionObjectAdder coAdder;
-    coAdder.addCell();
+    coAdder.addCell(group);
     sleep(10);
 
-    /*
-    planning_scene_interface = new (moveit::planning_interface::PlanningSceneInterface);
-    group = new (moveit::planning_interface::MoveGroupInterface group("gripper_eef"));
-    my_plan = new (moveit::planning_interface::MoveGroupInterface::Plan);
-*/
+    // Advertise Montageservice at ROS-Master
     ros::ServiceServer service = nh.advertiseService("montage_service", montageCallback);
     ROS_INFO("Montage Service rdy!");
 
+    // Publish the Status updater
+    ros::Publisher penAssembly_pub = nh.advertise<cell_core::status_msg>("status_chatter", 1000);
+    ros::Rate loop_rate(20);
+
+    while (ros::ok())
+    {
+        cell_core::status_msg msg;
+        msg.busy = 1;
+        msg.idle = 0;
+        msg.error = 0;
+        penAssembly_pub.publish(msg);
+        loop_rate.sleep();
+    }
     ros::waitForShutdown();
 }

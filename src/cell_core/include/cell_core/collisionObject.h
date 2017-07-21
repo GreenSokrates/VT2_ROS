@@ -16,8 +16,7 @@ protected:
   //ros::Publisher planning_scene_diff_pub;
 public:
   collisionObjectAdder();
-  void addCell();
-  void addCollisionObject();
+  void addCell(boost::shared_ptr<moveit::planning_interface::MoveGroupInterface> &group);
 };
 
 #endif /*COLLISIONOBJECTADDER_H_ */
