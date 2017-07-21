@@ -8,13 +8,15 @@
          <visual>
             <origin rpy="0 0 1.57" xyz="-1.075 0.023 -0.021" />
             <geometry>
-               <mesh filename="package://cell_support/meshes/Mittelteil_final_collision.stl" scale="0.001 0.001 0.001"/>
+               <mesh filename="package://cell_support/meshes/1000_Industrie_4_0_Demonstrator_V2.stl" scale="0.001 0.001 0.001"/>
             </geometry>
          </visual>
-         <collision>
-            <origin rpy="0 0 1.57" xyz="-1.075 0.023 -0.021" />
-            <geometry>
-               <mesh filename="package://cell_support/meshes/Mittelteil_final_collision.stl" scale="0.001 0.001 0.001"/>
+        <collision>
+          <!-- origin rpy="0 0 1.57" xyz="-1.075 0.023 -0.021" /-->
+          <origin rpy="0 0 0" xyz="0 0 0.005" />
+          <geometry>
+            <sphere radius="0.0001" />
+               <!-- mesh filename="package://cell_support/meshes/Mittelteil_final_collision.stl" scale="0.001 0.001 0.001"/ -->
             </geometry>
          </collision>
       </link>

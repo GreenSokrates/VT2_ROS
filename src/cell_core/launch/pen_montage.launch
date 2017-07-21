@@ -1,7 +1,20 @@
 <launch>
-  <include file="$(find cell_irb120_moveit_config)/launch/demo.launch"/>  
 
-  <node name="pen_montage" pkg="cell_core" type="pen_montage" respawn="false" output="screen" launch-prefix="xterm -e gdb --args" >
-  </node>
+  <!-- Launch the Driver for ABB -->
+  <!-- <include file="$(find abb_driver)launch/robot_interface.launch" >
+      <arg name="robot_ip" value="10.0.0.206" />
+  </include>
+ -->
+  <!-- include file="$(find cell_irb120_moveit_config)/launch/demo.launch"/ -->  
+
+  <include file="$(find cell_irb120_moveit_config)/launch/moveit_planning_execution.launch" >
+    <arg name="sim" value="false" />
+    <arg name="robot_ip" value="10.0.0.206" />
+  </include>
+
+
+  <node name="penAssembly" pkg="cell_core" type="penAssembly" respawn="false" output="screen"  />
+
+  <include file="$(find http_server)/launch/httpNode.launch" />
 
 </launch>

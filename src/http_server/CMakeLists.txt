@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
+  cell_core
 )
 
 ################################################
@@ -17,10 +18,10 @@ find_package(catkin REQUIRED COMPONENTS
 ################################################
 
 ## Generate messages in the 'msg' folder
-add_message_files(
-  FILES
-  http_msg.msg
-)
+#add_message_files(
+#  FILES
+#  http_msg.msg
+#)
 
 ## Generate services in the 'srv' folder
 #add_service_files(
@@ -36,11 +37,10 @@ add_message_files(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-  
-)
+#generate_messages(
+#  DEPENDENCIES
+#  std_msgs 
+#)
 
 ###################################
 ## catkin specific configuration ##
@@ -92,25 +92,37 @@ install(DIRECTORY include/${PROJECT_NAME}/
 ## Declare a C++ library
 add_library(HTTPServer
   src/HTTPServer.cpp
+  src/Thread.cpp
 )
-
+add_library(HTTPScript_montage
+  src/HTTPScript_montage.cpp 
+  )
+add_library(HTTPScript_status
+  src/HTTPScript_status.cpp
+)
+add_library(HTTPScript
+  src/HTTPScript.cpp 
+  )
 ## Declare a C++ executable
 add_executable(HTTPNode
   src/HTTPNode.cpp
-  src/HTTPServer.cpp
-  src/Thread.cpp
+  src/HTTPScript_montage.cpp
+  src/HTTPScript_status.cpp
 )
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 add_dependencies(HTTPNode ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(HTTPServer ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(HTTPScript_montage ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(HTTPScript_status ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(HTTPScript ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(HTTPServer
-  ${catkin_LIBRARIES}
-)
-
 target_link_libraries(HTTPNode
   ${catkin_LIBRARIES}
+  HTTPScript_montage
+  HTTPScript_status
+  HTTPScript
+  HTTPServer
 )

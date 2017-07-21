@@ -1,38 +1,20 @@
-#include <ros/ros.h>
-#include <http_server/HTTPServer.h>
-#include "std_msgs/String.h"
-#include <http_server/http_msg.h>
-
-void chatterCallback(const std_msgs::String::ConstPtr &msg)
-{
-    ROS_INFO("I heard: [%s]", msg->data.c_str());
-}
+#include <http_server/HTTPNode.h>
 
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "HTTP_server");
     ros::NodeHandle nh;
+
     HTTPServer *httpServer = new HTTPServer(8080);
+    HTTPServer *httpServer2 = new HTTPServer(8081);
     httpServer->start();
+    httpServer2->start();
+    httpServer->add("montage", new HTTPScript_montage());
+    httpServer2->add("status", new HTTPScript_status());
 
-    ros::Publisher http_pub = nh.advertise<http_server::http_msg>("http_msg/topics/push", 1000);
-    ros::Rate loop_rate(5);
+    ROS_INFO("Http-Server is running!");
 
-    ros::Subscriber sub = nh.subscribe("/http_msg/topics/status", 1000, chatterCallback);
+    ros::spin();
 
-    int count = 0;
-    while (ros::ok())
-    {
-        http_server::http_msg msg;
-        msg.header.stamp = ros::Time::now();
-        msg.task = 1;
-        msg.x = 0.0;
-        msg.y = 0.0;
-
-        http_pub.publish(msg);
-        ros::spinOnce();
-        loop_rate.sleep();
-        ++count;
-    }
     return 0;
 }
