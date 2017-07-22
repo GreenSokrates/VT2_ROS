@@ -1,20 +1,14 @@
 <launch>
-
-  <!-- Launch the Driver for ABB -->
-  <!-- <include file="$(find abb_driver)launch/robot_interface.launch" >
-      <arg name="robot_ip" value="10.0.0.206" />
-  </include>
- -->
-  <!-- include file="$(find cell_irb120_moveit_config)/launch/demo.launch"/ -->  
-
+  <!-- Launch the Driver and Planning for ABB -->
   <include file="$(find cell_irb120_moveit_config)/launch/moveit_planning_execution.launch" >
     <arg name="sim" value="false" />
     <arg name="robot_ip" value="10.0.0.206" />
   </include>
 
-
+  <!-- Launch the penAssembly Node -->
   <node name="penAssembly" pkg="cell_core" type="penAssembly" respawn="false" output="screen"  />
-
-  <include file="$(find http_server)/launch/httpNode.launch" />
+  
+  <!-- Launch the HTTPServerNode -->
+  <include file="$(find http_server)/launch/httpNode.launch" respawn="true" />
 
 </launch>

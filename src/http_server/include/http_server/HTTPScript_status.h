@@ -37,7 +37,6 @@ public:
   virtual ~HTTPScript_status(){};
   string call(vector<string> names, vector<string> values);
   void statusCallback(const cell_core::status_msg &msg);
-  bool busy_;
   bool idle_;
   bool error_;
 };

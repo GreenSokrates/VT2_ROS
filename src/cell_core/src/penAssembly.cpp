@@ -1,18 +1,6 @@
 #include <cell_core/penAssembly.h>
 using namespace std;
 
-geometry_msgs::Pose montage;
-geometry_msgs::Pose montageRHull;
-geometry_msgs::Pose pickTool;
-geometry_msgs::Pose pickBase;
-geometry_msgs::Pose pickFHull;
-geometry_msgs::Pose pickRHull;
-geometry_msgs::Pose pickInk;
-geometry_msgs::Pose pickSpring;
-geometry_msgs::Pose pickArr;
-geometry_msgs::Pose home;
-bool idle_ = true;
-
 void MoveLinear(double x, double y, double z, moveit::planning_interface::MoveGroupInterface::Plan &plan)
 {
     std::vector<geometry_msgs::Pose> waypoints_tool;
@@ -22,6 +10,10 @@ void MoveLinear(double x, double y, double z, moveit::planning_interface::MoveGr
     test_pose.position.x += x;
     test_pose.position.y += y;
     test_pose.position.z += z;
+    waypoints_tool.push_back(test_pose);
+    test_pose.position.x -= x;
+    test_pose.position.y -= y;
+    test_pose.position.z -= z;
     waypoints_tool.push_back(test_pose);
 
     moveit_msgs::RobotTrajectory trajectory_msg;
@@ -136,75 +128,86 @@ void initPoses(double offset)
 
 bool montageCallback(cell_core::montage_service::Request &req, cell_core::montage_service::Response &res)
 {
-    if (idle_)
+    if (req.Offset <= 0.1 && req.Offset >= -0.1)
     {
-        idle_ = false;
+        if (idle_)
+        {
+            idle_ = false;
 
-        initPoses(req.Offset);
-        ROS_INFO("Startet Service");
-        moveit::planning_interface::MoveGroupInterface::Plan my_plan;
-        ROS_INFO("pickFHull");
-        MoveToPose(pickFHull, my_plan);
-        MoveLinear(0.0, 0.0, -0.05, my_plan);
+            initPoses(req.Offset);
+            ROS_INFO("Startet Service");
+            moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+            ROS_INFO("pickFHull");
+            MoveToPose(pickFHull, my_plan);
+            MoveLinear(0.0, 0.0, -0.05, my_plan);
 
-        ROS_INFO("montage");
-        MoveToPose(montage, my_plan);
-        MoveLinear(-0.05, 0.0, -0.05, my_plan);
+            ROS_INFO("montage");
+            MoveToPose(montage, my_plan);
+            MoveLinear(-0.05, 0.0, -0.05, my_plan);
 
-        ROS_INFO("pickTool: ");
-        MoveToPose(pickTool, my_plan);
+            ROS_INFO("pickTool: ");
+            MoveToPose(pickTool, my_plan);
 
-        ROS_INFO("montage");
-        MoveToPose(montage, my_plan);
+            ROS_INFO("montage");
+            MoveToPose(montage, my_plan);
 
-        ROS_INFO("pickSpring");
-        MoveToPose(pickSpring, my_plan);
-        MoveLinear(0.0, 0.0, -0.05, my_plan);
+            ROS_INFO("pickSpring");
+            MoveToPose(pickSpring, my_plan);
+            MoveLinear(0.0, 0.0, -0.05, my_plan);
 
-        ROS_INFO("montage");
-        MoveToPose(montage, my_plan);
+            ROS_INFO("montage");
+            MoveToPose(montage, my_plan);
 
-        ROS_INFO("pickInk");
-        MoveToPose(pickInk, my_plan);
-        MoveLinear(0.0, 0.0, -0.05, my_plan);
+            ROS_INFO("pickInk");
+            MoveToPose(pickInk, my_plan);
+            MoveLinear(0.0, 0.0, -0.05, my_plan);
 
-        ROS_INFO("montage");
-        MoveToPose(montage, my_plan);
+            ROS_INFO("montage");
+            MoveToPose(montage, my_plan);
 
-        ROS_INFO("pickArr");
-        MoveToPose(pickArr, my_plan);
-        MoveLinear(0.0, 0.0, -0.05, my_plan);
+            ROS_INFO("pickArr");
+            MoveToPose(pickArr, my_plan);
+            MoveLinear(0.0, 0.0, -0.05, my_plan);
 
-        ROS_INFO("montage");
-        MoveToPose(montage, my_plan);
+            ROS_INFO("montage");
+            MoveToPose(montage, my_plan);
 
-        // TODO: circMove
+            // TODO: circMove
 
-        ROS_INFO("pickRHull");
-        MoveToPose(pickRHull, my_plan);
-        MoveLinear(0.0, 0.0, -0.05, my_plan);
+            ROS_INFO("pickRHull");
+            MoveToPose(pickRHull, my_plan);
+            MoveLinear(0.0, 0.0, -0.05, my_plan);
 
-        ROS_INFO("montageRHull");
-        MoveToPose(montageRHull, my_plan);
+            ROS_INFO("montageRHull");
+            MoveToPose(montageRHull, my_plan);
 
-        ROS_INFO("MOVE Home: ");
-        MoveToPose(home, my_plan);
-        /*if(req.Ausgabestelle == 1){
-        MoveToPose(Ausgabe1, my_plan);
-        // Greiffer öffnen
-    }
-    else if (req.Ausgabestelle == 2){
-        MoveToPose(Ausgabe2, my_plan);
-    }
-    MoveToPose(Home, my_plan);*/
-        res.status = 11;
-        idle_ = true;
-        return 1;
+            ROS_INFO("MOVE Home: ");
+            MoveToPose(home, my_plan);
+            /*
+            if (req.Ausgabestelle == 1)
+            {
+                MoveToPose(Ausgabe1, my_plan);
+                // Greiffer öffnen
+            }
+            else if (req.Ausgabestelle == 2)
+            {
+                MoveToPose(Ausgabe2, my_plan);
+            }*/
+            res.status = 2;
+            idle_ = true;
+            return 1;
+        }
+        else
+        {
+            ROS_INFO("PenMontage is not idle!");
+            res.status = 3;
+            return 0;
+        }
     }
     else
     {
-        ROS_INFO("PenMontage is not idle!");
-        return 1;
+        res.status = 0;
+        return 0;
     }
 }
 
@@ -221,26 +224,24 @@ int main(int argc, char **argv)
 
     moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
 
-        // Advertise Montageservice at ROS-Master
+    // Advertise Montageservice at ROS-Master
     ros::ServiceServer service = nh.advertiseService("montage_service", montageCallback);
     ROS_INFO("Montage Service rdy!");
 
     // Publish the Status updater
     ros::Publisher penAssembly_pub = nh.advertise<cell_core::status_msg>("status_chatter", 1000);
-    ros::Rate loop_rate(20);
 
     sleep(20);
     collisionObjectAdder coAdder;
     coAdder.addCell(group);
-    
 
-
-
+    // Publish the State of the Assembly
+    ros::Rate loop_rate(10); //Freq of 10 Hz
     while (ros::ok())
     {
         cell_core::status_msg msg;
         msg.idle = idle_;
-        msg.error = 0;
+        msg.error = error_;
         penAssembly_pub.publish(msg);
         loop_rate.sleep();
     }

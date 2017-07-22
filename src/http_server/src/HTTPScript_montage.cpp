@@ -1,9 +1,9 @@
 #include <http_server/HTTPScript_montage.h>
 
-HTTPScript_montage::HTTPScript_montage(){
+HTTPScript_montage::HTTPScript_montage()
+{
     SrvClient = nh.serviceClient<cell_core::montage_service>("montage_service");
 }
-
 
 bool HTTPScript_montage::callService(double Offset_, int Ausgabestelle_)
 {
@@ -28,15 +28,19 @@ string HTTPScript_montage::call(vector<string> names, vector<string> values)
     string response;
     std::string::size_type sz;
     double offset_ = std::stod(values[0], &sz);
-    
+    int result = callService(offset_, 1);
 
-    if (callService(0.0, 1))
+    if (result == 0)
     {
-        return "Funktioniert";
+        return "Offset out of bounds";
     }
-    else
+    else if (result == 1)
     {
-        return "GAT NÖD!";
+        return "Montage is busy";
+    }
+    else if (result == 2)
+    {
+        return "Succes";
     }
 
     return "";

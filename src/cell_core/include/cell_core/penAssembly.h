@@ -12,5 +12,19 @@
 #include <cell_core/status_msg.h>
 
 boost::shared_ptr<moveit::planning_interface::MoveGroupInterface> group;
+// Defining all Poses
+geometry_msgs::Pose montage;
+geometry_msgs::Pose montageRHull;
+geometry_msgs::Pose pickTool;
+geometry_msgs::Pose pickBase;
+geometry_msgs::Pose pickFHull;
+geometry_msgs::Pose pickRHull;
+geometry_msgs::Pose pickInk;
+geometry_msgs::Pose pickSpring;
+geometry_msgs::Pose pickArr;
+geometry_msgs::Pose home;
+
+bool idle_ = true;
+bool error_ = false;
 
 #endif /* PENASSEMBLY_H_ */
