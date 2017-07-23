@@ -1,39 +1,99 @@
 #include <cell_core/penAssembly.h>
+#include <tf/transform_datatypes.h>
 using namespace std;
 
-void MoveLinear(double x, double y, double z, moveit::planning_interface::MoveGroupInterface::Plan &plan)
+bool MoveLinear(double x, double y, double z, moveit::planning_interface::MoveGroupInterface::Plan &plan)
 {
     std::vector<geometry_msgs::Pose> waypoints_tool;
-    geometry_msgs::PoseStamped temp_montage = group->getCurrentPose(group->getEndEffectorLink());
-    geometry_msgs::Pose test_pose = temp_montage.pose;
+    geometry_msgs::PoseStamped tempStampPose = group->getCurrentPose(group->getEndEffectorLink());
+    geometry_msgs::Pose test_pose = tempStampPose.pose;
 
     test_pose.position.x += x;
     test_pose.position.y += y;
     test_pose.position.z += z;
     waypoints_tool.push_back(test_pose);
-    test_pose.position.x -= x;
-    test_pose.position.y -= y;
-    test_pose.position.z -= z;
-    waypoints_tool.push_back(test_pose);
 
     moveit_msgs::RobotTrajectory trajectory_msg;
-    group->setPlanningTime(30.0);
     double fraction = group->computeCartesianPath(waypoints_tool,
                                                   0.001, //eef_step
                                                   0.0,   // jump_threshold
                                                   trajectory_msg, true);
     plan.trajectory_ = trajectory_msg;
     ROS_INFO("Visualizing Cartesian Path (%2f%% acheived)", fraction * 100.0);
+    if (fraction >= 0.85)
+    {
+        group->execute(plan);
+        return 1;
+    }
+    else
+        return 0;
+}
+
+void movePen(moveit::planning_interface::MoveGroupInterface::Plan &plan)
+{
+    std::vector<geometry_msgs::Pose> waypoints_tool;
+    geometry_msgs::PoseStamped tempStampPose = group->getCurrentPose(group->getEndEffectorLink());
+    geometry_msgs::Pose test_pose = tempStampPose.pose;
+
+    //Move straight up a little
+    test_pose.position.z += 0.02;
+    waypoints_tool.push_back(test_pose);
+    geometry_msgs::Pose start_pose = test_pose;
+
+    // Move circular
+    for (double i = 0.25 * pi_; i <= 0.5 * pi_; i += 0.005)
+    {
+        test_pose.position.x = start_pose.position.x - radius_ * sin(i);
+        test_pose.position.z = start_pose.position.x + radius_ * sin(i);
+        waypoints_tool.push_back(test_pose);
+    }
+    moveit_msgs::RobotTrajectory trajectory_msg;
+    double fraction = group->computeCartesianPath(waypoints_tool,
+                                                  0.001, //eef_step
+                                                  0.0,   // jump_threshold
+                                                  trajectory_msg, true);
+    plan.trajectory_ = trajectory_msg;
+    ROS_INFO("Visualizing MovePen Path (%2f%% acheived)", fraction * 100.0);
     sleep(5.0);
     group->execute(plan);
-    group->setPlanningTime(10.0);
+    sleep(2);
+    return;
+}
+
+void rotateZ(moveit::planning_interface::MoveGroupInterface::Plan &plan)
+{
+    std::vector<geometry_msgs::Pose> waypoints_tool;
+    geometry_msgs::PoseStamped tempStampPose = group->getCurrentPose(group->getEndEffectorLink());
+    geometry_msgs::Pose test_pose = tempStampPose.pose;
+    tf::Quaternion q;
+    for (double i = 0; i < 3.14 * 2; i += 0.01)
+    {
+        q = tf::createQuaternionFromRPY(0.0, 0, 0.1);
+        test_pose.orientation.x += q.x();
+        test_pose.orientation.y += q.y();
+        test_pose.orientation.z += q.z();
+        test_pose.orientation.w += q.w();
+
+        waypoints_tool.push_back(test_pose);
+    }
+
+    moveit_msgs::RobotTrajectory trajectory_msg;
+    double fraction = group->computeCartesianPath(waypoints_tool,
+                                                  0.001, //eef_step
+                                                  0.0,   // jump_threshold
+                                                  trajectory_msg, true);
+    plan.trajectory_ = trajectory_msg;
+    ROS_INFO("Visualizing Rotation Path (%2f%% acheived)", fraction * 100.0);
+    sleep(5.0);
+    group->execute(plan);
+    sleep(2);
+    return;
 }
 
 bool MoveToPose(geometry_msgs::Pose &position, moveit::planning_interface::MoveGroupInterface::Plan &plan)
 {
     group->setPoseTarget(position);
-    bool success = group->plan(plan);
-    if (success)
+    if (group->plan(plan))
     {
         moveit_msgs::MoveItErrorCodes error_codes = group->execute(plan);
         ROS_INFO("%d", error_codes.val);
@@ -41,9 +101,17 @@ bool MoveToPose(geometry_msgs::Pose &position, moveit::planning_interface::MoveG
     }
     else
     {
-        return 0;
+        ROS_WARN("Try with longer Planningtime");
+        group->setPlanningTime(10.0);
+        if (group->plan(plan))
+            return 1;
+        else
+        {
+            group->setPlanningTime(2.0);
+            return 0;
+        }
     }
-    return 1;
+    return -1;
 }
 
 void initPoses(double offset)
@@ -52,8 +120,8 @@ void initPoses(double offset)
     pickBase.position.y = 0.260 + offset;
     pickBase.position.z = 0.100;
     pickBase.orientation.w = 0.0;
-    pickBase.orientation.x = 1.0;
-    pickBase.orientation.y = 0.0;
+    pickBase.orientation.x = 0.0;
+    pickBase.orientation.y = 1.0;
     pickBase.orientation.z = 0.0;
 
     montage.position.x = -0.040 + 0.05;
@@ -71,14 +139,6 @@ void initPoses(double offset)
     montageRHull.orientation.x = -0.665;
     montageRHull.orientation.y = -0.238;
     montageRHull.orientation.z = 0.238;
-
-    pickTool.position.x = -0.22;
-    pickTool.position.y = 0.507;
-    pickTool.position.z = 0.083;
-    pickTool.orientation.w = -0.271;
-    pickTool.orientation.x = 0.653;
-    pickTool.orientation.y = 0.653;
-    pickTool.orientation.z = -0.271;
 
     pickFHull = pickBase;
     pickFHull.position.x += 0.0270;
@@ -124,6 +184,22 @@ void initPoses(double offset)
     home.orientation.x = 0.0;
     home.orientation.y = 1.0;
     home.orientation.z = 0.0;
+
+    pickTool.position.x = -0.2176;
+    pickTool.position.y = 0.51014;
+    pickTool.position.z = 0.24962;
+    pickTool.orientation.w = 0.0;
+    pickTool.orientation.x = -0.537;
+    pickTool.orientation.y = -0.843;
+    pickTool.orientation.z = -0.0;
+
+    useTool.position.x = -0.44148;
+    useTool.position.y = 0.59144;
+    useTool.position.z = 0.11532;
+    useTool.orientation.w = 0.299;
+    useTool.orientation.x = 0.641;
+    useTool.orientation.y = -0.641;
+    useTool.orientation.z = 0.299;
 }
 
 bool montageCallback(cell_core::montage_service::Request &req, cell_core::montage_service::Response &res)
@@ -133,66 +209,58 @@ bool montageCallback(cell_core::montage_service::Request &req, cell_core::montag
         if (idle_)
         {
             idle_ = false;
-
             initPoses(req.Offset);
-            ROS_INFO("Startet Service");
             moveit::planning_interface::MoveGroupInterface::Plan my_plan;
-            ROS_INFO("pickFHull");
-            MoveToPose(pickFHull, my_plan);
-            MoveLinear(0.0, 0.0, -0.05, my_plan);
 
-            ROS_INFO("montage");
+            //Front Hull
+            MoveToPose(pickFHull, my_plan);
+            movePen(my_plan);
+            MoveLinear(0.0, 0.0, -0.05, my_plan);
+            // Gripper close
+            MoveLinear(0.0, 0.0, 0.05, my_plan);
             MoveToPose(montage, my_plan);
             MoveLinear(-0.05, 0.0, -0.05, my_plan);
+            // 3bGripper close
+            //Gripper open
+            MoveLinear(0.05, 0.0, 0.05, my_plan);
 
-            ROS_INFO("pickTool: ");
+            // Pick Tool, turn and place Tool
             MoveToPose(pickTool, my_plan);
+            MoveLinear(0.0, -0.05, -0.05, my_plan);
+            //Gripper close
+            MoveLinear(0.0, 0.05, 0.05, my_plan);
+            MoveToPose(useTool, my_plan);
+            MoveLinear(-0.05, 0.0, -0.05, my_plan);
+            //Rotate tcp
+            MoveLinear(0.05, 0.0, -0.05, my_plan);
+            MoveToPose(pickTool, my_plan);
+            MoveLinear(0.0, -0.05, -0.05, my_plan);
+            //Gripper open
+            MoveLinear(0.0, 0.05, 0.05, my_plan);
 
-            ROS_INFO("montage");
-            MoveToPose(montage, my_plan);
-
-            ROS_INFO("pickSpring");
+            // Spring
             MoveToPose(pickSpring, my_plan);
             MoveLinear(0.0, 0.0, -0.05, my_plan);
-
-            ROS_INFO("montage");
+            // Gripper close
+            MoveLinear(0.0, 0.0, 0.05, my_plan);
             MoveToPose(montage, my_plan);
+            MoveLinear(-0.05, 0.0, -0.05, my_plan);
+            //Gripper open
+            MoveLinear(0.05, 0.0, 0.05, my_plan);
 
-            ROS_INFO("pickInk");
+            // Ink
             MoveToPose(pickInk, my_plan);
             MoveLinear(0.0, 0.0, -0.05, my_plan);
-
-            ROS_INFO("montage");
+            // Gripper close
+            MoveLinear(0.0, 0.0, 0.05, my_plan);
             MoveToPose(montage, my_plan);
-
-            ROS_INFO("pickArr");
-            MoveToPose(pickArr, my_plan);
-            MoveLinear(0.0, 0.0, -0.05, my_plan);
-
-            ROS_INFO("montage");
-            MoveToPose(montage, my_plan);
-
-            // TODO: circMove
-
-            ROS_INFO("pickRHull");
-            MoveToPose(pickRHull, my_plan);
-            MoveLinear(0.0, 0.0, -0.05, my_plan);
-
-            ROS_INFO("montageRHull");
-            MoveToPose(montageRHull, my_plan);
+            MoveLinear(-0.05, 0.0, -0.05, my_plan);
+            //Gripper open
+            MoveLinear(0.05, 0.0, 0.05, my_plan);
 
             ROS_INFO("MOVE Home: ");
             MoveToPose(home, my_plan);
-            /*
-            if (req.Ausgabestelle == 1)
-            {
-                MoveToPose(Ausgabe1, my_plan);
-                // Greiffer öffnen
-            }
-            else if (req.Ausgabestelle == 2)
-            {
-                MoveToPose(Ausgabe2, my_plan);
-            }*/
+
             res.status = 2;
             idle_ = true;
             return 1;
@@ -218,9 +286,12 @@ int main(int argc, char **argv)
     ros::AsyncSpinner spinner(2); // Define Multithreadedspinner
     spinner.start();
 
+    // Define MoveGroup and PlanningSceneInterface
     group.reset(new moveit::planning_interface::MoveGroupInterface("gripper"));
     group->setPlannerId("RRTkConfigDefault");
     group->setPlanningTime(2);
+    group->setMaxVelocityScalingFactor(0.1);
+    sleep(5.0);
 
     moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
 
@@ -231,9 +302,8 @@ int main(int argc, char **argv)
     // Publish the Status updater
     ros::Publisher penAssembly_pub = nh.advertise<cell_core::status_msg>("status_chatter", 1000);
 
-    sleep(20);
     collisionObjectAdder coAdder;
-    coAdder.addCell(group);
+    planning_scene_interface.addCollisionObjects(coAdder.addCell(group));
 
     // Publish the State of the Assembly
     ros::Rate loop_rate(10); //Freq of 10 Hz
@@ -245,5 +315,5 @@ int main(int argc, char **argv)
         penAssembly_pub.publish(msg);
         loop_rate.sleep();
     }
-    ros::waitForShutdown();
+    return 1;
 }

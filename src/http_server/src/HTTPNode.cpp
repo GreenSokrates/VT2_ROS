@@ -4,6 +4,8 @@ int main(int argc, char **argv)
 {
     ros::init(argc, argv, "HTTP_server");
     ros::NodeHandle nh;
+    ros::AsyncSpinner spinner(2); // Define Multithreadedspinner
+    spinner.start();
 
     HTTPServer *httpServer = new HTTPServer(8080);
     HTTPServer *httpServer2 = new HTTPServer(8081);
@@ -14,7 +16,7 @@ int main(int argc, char **argv)
 
     ROS_INFO("Http-Server is running!");
 
-    ros::spin();
+    while(ros::ok());
 
     return 0;
 }

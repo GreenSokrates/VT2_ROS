@@ -6,32 +6,10 @@
   </include>
 
   <!-- Launch the penAssembly Node -->
-  <node name="penAssembly" pkg="cell_core" type="penAssembly" respawn="false" output="screen"  />
+  <node name="penAssembly" pkg="cell_core" type="penAssembly" output="screen"  />
   
   <!-- Launch the HTTPServerNode -->
   <include file="$(find http_server)/launch/httpNode.launch" respawn="true" />
-
-  <!-- include file="$(find cell_irb120_moveit_config)/launch/demo.launch"/ -->  
-
-  <include file="$(find cell_irb120_moveit_config)/launch/planning_context.launch" >
-    <arg name="load_robot_description" value="true" />
-    </include>
-
-
-
-  
-  <include file="$(find cell_irb120_moveit_config)/launch/move_group.launch" >
-    <arg name="allow_trajectory_execution" value="true" />
-  </include>
-
-  <include file="$(find cell_irb120_moveit_config)/launch/moveit_rviz.launch" >
-    <arg name="config" value="true" />
-  </include>
-
-  <node name="penAssembly" pkg="cell_core" type="penAssembly" respawn="false" output="screen"  />
-
-  <!--include file="$(find http_server)/launch/httpNode.launch" /-->
-
 
 
 </launch>

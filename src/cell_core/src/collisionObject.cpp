@@ -8,7 +8,7 @@ collisionObjectAdder::collisionObjectAdder()
     add_collision_object_pub = nh.advertise<moveit_msgs::CollisionObject>("collision_object", 1000);
 }
 
-void collisionObjectAdder::addCell(boost::shared_ptr<moveit::planning_interface::MoveGroupInterface> &group)
+std::vector<moveit_msgs::CollisionObject> collisionObjectAdder::addCell(boost::shared_ptr<moveit::planning_interface::MoveGroupInterface> &group)
 {
     // Generating Collision object from Mesh
     Eigen::Vector3d scaling_vector(0.001, 0.001, 0.001); // Scaling Vector
@@ -23,6 +23,7 @@ void collisionObjectAdder::addCell(boost::shared_ptr<moveit::planning_interface:
     shapes::constructMsgFromShape(m, mesh_msg);
     mesh = boost::get<shape_msgs::Mesh>(mesh_msg);
 
+    // Define Size and orientation
     co.meshes.resize(1);
     co.mesh_poses.resize(1);
     co.meshes[0] = mesh;
@@ -34,10 +35,11 @@ void collisionObjectAdder::addCell(boost::shared_ptr<moveit::planning_interface:
     co.mesh_poses[0].orientation.y = 0.0;
     co.mesh_poses[0].orientation.z = 0.707;
 
+    // Push onto vector and return it
     co.meshes.push_back(mesh);
     co.mesh_poses.push_back(co.mesh_poses[0]);
     co.operation = co.ADD;
-
-    add_collision_object_pub.publish(co);
-    ROS_INFO("Collision object published");
+    std::vector<moveit_msgs::CollisionObject> collision_objects;
+    collision_objects.push_back(co);
+    return collision_objects;
 }

@@ -17,7 +17,7 @@ class collisionObjectAdder
   public:
               collisionObjectAdder();
     virtual  ~collisionObjectAdder(){};
-    void      addCell(boost::shared_ptr<moveit::planning_interface::MoveGroupInterface> &group);
+std::vector<moveit_msgs::CollisionObject> addCell(boost::shared_ptr<moveit::planning_interface::MoveGroupInterface> &group);
 };
 
 #endif /*COLLISIONOBJECTADDER_H_ */

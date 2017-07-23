@@ -11,6 +11,11 @@
           <color rgba="1 1 1 0.5" />
         </material>
       </visual>
+      <collision>
+        <geometry>
+          <sphere radius="0.00000001" />
+        </geometry>
+      </collision>
     </link>
     
     <link name="${prefix}gripper_body">
