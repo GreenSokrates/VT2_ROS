@@ -16,7 +16,7 @@ bool MoveLinear(double x, double y, double z, moveit::planning_interface::MoveGr
     moveit_msgs::RobotTrajectory trajectory_msg;
     double fraction = group->computeCartesianPath(waypoints_tool,
                                                   0.001, //eef_step
-                                                  0.0,   // jump_threshold
+                                                  5,   // jump_threshold
                                                   trajectory_msg, true);
     plan.trajectory_ = trajectory_msg;
     ROS_INFO("Visualizing Cartesian Path (%2f%% acheived)", fraction * 100.0);
@@ -41,16 +41,17 @@ void movePen(moveit::planning_interface::MoveGroupInterface::Plan &plan)
     geometry_msgs::Pose start_pose = test_pose;
 
     // Move circular
-    for (double i = 0.25 * pi_; i <= 0.5 * pi_; i += 0.005)
+    for (double i = 0.75 * pi_; i <= 0.5 * pi_; i += 0.01)
     {
-        test_pose.position.x = start_pose.position.x - radius_ * sin(i);
-        test_pose.position.z = start_pose.position.x + radius_ * sin(i);
+        test_pose.position.x = start_pose.position.x + radius_ * cos(i);
+        test_pose.position.z = start_pose.position.z + radius_ * sin(i);
         waypoints_tool.push_back(test_pose);
     }
+
     moveit_msgs::RobotTrajectory trajectory_msg;
     double fraction = group->computeCartesianPath(waypoints_tool,
                                                   0.001, //eef_step
-                                                  0.0,   // jump_threshold
+                                                  0,   // jump_threshold
                                                   trajectory_msg, true);
     plan.trajectory_ = trajectory_msg;
     ROS_INFO("Visualizing MovePen Path (%2f%% acheived)", fraction * 100.0);
@@ -60,34 +61,14 @@ void movePen(moveit::planning_interface::MoveGroupInterface::Plan &plan)
     return;
 }
 
-void rotateZ(moveit::planning_interface::MoveGroupInterface::Plan &plan)
+void rotateZ(moveit::planning_interface::MoveGroupInterface::Plan &plan, double angle)
 {
-    std::vector<geometry_msgs::Pose> waypoints_tool;
-    geometry_msgs::PoseStamped tempStampPose = group->getCurrentPose(group->getEndEffectorLink());
-    geometry_msgs::Pose test_pose = tempStampPose.pose;
-    tf::Quaternion q;
-    for (double i = 0; i < 3.14 * 2; i += 0.01)
-    {
-        q = tf::createQuaternionFromRPY(0.0, 0, 0.1);
-        test_pose.orientation.x += q.x();
-        test_pose.orientation.y += q.y();
-        test_pose.orientation.z += q.z();
-        test_pose.orientation.w += q.w();
-
-        waypoints_tool.push_back(test_pose);
-    }
-
-    moveit_msgs::RobotTrajectory trajectory_msg;
-    double fraction = group->computeCartesianPath(waypoints_tool,
-                                                  0.001, //eef_step
-                                                  0.0,   // jump_threshold
-                                                  trajectory_msg, true);
-    plan.trajectory_ = trajectory_msg;
-    ROS_INFO("Visualizing Rotation Path (%2f%% acheived)", fraction * 100.0);
-    sleep(5.0);
+    std::vector<double> group_variable_values;
+    group->getCurrentState()->copyJointGroupPositions(group->getCurrentState()->getRobotModel()->getJointModelGroup(group->getName()), group_variable_values);
+    group_variable_values[5] = angle;
+    group->setJointValueTarget(group_variable_values);
+    group->plan(plan);
     group->execute(plan);
-    sleep(2);
-    return;
 }
 
 bool MoveToPose(geometry_msgs::Pose &position, moveit::planning_interface::MoveGroupInterface::Plan &plan)
@@ -119,7 +100,7 @@ void initPoses(double offset)
     pickBase.position.x = 0.148;
     pickBase.position.y = 0.260 + offset;
     pickBase.position.z = 0.100;
-    pickBase.orientation.w = 0.0;
+    pickBase.orientation.w = -0.017;
     pickBase.orientation.x = 0.0;
     pickBase.orientation.y = 1.0;
     pickBase.orientation.z = 0.0;
@@ -163,19 +144,19 @@ void initPoses(double offset)
     pickSpring.position.x += 0.0203;
     pickSpring.position.y += 0.167;
     pickSpring.position.z += 0.000;
-    pickSpring.orientation.w = 0.707;
-    pickSpring.orientation.x = 0.0;
-    pickSpring.orientation.y = 0.0;
-    pickSpring.orientation.z = 0.707;
+    pickSpring.orientation.w = 0.0;
+    pickSpring.orientation.x = 0.707;
+    pickSpring.orientation.y = 0.707;
+    pickSpring.orientation.z = 0.0;
 
     pickArr = pickBase;
     pickArr.position.x += 0.0705;
     pickArr.position.y += 0.172;
     pickArr.position.z += 0.000;
-    pickArr.orientation.w = 0.707;
-    pickArr.orientation.x = 0.0;
-    pickArr.orientation.y = 0.0;
-    pickArr.orientation.z = 0.707;
+    pickArr.orientation.w = 0.0;
+    pickArr.orientation.x = 0.707;
+    pickArr.orientation.y = 0.707;
+    pickArr.orientation.z = 0.0;
 
     home.position.x = 0;
     home.position.y = 0.31;
@@ -185,21 +166,29 @@ void initPoses(double offset)
     home.orientation.y = 1.0;
     home.orientation.z = 0.0;
 
-    pickTool.position.x = -0.2176;
-    pickTool.position.y = 0.51014;
-    pickTool.position.z = 0.24962;
+    pickTool.position.x = -0.23601;
+    pickTool.position.y = 0.45;
+    pickTool.position.z = 0.29;
     pickTool.orientation.w = 0.0;
-    pickTool.orientation.x = -0.537;
-    pickTool.orientation.y = -0.843;
-    pickTool.orientation.z = -0.0;
+    pickTool.orientation.x = -0.0;
+    pickTool.orientation.y = -0.924;
+    pickTool.orientation.z = -0.383;
 
-    useTool.position.x = -0.44148;
-    useTool.position.y = 0.59144;
-    useTool.position.z = 0.11532;
-    useTool.orientation.w = 0.299;
-    useTool.orientation.x = 0.641;
-    useTool.orientation.y = -0.641;
-    useTool.orientation.z = 0.299;
+    useTool.position.x = -0.0235;
+    useTool.position.y = 0.57372;
+    useTool.position.z = 0.13228;
+    useTool.orientation.w = -0.257;
+    useTool.orientation.x = -0.636;
+    useTool.orientation.y = 0.671;
+    useTool.orientation.z = 0.278;
+
+    underPen.position.x = -0.033;
+    underPen.position.y = 0.601;
+    underPen.position.z = 0.065;
+    underPen.orientation.w = 0.566;
+    underPen.orientation.x = -0.591;
+    underPen.orientation.y = 0.389;
+    underPen.orientation.z = 0.421;
 }
 
 bool montageCallback(cell_core::montage_service::Request &req, cell_core::montage_service::Response &res)
@@ -211,10 +200,10 @@ bool montageCallback(cell_core::montage_service::Request &req, cell_core::montag
             idle_ = false;
             initPoses(req.Offset);
             moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+            //MoveToPose(home, my_plan);
 
-            //Front Hull
+            ROS_INFO("Front Hull");
             MoveToPose(pickFHull, my_plan);
-            movePen(my_plan);
             MoveLinear(0.0, 0.0, -0.05, my_plan);
             // Gripper close
             MoveLinear(0.0, 0.0, 0.05, my_plan);
@@ -224,21 +213,27 @@ bool montageCallback(cell_core::montage_service::Request &req, cell_core::montag
             //Gripper open
             MoveLinear(0.05, 0.0, 0.05, my_plan);
 
-            // Pick Tool, turn and place Tool
+            ROS_INFO("Pick Tool, turn and place Tool");
             MoveToPose(pickTool, my_plan);
-            MoveLinear(0.0, -0.05, -0.05, my_plan);
+            MoveLinear(0.0, 0.05, -0.05, my_plan);
+            MoveLinear(0.0, -0.01, -0.01, my_plan);
             //Gripper close
-            MoveLinear(0.0, 0.05, 0.05, my_plan);
+            MoveLinear(0.0, -0.05, 0.05, my_plan);
             MoveToPose(useTool, my_plan);
+            rotateZ(my_plan, -1.57);
             MoveLinear(-0.05, 0.0, -0.05, my_plan);
             //Rotate tcp
-            MoveLinear(0.05, 0.0, -0.05, my_plan);
-            MoveToPose(pickTool, my_plan);
-            MoveLinear(0.0, -0.05, -0.05, my_plan);
-            //Gripper open
-            MoveLinear(0.0, 0.05, 0.05, my_plan);
+            ROS_INFO("Begin rotate");
+            rotateZ(my_plan, 1.57);
 
-            // Spring
+            MoveLinear(0.05, 0.0, 0.05, my_plan);
+            MoveToPose(pickTool, my_plan);
+            MoveLinear(0.0, 0.05, -0.05, my_plan);
+            //Gripper open
+            MoveLinear(0.0, 0.01, 0.01, my_plan);
+            MoveLinear(0.0, -0.05, 0.05, my_plan);
+
+            ROS_INFO("Spring");
             MoveToPose(pickSpring, my_plan);
             MoveLinear(0.0, 0.0, -0.05, my_plan);
             // Gripper close
@@ -248,7 +243,7 @@ bool montageCallback(cell_core::montage_service::Request &req, cell_core::montag
             //Gripper open
             MoveLinear(0.05, 0.0, 0.05, my_plan);
 
-            // Ink
+            ROS_INFO("Ink");
             MoveToPose(pickInk, my_plan);
             MoveLinear(0.0, 0.0, -0.05, my_plan);
             // Gripper close
@@ -258,10 +253,24 @@ bool montageCallback(cell_core::montage_service::Request &req, cell_core::montag
             //Gripper open
             MoveLinear(0.05, 0.0, 0.05, my_plan);
 
+            ROS_INFO("Pen Aufrichten");
+            MoveToPose(underPen, my_plan);
+            MoveLinear(0.0, 0.05, 0.0, my_plan);
+            movePen(my_plan);
+
+            // -- Arretierung --
+
+            // -- Deckel --
+
+            // -- Pen zurück drehen
+
+            // -- Pen Ausgeben
+
             ROS_INFO("MOVE Home: ");
             MoveToPose(home, my_plan);
 
             res.status = 2;
+
             idle_ = true;
             return 1;
         }
@@ -289,9 +298,12 @@ int main(int argc, char **argv)
     // Define MoveGroup and PlanningSceneInterface
     group.reset(new moveit::planning_interface::MoveGroupInterface("gripper"));
     group->setPlannerId("RRTkConfigDefault");
+    group->setEndEffectorLink("grasping_frame");
     group->setPlanningTime(2);
+    group->setGoalJointTolerance(0.01);
+    group->setNumPlanningAttempts(3);
+    group->setGoalOrientationTolerance(0.01);
     group->setMaxVelocityScalingFactor(0.1);
-    sleep(5.0);
 
     moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
 
@@ -302,6 +314,7 @@ int main(int argc, char **argv)
     // Publish the Status updater
     ros::Publisher penAssembly_pub = nh.advertise<cell_core::status_msg>("status_chatter", 1000);
 
+    sleep(15);
     collisionObjectAdder coAdder;
     planning_scene_interface.addCollisionObjects(coAdder.addCell(group));
 

@@ -25,9 +25,10 @@ geometry_msgs::Pose pickArr;
 geometry_msgs::Pose home;
 geometry_msgs::Pose pickTool;
 geometry_msgs::Pose useTool;
+geometry_msgs::Pose underPen;
 
 const double pi_ = 3.141592654;
-const double radius_ = 0.05;
+const double radius_ = 0.025;
 bool idle_ = true;
 bool error_ = false;
 

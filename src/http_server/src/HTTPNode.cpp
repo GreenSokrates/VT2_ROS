@@ -16,7 +16,5 @@ int main(int argc, char **argv)
 
     ROS_INFO("Http-Server is running!");
 
-    while(ros::ok());
-
-    return 0;
+    ros::waitForShutdown();
 }
