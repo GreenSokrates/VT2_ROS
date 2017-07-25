@@ -28,7 +28,7 @@ geometry_msgs::Pose useTool;
 geometry_msgs::Pose underPen;
 
 const double pi_ = 3.141592654;
-const double radius_ = 0.025;
+const double radius_ = 0.18;
 bool idle_ = true;
 bool error_ = false;
 
