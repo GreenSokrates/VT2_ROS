@@ -5,7 +5,23 @@
     <link name="${prefix}grasping_frame">
       <visual>
         <geometry>
-          <sphere radius="0.005" />
+          <sphere radius="0.002" />
+        </geometry>
+        <material name="white">
+          <color rgba="1 1 1 0.5" />
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <sphere radius="0.00000001" />
+        </geometry>
+      </collision>
+    </link>
+
+        <link name="${prefix}small_grasping_frame">
+      <visual>
+        <geometry>
+          <sphere radius="0.002" />
         </geometry>
         <material name="white">
           <color rgba="1 1 1 0.5" />
@@ -20,18 +36,18 @@
     
     <link name="${prefix}gripper_body">
       <visual>
-        <origin xyz="0 0 -0.005" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://cell_support/meshes/4003_Greifer_Roboter.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://cell_support/meshes/4003_Greifer_visual.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="">
           <color rgba="0.7372549 0.3490196 0.1607843 1" />
         </material>
       </visual>
       <collision>
-        <origin xyz="0 0 -0.005" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://cell_support/meshes/4003_Greifer_Roboter.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://cell_support/meshes/4003_Greifer_collision.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="yellow">
          <color rgba="1 1 0 0.3" />
@@ -39,7 +55,7 @@
       </collision>
     </link>
 
-    <link name="gripper_frame">
+    <link name="${prefix}gripper_base">
       <visual>
         <geometry>
           <sphere radius="0.005" />
@@ -55,17 +71,25 @@
       </collision>
     </link>
 
-    <joint name="body_to_frame" type="fixed">
-      <parent link="gripper_frame" />
-      <child link="gripper_body" />
+    <joint name="body_to_base" type="fixed">
+      <parent link="${prefix}gripper_base" />
+      <child link="${prefix}gripper_body" />
       <origin xyz="0 0 0" rpy="0 0 -0.785" />
     </joint>
 
-    <joint name="body_to_tool" type="fixed">
-      <parent link="${prefix}gripper_body" />
+    <joint name="frame_to_base" type="fixed">
+      <parent link="${prefix}gripper_base" />
       <child link="${prefix}grasping_frame" />
-      <origin xyz="0 0 0.155" rpy="0 0 0" />
+      <origin xyz="0 0 0.17225" rpy="0 0 -0.785" />
     </joint>
+
+    <joint name="smallframe_to_base" type="fixed">
+      <parent link="${prefix}gripper_base" />
+      <child link="${prefix}small_grasping_frame" />
+      <origin xyz="0 0 0.16425" rpy="0 0 -0.785" />
+    </joint>
+
+
 
   </xacro:macro>
 </robot>
