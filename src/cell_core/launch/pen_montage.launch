@@ -1,13 +1,15 @@
 <launch>
-
-  <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
-  <include file="$(find cell_irb120_moveit_config)/launch/planning_context.launch">
-    <arg name="load_robot_description" value="true"/>
+  <!-- Launch the Driver and Planning for ABB -->
+  <include file="$(find cell_irb120_moveit_config)/launch/moveit_planning_execution.launch" >
+    <arg name="sim" value="false" />
+    <arg name="robot_ip" value="10.0.0.206" />
   </include>
 
-  <include file="$(find cell_irb120_moveit_config)/launch/demo.launch"/>  
+  <!-- Launch the penAssembly Node -->
+  <node name="penAssembly" pkg="cell_core" type="penAssembly" output="screen"  />
+  
+  <!-- Launch the HTTPServerNode -->
+  <include file="$(find http_server)/launch/httpNode.launch" />
 
-  <node name="pen_montage" pkg="cell_core" type="pen_montage" respawn="false" output="screen" launch-prefix="xterm -e gdb --args" >
-  </node>
 
 </launch>

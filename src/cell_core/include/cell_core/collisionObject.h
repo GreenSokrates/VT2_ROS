@@ -10,15 +10,14 @@
 
 class collisionObjectAdder
 {
-protected:
-  ros::NodeHandle nh;
-  ros::Publisher add_collision_object_pub;
-  //ros::Publisher planning_scene_diff_pub;
-public:
-  collisionObjectAdder();
-  void addCell(moveit::planning_interface::PlanningSceneInterface &psi, moveit::planning_interface::MoveGroupInterface &grouper);
-  void addCollisionObject();
-  //int collisionObjectAdder::main(int argc, char **argv);
+  protected:
+    ros::NodeHandle nh;
+    ros::Publisher add_collision_object_pub;
+    //ros::Publisher planning_scene_diff_pub;
+  public:
+              collisionObjectAdder();
+    virtual  ~collisionObjectAdder(){};
+std::vector<moveit_msgs::CollisionObject> addCell(boost::shared_ptr<moveit::planning_interface::MoveGroupInterface> &group);
 };
 
 #endif /*COLLISIONOBJECTADDER_H_ */

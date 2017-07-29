@@ -1,33 +1,33 @@
 <?xml version="1.0" ?>
-<robot name="cell" xmlns:xacro="https://ros.org/wiki/xacro">
- <xacro:include filename="$(find abb_irb120_support)/urdf/irb120_macro.xacro"/>
- <xacro:include filename="$(find cell_support)/urdf/gripper.xacro" />
- <xacro:include filename="$(find cell_support)/urdf/cell_base.xacro" />
+<robot name="cell_irb120" xmlns:xacro="https://ros.org/wiki/xacro">
+ <xacro:include filename="$(find cell_support)/urdf/gripper_definition.xacro"/>
+ <xacro:include filename="$(find cell_support)/urdf/unterbau.xacro" />
+ <xacro:include filename="$(find abb_irb120_support)/urdf/irb120_3_58_macro.xacro" />
 
-  <link name="root_link"/>
+  <link name="world"/>
 
-  <!-- init robots -->
-  <xacro:abb_irb120 prefix="irb120_" />
+  <!-- init -->
   <xacro:gripper_definition prefix="" />
-  <xacro:cell_base prefix=""/>
+  <xacro:unterbau prefix="" />
+  <xacro:abb_irb120_3_58 prefix="" />
 
   <!-- Joints -->
-  <joint name="cell_base_to_irb120" type="fixed">
-    <parent link="cell_base" />
-    <child link="irb120_base_link"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-  </joint>
-
-    <joint name="world_to_cellBase" type="fixed">
-    <parent link="root_link" />
-    <child link="cell_base"/>
+  <joint name="root_to_irb120" type="fixed">
+    <parent link="world" />
+    <child link="base_link"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
 
   <joint name="tool0_to_gripper" type="fixed">
-    <parent link="irb120_tool0" />
+    <parent link="tool0" />
     <child link="gripper_frame" />
     <origin xyz="0 0 0" rpy="0 1.57 0" />
   </joint>
+  
+  <joint name="root_to_unterbau" type="fixed">
+    <parent link="world" />
+    <child link="unterbau_base"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint> 
 
 </robot>

@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<robot name="cell_tx260l" xmlns:xacro="https://ros.org/wiki/xacro">
+ <xacro:include filename="$(find cell_support)/urdf/gripper_definition.xacro"/>
+ <xacro:include filename="$(find cell_support)/urdf/unterbau.xacro" />
+ <xacro:include filename="$(find staubli_tx260l_support)/urdf/tx60l_macro.xacro"/>
+
+
+  <link name="world"/>
+
+  <!-- init robots -->
+  <xacro:gripper_definition prefix="" />
+  <xacro:unterbau prefix=""/>
+  <xacro:staubli_tx260l prefix="" />
+
+  <!-- Joints -->
+  <joint name="world_to_tx260l" type="fixed">
+    <parent link="world" />
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>  
+  <joint name="world_to_unterbau" type="fixed">
+    <parent link="world" />
+    <child link="unterbau_base"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint> 
+  <joint name="tool0_to_gripper" type="fixed">
+    <parent link="tool0" />
+    <child link="gripper_frame" />
+    <origin xyz="0 0 0" rpy="0 1.57 0" />
+  </joint>  
+
+</robot>

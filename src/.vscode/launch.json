@@ -1,0 +1,21 @@
+{
+  "configurations": [
+{ 
+  "name": "(gdb) Attach",
+  "type": "cppdbg",
+  "request": "attach",
+  "program": "enter program name, for example ${workspaceRoot}/a.out",
+  "processId": "${command:pickProcess}",
+  "MIMode": "gdb"
+},
+    {
+      "command": "rosrun",
+      "debugSettings": "${command:debugSettings}",
+      "name": "gripper_eef",
+      "package": "cell_core",
+      "type": "ros",
+      "target": "penAssembly"
+    }
+  ],
+  "version": "0.1.0"
+}
