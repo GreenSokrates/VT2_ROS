@@ -483,8 +483,8 @@ int main(int argc, char **argv)
     // Publish the Status updater
     ros::Publisher penAssembly_pub = nh.advertise<cell_core::status_msg>("/penAssembly/status", 1000);
 
-    sleep(15); // to make sure move_group is up
     collisionObject coAdder;
+    sleep(15); // to make sure move_group is up
     coAdder.addCell(group);
 
     sleep(10);
