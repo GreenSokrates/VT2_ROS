@@ -4,8 +4,6 @@
 HTTPScript_status::HTTPScript_status()
 {
     StatusSub = nh.subscribe("status_chatter", 1000, &HTTPScript_status::statusCallback, this);
-    idle_ = true;
-    error_ = false;
 }
 
 void HTTPScript_status::statusCallback(const cell_core::status_msg &msg)
