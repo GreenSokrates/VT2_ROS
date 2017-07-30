@@ -36,9 +36,8 @@ bool moveLinear(geometry_msgs::Pose &pose, moveit::planning_interface::MoveGroup
 {
     std::vector<geometry_msgs::Pose> waypoints_tool;
     geometry_msgs::PoseStamped tempStampPose = group->getCurrentPose(group->getEndEffectorLink());
-    //geometry_msgs::Pose start_pose = tempStampPose.pose;
-
-    waypoints_tool.push_back(pose);
+    geometry_msgs::Pose start_pose = tempStampPose.pose;
+    waypoints_tool.push_back(pose);    
 
     moveit_msgs::RobotTrajectory trajectory_msg;
     double fraction = group->computeCartesianPath(waypoints_tool,
@@ -272,10 +271,9 @@ bool montageCallback(cell_core::montage_service::Request &req, cell_core::montag
                 return -1;
             }
             moveLinear(pickFHull, my_plan);
-            coAdder->addBody(group, 2);
             // Gripper close
             moveLinear(0.0, 0.0, 0.07, my_plan);
-
+            coAdder->addBody(group, 2);
             if (!moveToPose(montageFHull, my_plan, 0.055, 0, 0.055))
             {
                 ROS_ERROR("Can't reach Pose montageFHull");
@@ -453,8 +451,14 @@ bool moveRobotCallback(cell_core::moveRobotToPose::Request &req, cell_core::move
     myPose.orientation.y = req.oY;
     myPose.orientation.z = req.oZ;
     group->setPoseTarget(myPose);
-    group->asyncMove();
-    res.status = 1;
+    if (group->asyncMove())
+    {
+        res.status = true;
+    }
+    else
+    {
+        res.status = false;
+    }
     return 1;
 }
 

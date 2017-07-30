@@ -8,4 +8,4 @@ float64 oY
 float64 oZ
 ---
 #response
-int64 status
+bool status
