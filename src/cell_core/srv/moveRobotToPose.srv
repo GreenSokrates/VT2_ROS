@@ -1,0 +1,11 @@
+#request
+float64 x
+float64 y
+float64 z
+float64 oW
+float64 oX
+float64 oY
+float64 oZ
+---
+#response
+int64 status
