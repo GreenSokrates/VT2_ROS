@@ -28,8 +28,8 @@ find_package(catkin REQUIRED
  add_service_files(
    FILES
     gripper_service.srv
-    #press_service.srv
-    #3Bgripper_service.srv
+    press_service.srv
+    Bgripper_service.srv
 )
 
 # Generate added messages and services with any dependencies listed here

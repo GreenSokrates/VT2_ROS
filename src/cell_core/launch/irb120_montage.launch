@@ -6,7 +6,7 @@
   </include>
 
   <!-- Launch the penAssembly Node -->
-  <node name="penAssembly" pkg="cell_core" type="penAssembly" output="screen"  />
+  <node name="penAssembly" pkg="cell_core" type="penAssembly" output="screen" launch-prefix="gdb -ex run --args" />
   
   <!-- Launch the HTTPServerNode -->
   <include file="$(find http_server)/launch/httpNode.launch" />

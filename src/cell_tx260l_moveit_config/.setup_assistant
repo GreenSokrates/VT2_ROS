@@ -5,6 +5,6 @@ moveit_setup_assistant_config:
   SRDF:
     relative_path: config/cell_tx260l.srdf
   CONFIG:
-    author_name: Luis Meier
+    author_name: Meier Luis
     author_email: meierlui@students.zhaw.ch
-    generated_timestamp: 1497200034
+    generated_timestamp: 1501499924

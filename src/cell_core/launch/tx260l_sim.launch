@@ -1,0 +1,14 @@
+<launch>
+  <!-- Launch the Driver and Planning for ABB -->
+  <include file="$(find cell_tx260l_moveit_config)/launch/moveit_planning_execution.launch" >
+    <arg name="sim" value="true" />
+  </include>
+
+  <!-- Launch the penAssembly Node -->
+  <node name="penAssembly" pkg="cell_core" type="penAssembly" output="screen"  />
+  
+  <!-- Launch the HTTPServerNode -->
+  <include file="$(find http_server)/launch/httpNode.launch" />
+
+
+</launch>

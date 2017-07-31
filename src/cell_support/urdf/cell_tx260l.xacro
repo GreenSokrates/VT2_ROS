@@ -26,7 +26,7 @@
   <joint name="tool0_to_gripper" type="fixed">
     <parent link="tool0" />
     <child link="gripper_base" />
-    <origin xyz="0 0 0" rpy="0 1.57 0" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
   </joint>  
 
 </robot>
