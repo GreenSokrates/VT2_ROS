@@ -355,6 +355,7 @@ bool montageCallback(cell_core::montage_service::Request &req, cell_core::montag
                 return -1;
             }
             moveLinear(montageInk, my_plan);
+            
             //Gripper open
             moveLinear(0.05, 0.0, 0.05, my_plan);
 
@@ -395,6 +396,7 @@ bool montageCallback(cell_core::montage_service::Request &req, cell_core::montag
                 return -1;
             }
             moveLinear(pickRHull, my_plan);
+
             // close Gripper
             moveLinear(0.0, 0.0, -zPickOffset, my_plan);
             if (!moveToPose(montageRHull, my_plan, 0.0, 0.0, 0.010))
@@ -405,6 +407,7 @@ bool montageCallback(cell_core::montage_service::Request &req, cell_core::montag
             moveLinear(montageRHull, my_plan);
 
             // -- Pen zurück drehen --
+            moveLinear(-0.05,0,-0.05);
 
             // -- Pen Ausgeben --
             ROS_INFO("Pen ausgabe");

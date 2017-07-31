@@ -12,7 +12,7 @@ bool smcService::gripperCallback(smc_grippers::gripper_service::Request &req, sm
 {
     gripper->enable();
     int pos = req.position;
-    gripper->setTargetPosition(500);
+    gripper->setTargetPosition(pos);
     gripper->disable();
     return 1;
 }
@@ -21,7 +21,7 @@ bool smcService::pressCallback(smc_grippers::press_service::Request &req, smc_gr
 {
     press->enable();
     int pos = req.position;
-    press->setTargetPosition(500);
+    press->setTargetPosition(pos);
     press->disable();
     return 1;
 }
@@ -30,7 +30,7 @@ bool smcService::BgripperCallback(smc_grippers::Bgripper_service::Request &req, 
 {
     Bgripper->enable();
     int pos = req.position;
-    Bgripper->setTargetPosition(500);
+    Bgripper->setTargetPosition(pos);
     Bgripper->disable();
     return 1;
 } */
