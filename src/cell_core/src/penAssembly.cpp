@@ -37,7 +37,7 @@ bool moveLinear(geometry_msgs::Pose &pose, moveit::planning_interface::MoveGroup
     std::vector<geometry_msgs::Pose> waypoints_tool;
     geometry_msgs::PoseStamped tempStampPose = group->getCurrentPose(group->getEndEffectorLink());
     geometry_msgs::Pose start_pose = tempStampPose.pose;
-    waypoints_tool.push_back(pose);    
+    waypoints_tool.push_back(pose);
 
     moveit_msgs::RobotTrajectory trajectory_msg;
     double fraction = group->computeCartesianPath(waypoints_tool,
@@ -131,8 +131,7 @@ bool moveToPose(geometry_msgs::Pose &position, moveit::planning_interface::MoveG
     }
     return -1;
 }
-
-void initPoses(double offset)
+ex void initPoses(double offset)
 {
     pickBase.position.x = 0.154;
     pickBase.position.y = 0.264 + offset;
@@ -254,9 +253,9 @@ void initPoses(double offset)
 
 bool montageCallback(cell_core::montage_service::Request &req, cell_core::montage_service::Response &res)
 {
-    if (req.Offset <= 0.1 && req.Offset >= -0.1)
+    if (req.Offset <= 0.01 && req.Offset >= -0.01 && req.Ausgabestelle == 1 || 2)
     {
-        if (true)
+        if (idle_)
         {
             idle_ = false;
             initPoses(req.Offset);
@@ -429,7 +428,7 @@ bool montageCallback(cell_core::montage_service::Request &req, cell_core::montag
         else
         {
             ROS_INFO("PenMontage is not idle!");
-            res.status = 3;
+            res.status = 2;
             return 1;
         }
     }
@@ -451,7 +450,7 @@ bool moveRobotCallback(cell_core::moveRobotToPose::Request &req, cell_core::move
     myPose.orientation.y = req.oY;
     myPose.orientation.z = req.oZ;
     group->setPoseTarget(myPose);
-    if (group->asyncMove())
+    if (group->move())
     {
         res.status = true;
     }

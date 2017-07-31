@@ -27,20 +27,25 @@ string HTTPScript_montage::call(vector<string> names, vector<string> values)
 {
     string response;
     std::string::size_type sz;
-    double offset_ = std::stod(values[0], &sz);
-    int result = callService(offset_, 1);
+
+    // Converting from String to int/double
+    double offset_ = std::stod(values[0]);
+    int ausgabe_ = std::stoi(values[1], &sz);
+
+    // Callig service
+    int result = callService(offset_, ausgabe_);
 
     if (result == 0)
     {
-        return "Offset out of bounds";
+        return "Offset out of bounds or Ausgabestelle not correct";
     }
     else if (result == 1)
     {
-        return "Montage is busy";
+        return "Montage finished";
     }
     else if (result == 2)
     {
-        return "Succes";
+        return "Pen montage not Idle";
     }
 
     return "";
