@@ -272,14 +272,14 @@ bool montageCallback(cell_core::montage_service::Request &req, cell_core::montag
             moveLinear(pickFHull, my_plan);
             // Gripper close
             moveLinear(0.0, 0.0, 0.07, my_plan);
-            coAdder->addBody(group, 2);
+            //coAdder->addBody(group, 2);
             if (!moveToPose(montageFHull, my_plan, 0.055, 0, 0.055))
             {
                 ROS_ERROR("Can't reach Pose montageFHull");
                 return -1;
             }
             moveLinear(montageFHull, my_plan);
-            coAdder->detatchBody(group, 2);
+            //coAdder->detatchBody(group, 2);
             // close 3bGripper a little
             //Gripper open
             moveLinear(0.06, 0.0, 0.06, my_plan);

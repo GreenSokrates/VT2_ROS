@@ -1,0 +1,3 @@
+<launch>
+  <node name="penAssembly" pkg="cell_core" type="penAssembly" output="screen" launch-prefix="gdb -ex run --args"  />
+</launch>
