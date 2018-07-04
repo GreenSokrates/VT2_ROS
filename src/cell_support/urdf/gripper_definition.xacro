@@ -18,7 +18,7 @@
       </collision>
     </link>
 
-        <link name="${prefix}small_grasping_frame">
+    <link name="${prefix}small_grasping_frame">
       <visual>
         <geometry>
           <sphere radius="0.002" />

@@ -131,7 +131,7 @@ bool moveToPose(geometry_msgs::Pose &position, moveit::planning_interface::MoveG
     }
     return -1;
 }
-ex void initPoses(double offset)
+void initPoses(double offset)
 {
     pickBase.position.x = 0.154;
     pickBase.position.y = 0.264 + offset;
@@ -407,7 +407,7 @@ bool montageCallback(cell_core::montage_service::Request &req, cell_core::montag
             moveLinear(montageRHull, my_plan);
 
             // -- Pen zurück drehen --
-            moveLinear(-0.05,0,-0.05);
+            moveLinear(-0.05,0.0,-0.05, my_plan);
 
             // -- Pen Ausgeben --
             ROS_INFO("Pen ausgabe");
