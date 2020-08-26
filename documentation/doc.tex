@@ -1,0 +1,79 @@
+% Author Anpassen
+\newcommand{\myAuthorName}{Luis Meier}
+% Titel der Arbeit anpassen
+\newcommand{\myTitle}{Einsatz von ROS Industrial in einem Industrie 4.0 Demonstrator}
+%%% Dokumenteinstellungen %%%
+\include{header}		% Hier müssen einige Sachen Personalisiert werden!
+
+\usepackage{dirtree}
+
+%%% Aufsetzen des Glossars %%%
+\makeglossaries
+\include{glossar}
+
+
+\usepackage{blindtext}
+\usepackage{caption}
+
+\newenvironment{code}{\captionsetup{type=listing}}{}
+\SetupFloatingEnvironment{listing}{name=Codesnippet}
+
+%%% Begin des Dokuments %%%
+\begin{document}
+
+\title{\myTitle}
+\author{\myAuthorName}
+
+%%% Titel, Abstract %%%
+\frontmatter
+\include{content/titlepage}
+\include{content/abstract}
+\include{content/vorwort}
+\cleardoublepage
+
+%% Eigenständigkeitserklärung - Entsprechendes auskommentieren
+\includepdf[pagecommand={\thispagestyle{plain}}]{images/Erklaerung_PA.pdf} 
+%\includepdf[pagecommand={\thispagestyle{plain}}]{images/Erklaerung_BA.pdf}
+
+\tableofcontents		% Inhaltsverzeichnis
+
+\chapter{Verzeichnisse}
+\printglossary[type=\acronymtype,title={Abkürzungen}]
+\printglossary[title=Glossar]
+%%% Abbildungsverzeichnis %%%
+\listoffigures
+\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+%%% Tabellenverzeichnis %%%
+\listoftables
+\addcontentsline{toc}{section}{Tabellenverzeichnis}%\include{content/glossar}
+%%% Sourcecodeverzeichnis %%%
+\lstlistoflistings
+\addcontentsline{toc}{section}{Codesnippetsverzeichnis}
+
+\mainmatter
+
+
+%%% Hauptteil %%%
+\include{content/einleitung}
+\include{content/grundlagen}
+\include{content/rosSetup}
+\include{content/industriedemonstrator}
+\include{content/implementierungMoveIt}
+\include{content/implementierungCode}
+\include{content/resultate}
+\include{content/diskussion}
+
+
+%%% Verzeichnise %%%
+\backmatter 
+\label{sec:Verzeichnisse}
+% Literaturverzeichnis
+\bibliography{BibTeX/literatur}
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+
+
+%%% Anhang %%%
+\appendix
+\include{content/anhang}
+
+\end{document}

@@ -1,0 +1,164 @@
+%!TEX root = doc.tex
+\documentclass[
+german,
+	10pt, 							% The default document font size, options: 10pt, 11pt, 12pt
+	%oneside, 						% Auskommentieren für einseitige Dokumentstruktur
+	singlespacing,					% Zeilenabstand - Alternativen: onehalfspacing or doublespacing
+	%nolistspacing, 				% Falls onehalfspacing oder doublespacing Auskomentieren!
+	%parskip, 						% Auskommentieren für Einzug nach Absatz
+	headsepline, 					% Linie unter Kopfzeile
+]{scrbook} 							% The class file specifying the document structure
+
+
+% ====================================================================
+% ==						 Packages								==
+% ====================================================================
+%%% Dokumentinformationen %%%
+\usepackage[
+	pdftitle={\myTitle},			% Pdf-Titel
+	pdfsubject={},
+	pdfauthor={\myAuthorName},		% Author
+	pdfkeywords={},	
+	hidelinks						% Links nicht einrahmen
+]{hyperref}
+
+%%% Standard Packages %%%
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx, subfigure}	% Einbinden von Grafiken mit \includegraphics
+\usepackage{wrapfig}				% Einbinden von Grafiken mit 
+\usepackage{lmodern}
+\usepackage{color}					% Für Farben z.B. in Tabellen
+\usepackage{transparent}			% Für transparente Farben
+\usepackage{colortbl}				% für Farben in Tabellen z.B. mit \rowcolor{Gray}
+\usepackage{blindtext}				% für Beispieltexte
+\usepackage{float}					% Für [H] --> Hier Befehl für Grafiken und Tabellen usw.
+\usepackage{geometry}				% Benötigt für Ränder	
+%\usepackage[nswissgerman]{babel}
+\usepackage[ngerman]{babel}
+
+\usepackage[
+	acronym,
+	footnote,
+	toc,
+	section,
+	nopostdot,
+	nonumberlist
+]{glossaries}
+
+%%% Math Packages %%%
+\usepackage{amsfonts}				% zusätzliche Schriftzeichen der American Mathematical Society
+\usepackage{amsmath}				% mathematische darstellung gem AMS
+\usepackage{amssymb} 				% mathematische Symbole aus AMS
+\DeclareMathSymbol{*}{\mathbin}{symbols}{"01} % Punkt statt stern bei Multiplikationen
+
+%%% Usefull Packages %%%
+\usepackage{url}					% Einbinden von URL's in Text
+\usepackage[squaren]{SIunits}		% Zur benutzung von SI-Einheiten
+\usepackage{longtable}				% Ermöglicht Tabellen über mehrere Seiten
+\usepackage[table,dvipsnames]{xcolor}
+							% Für Glossar und Nomenkaltur (evtl ersetzen mit Glossary-Package)
+\usepackage{enumitem}				% Zur auflistung mit Zahlen statt punkten
+
+%%% Styling Packages %%%
+\usepackage{colortbl}				% Farben in Tabellen
+\usepackage{tabularx}				% Bessere Darstellung von Tabellen mit \tabularx
+\usepackage{array}					% Benötigt von tabularx
+\usepackage[absolute]{textpos}		% Absolute Text Positionierung
+\usepackage{scrlayer-scrpage}		% Für Headed/Footer
+\usepackage{textcomp}				% Für div Zeichen z.B. Copyright
+%\usepackage[scaled]{arial}			% Arial Font
+
+%%% Plots, Mindmaps etc %%%
+%\usepackage{tikz}
+%\usetikzlibrary{mindmap}
+
+
+%%% Import Coding %%%
+\definecolor{BGgray}{gray}{0.95}	%Hintergrundfarbe für code
+\usepackage[newfloat]{minted}
+\setminted{
+	breaklines=true,				% Automatic Line Breaking
+	frame=lines,					% Lines on top and Bottom of Frame
+	framesep=1mm,					% Frame Separation 
+	baselinestretch=1.1,			% Interlining of the code
+	bgcolor=BGgray,					% Sets background color
+	fontsize=\footnotesize,			% Sets Fontsize
+	%linenos=true,					% Enables Line Numbers
+	%showspaces=true,				% Enables sign for spaces
+	obeytabs=false,
+	tabsize=2,
+}
+\usemintedstyle{default}
+%%% Definition des Verzeichnisses für den Code
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Sourcecode}
+\renewcommand{\lstlistlistingname}{\lstlistingname verzeichniss}
+
+%%% ZHAW Titelpage %%%
+\usepackage{wallpaper} 				% Bild hinter Text laden
+
+%%% Index und Referenzen %%%
+\usepackage[super,square]{natbib}	% für BibTeX Literaturverzeichnis
+\usepackage{makeidx}				% Benötigt für Index
+
+%%% PDF-Import %%%
+\usepackage{pdflscape}				% Drehen von PDF's
+\usepackage{pdfpages}				% Einzelne PDF-Seiten importieren
+
+% ====================================================================
+% ==						Document Styling						==
+% ====================================================================
+
+%%% Definition des Textbereichs %%%
+\geometry{
+	a4paper,
+	top=30mm,
+	left=30mm,
+	right=30mm,
+	bottom=30mm,
+	headsep=10mm,
+	footskip=10mm
+}
+
+%%% Definition der Textposition %%%
+\setlength{\TPHorizModule}{30mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{10mm}{10mm} 		% start everything near the top-left corner
+\setlength{\parindent}{0pt}
+
+%%%% Horizontale Linien auf Titelseite %%%
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+%reference to source items inlc source number
+\newcommand{\srcref}[1]{\nameref{src:#1} \cite{#1}}
+
+%%% Kopf- und Fußzeile %%%
+%\lohead{\myAuthorNames}
+\rohead{\myTitle}
+\pagestyle{scrheadings}
+
+%%% Quellverzeichnis Style %%%
+%\bibliographystyle{abbrv}
+\bibliographystyle{ieeetr}
+
+%%% Definition von Farben %%%
+\definecolor{gray}{rgb}{0.95,0.95,0.95}
+\definecolor{darkgray}{rgb}{0.4,0.4,0.4}
+
+% ====================================================================
+% ==				Sonstige Einstellungen							==
+% ====================================================================
+%%% Besondere Trennungen %%%
+\hyphenation{De-zi-mal-tren-nung}
+
+%%% Pfad für Bilder %%%
+\graphicspath{{images/}}				% Gibt Pfad für Bilder an
+%%% Neue Fig bennenung %%%
+\numberwithin{figure}{chapter}
+
+%%% Abb. statt Abbildung %%%
+\addto\captionsngerman{
+	\renewcommand{\figurename}{Abb.}
+	\renewcommand{\tablename}{Tab.}
+}
