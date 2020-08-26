@@ -1,0 +1,38 @@
+%!TEX root = ../doc.tex
+\chapter{Resultate}
+\label{sec:Resultate}
+\section{Simulation Montageaufgabe}
+Die Montageaufgabe kann in RVIZ simuliert werden. Im momentanen Stand der Arbeit kann es Vorkommen, dass keine Lösungen für das Anfahren von gewissen Positionen gefunden werden.
+
+\section{Umsetzung Montageaufgabe}
+Die Montageaufgabe konnte in der Simulation mit den von ROS zur Verfügung gestellten Tools implementiert werden. Da die beiden Bachelorstudenten einige Teile für die Montagezelle falsch gezeichnet haben und diese somit nicht montiert werden konnten mussten die Teile neu modelliert und anschliessend 3D-gedruckt werden. Zusätzlich kamen Probleme mit der Genauigkeit der CAD-Modelle hinzu und das mit dem ABB IRB120 in der vorgesehenen Konfiguration der Anlage nicht alle Montagepunkte erreicht werden konnten. All diese Faktoren führten dazu, dass für ausführliche Tests der Simulation sowie realen Anlage die Zeit fehlte.
+Der Komplette Sourecode sowie die erstellten Packages und CAD-Files sind auf dem pool unter:\url{//shared.zhaw.ch/pools/t/T-IMS-SmartPro/Projekt/ROS-Industrial} zu finden.
+\section{Portierung Montageaufgabe}
+Da der Staubli Roboter erst nach Abschluss der vorliegenden Arbeit geliefert wird wurde die Montageaufgabe auf dem Roboter von ABB vom Typ IRB120 realisiert. Über eine mögliche Portierung der Montageaufgabe auf den Roboter von Stäubli können keine fundierten Resultate abgegeben werden. Es konnte ein Driver für den Controller vorbereitet werden, ob dieser auf der echten Steuerung wirklich funktioniert muss nach Erhalt des Roboters geklärt werden.
+
+\section{Evaluation ROS-Industrial}
+ROS und ROS-Industrial sind zwei extrem mächtige Tools, sie haben ihre Vorteile aber auch ihre Nachteile. In diesem Abschnitt wird auf die wichtigsten Eigenschaften von ROS-I eingegangen. 
+\subsection{Verfügbarkeit von Paketen}
+ROS und ROS-Industrial werden zu einem sehr grossen Teil durch die Community erweitert und gewartet. Auf diversen Repositorys verteilt befinden sich eine sehr grosse Anzahl an Packages, welche diverse Funktionen und/oder Bibliotheken enthalten. Viele dieser Packages werden einigermassen gut gewartet und aktualisiert, fast genau so viele Packages sind jedoch fast verwahrlost.\\
+Oft wird zum Implementieren einer Funktion auf diese grosse Anzahl an Funktionen und Bibliotheken zurückgegriffen, oder aber es werden andere OpenSource Ressourcen eingebunden wie zum Beispiel die OMPL. Dies bietet einige Vor- und Nachteile, einerseits sind viele Probleme schon bereits irgendwo entstanden und es bestehen Lösungen oder zumindest Lösungsansätze. Die Funktion, Stabilität und Wartung solcher Pakete ist jedoch überhaupt nicht gewährleistet und muss allenfalls selbst in die Hand genommen werden.
+
+\subsection{Zuverlässigkeit und Stabilität}
+Die von ROS-Industrial angebotenen Funktionen sind alle relativ zuverlässig, ausser der Descrates Planer. Dieser konnte selten eine vernünftige Lösung für die gestellten Trajektorienbahnen finden und stürzte oft ab. Die Nodes welche generiert werden sind in sich auch stabil und bei einem Absturz eines Nodes wird aufgrund der Systemarchitektur von ROS ein kompletter Systemausfall verhindert. Trotzdem muss der Node anschliessend neu gestartet werden, was in einem Industriedemonstrator welcher später an einer Messe laufen soll nicht sehr von Vorteil ist. 
+
+\subsection{Support}
+Der Support von ROS-Industrial setzt rein auf die Foren und Wikipages. Diese Foren und Wikipages sind Voll mit Informationen und viele Probleme welche während dieser Arbeit entstanden sind konnten über diese relativ schnell gelöst werden. Trotzdem kann es vorkommen, dass ein Problem entsteht bei welchem weder die Wikipages oder die Foren helfen können. In diesem Fall ist 
+
+\subsection{Empfehlung ROS-I}
+ROS-Industrial bietet viele Funktionen an, welche für die Industrie gebraucht werden, die sehr ausgereift und durchdacht sind. Gleichzeitig scheint es aber bei einigen Teilen noch in den Kinderschuhen zu stecken. Im momentan scheint ROS-Industrial für die Anwendung im Industriedemonstrator nicht geeignet zu sein. Die Implementierung der Montageaufgabe ist zwar nicht ausserordentlich Komplex, jedoch konnten einige Probleme nicht oder nur mit behelfsmässigen Patches gelöst werden. Eine realisierung der Montageaufgabe mithilfe der vom Hersteller zur Verfügung gestellten Tools scheint hier wesentlich schneller und vor allem stabiler zu Funktionieren.\\
+
+ROS-Industrial ist interessant für Anwendungen in welchen sich die Umgebungen ändern und diese mit Sensoren oder Kameras überwacht werden können. Dort kann ROS durch seine dynamische Bahnplanung und direkte Verarbeitung von Sensor- und Kameradaten punkten. Ein weiterer Vorteil von ROS ist die Freiheit mit einer Applikation unterschiedliche Robotertypen anzusteuern, somit wäre ROS sicherlich in einer Anlage mit mehreren unterschiedlichen Robotern geeignet.
+
+\section{Probleme und offene Punkte}
+\subsection{SMC Aktuatoren}
+Beim Momentanen Stand der Arbeit konnte keine Kommunikation über EtherCAT mit den Aktuatoren von SMC hergestellt werden. Die Kommunikation über EtherCat mit den Kontrollern Funktioniert zwar, jedoch weigern sich die Kontroller vom EtherCAT Staus "Safe Operational" in den Status "Operational" zu wechseln. Aus diesem Grund kann von ROS aus im Moment die Aktuatoren nicht angesteuert werden. Aus diesem Grund konnten die Greiferpositionen noch nicht bestimmt werden und es konnten somit auch keine Kugelschreiber in der Anlage zusammengebaut werden.
+ 
+\subsection{Crash Nodes}
+Es kann vorkommen, dass die move\_group, RVIZ oder ein anderer Node sich während der Bahnplanung oder auch sonst \textgravedbl aufhängt\textacutedbl. Bis zur Abgabe dieser Arbeit konnte die Ursache für dieses Vorkommen nicht eindeutig ermittelt werden.
+
+\subsection{Fahrgeschwindigkeit und Aborts}
+ROS berechnet aufgrund der maximalen Gelenkgeschwindigkeiten und des zu verfahrenden Weges die Zeit die es Braucht um die Ziel Position zu erreichen. Diese Zeit wird mit einem Faktor (Standardwert 1.2) multipliziert und ergibt die maximal erlaubte Plannungszeit. Falls diese vom Roboter überschritten wird wird durch die move\_group das Ausführen der Trajektorie abgebrochen. Dies kommt beim ABB IRB120 in der Simulation nicht vor, jedoch kann es auf dem echten Roboter dazu kommen. Eine erhöhung des Faktors oder gar eine Deaktivierung dieser Funktion scheinen keine Auswirkungen auf dieses Abbruchkriterium zu haben.

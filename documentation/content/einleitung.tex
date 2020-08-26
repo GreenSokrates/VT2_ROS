@@ -1,0 +1,54 @@
+%!TEX root = ../doc.tex
+\chapter{Einleitung}
+\label{sec:Einleitung}
+Industrieroboter, wie sie von diversen Herstellern angeboten werden besitzen meistens eine proprietäre Steuerung. Die Hersteller dieser Steuerungen bieten meistens ein sehr ähnliches Funktionspaket an, jedoch wird über die Hersteller hinweg keine einheitliche Programmiersprache verwendet, es gibt zum Beispiel RAPID bei ABB, oder KRL bei KUKA. Bis anhin sind durch die Roboterhersteller keine Bestrebungen zu einer einheitlichen Programmiersprache in Sicht. \\
+Mit dem Robot Operating System (ROS) ist ein Framework vorhanden, welches sich für die Entwicklung von universeller Software für Roboter anbietet. ROS wurde ursprünglich für den Teilbereich der Mobilrobotik entwickelt. Durch die Erweiterung ROS-Industrial steht jedoch ein weiteres Framework zur Verfügung, welches die Fähigkeiten von ROS auf die Anforderungen in der Industrie erweitert. 
+
+
+\section{Ausgangslage}
+\label{sec:Ausgangslage}
+Im Rahmen zweier Bachelorarbeiten wurde im Frühlingssemester 2017 ein Industrie 4.0 Demonstrator konzeptioniert und entwickelt, welcher die diversen Aspekte von Industrie 4.0 aufzeigen können soll. Dazu können Kugelschreiber durch den Kunden - respektive den Messebesucher - in verschiedenen Zusammenstellungen konfiguriert werden, anschliessend werden diese Kugelschreiber durch den Demonstrator zusammengebaut. \\
+Der Demonstrator wird in Zusammenarbeit mit mehreren Industriepartnern realisiert, die Industriepartner stellen diverse Komponenten für den Industrie Demonstrator zur Verfügung.
+
+\subsection{Projektorganisation}
+Das gesamte Projekt Industrie 4.0 Demonstrator wird durch mehrere Personen mit unterschiedlichen Zuständigkeiten realisiert. Die Planung des mechanischen Aufbaus der Anlage wird durch die beiden Bachelorstudenten Andrin Meister und Christian Hartmann durchgeführt. Claude Hasler entwickelt im Rahmen einer Verteifungsarbeit einen Minideltarobtoer, welcher für das Feeden der Kleinteile Zuständig ist.
+
+\section{Aufgabenstellung}
+\label{sec:Aufgabenstellung}
+Im Rahmen dieser VT2 soll eine konkrete Montageaufgabe für den Industrie 4.0 Demonstrator (SmartPro) mit einem Stäubli Industrieroboter realisiert werden, wobei als Programmiersprache \verb!C++! und das ROS Industrial Framework eingesetzt werden. Nach Möglichkeit soll aber keine Stäubli spezifische Software entwickelt werden. Die Portierbarkeit dieser Anwendung soll schliesslich mit einem Wechsel des gewählten Roboters zu einem Universal Robots UR3 - respektive einem ABB IRB120 - gezeigt werden.\\
+Dazu wurden folgende Arbeitspakete definiert:
+\begin{itemize}
+	\item Aufsetzen einer Entwicklungsumgebung mit ROS Industrial.
+	\item Simulation einer einfachen Montageaufgabe des Industrie 4.0 Demonstrators, wobei als Roboter ein Stäubli Industrieroboter, ein Universal Robots UR3 und ein ABB IRB120 verwendet werden sollen.
+	\item Entwicklung und Umsetzung der Montageaufgabe mit dem Stäubli Industrieroboter.
+	\item Portierung dieser Montageaufgabe auf einen Universal Robots UR3, inklusive Vergleichstest mit dem Stäubli Roboter.
+	\item Evaluation von ROS Industrial, mit einer Beurteilung dessen Möglichkeiten und Einschränkungen für industrielle Anwendungen.	 
+\end{itemize}
+
+\section{Verwendete Software}
+\label{sec:VerwendeteSoftware}
+Für die vorliegende Arbeit wurden die unten aufgeführten Programme verwendets.
+
+\subsection*{Arbeitsumgebung}\label{wintool}
+\begin{itemize}
+	\item Ubuntu 16.04 LTS
+	\item Microsoft Windows 10
+\end{itemize}
+
+\subsection*{IDE}
+\begin{itemize}
+	\item Visual Studio Code
+	\item RoboWareStudio
+\end{itemize}
+
+\subsection*{CAD}\label{catia}
+\begin{itemize}
+	\item CATIA
+	\item Meshlab
+\end{itemize}
+
+\subsection*{Dokumentation}\label{dokutools}
+\begin{itemize}
+	\item \LaTeX{} mit TeXStudio 2.11.2
+	\item yED Graph Editor
+\end{itemize}
